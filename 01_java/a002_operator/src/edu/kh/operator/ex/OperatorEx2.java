@@ -91,6 +91,45 @@ public class OperatorEx2 {
 		
 		System.out.println( (num6 <= num5 + num5) == false);// (true) = false
 		
+		// 짝수 검사 
+		System.out.println( 4 % 2 == 0 ); // true
+		System.out.println( 5 % 2 == 0 ); // false
+		System.out.println( 6 % 2 == 0 ); // true
+		System.out.println( 7 % 2 == 0 ); // false
+		System.out.println( 8 % 2 != 0); // true 
+		
+		// 홀수 검사
+		System.out.println( 4 % 2 == 1 );// false
+		System.out.println( 5 % 2 == 1 ); // true
+		
+		System.out.println( 6 % 2 != 0); // false
+		System.out.println( 7 % 2 != 0); // true
+		
+		System.out.println ("463984는 3의 배수인가? :" +(463984 %3==0));
+		System.out.println ("463984는 4의 배수인가? :" +(463984 %4==0));
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
