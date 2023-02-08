@@ -20,11 +20,12 @@ public class OperatorPractice4 {
 		int sum1 = input1 + input2 + input3;
 		System.out.println("합계 : " + sum1);
 		
-		int averge = (double)sum1 /3; 
-		System.out.println("평균 : " +average);
-		String result = (input1 >= 40 && input2 >= 40) && input3 >= 40;
+		int averge = sum1/3; 
+		System.out.println("평균 : "+ averge);
 		
-	
+		boolean score = (input1 >= 40 && input2 >= 40) && input3 >= 40;
+		String result = score == true&&averge >=60?"합격":"불합격";
+        System.out.println(result);	
 		
 		
 		
