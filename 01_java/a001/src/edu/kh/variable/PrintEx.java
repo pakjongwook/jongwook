@@ -50,7 +50,7 @@ public class PrintEx {
 	   // 해결 방법 2) 탈출 (escape) 문자 \n 작성
 	   
 	   System.out.println("\nhello \t\tworld \u0050");
-	   // \u 0050 16진수
+	   // \u0050 16진수
 
 
 	   
