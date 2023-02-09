@@ -17,15 +17,16 @@ public class OperatorPractice4 {
 		System.out.print("수학 : ");
 		int input3 = sc.nextInt();
 		
+		// 합계
 		int sum1 = input1 + input2 + input3;
-		System.out.printf("합계 : " + "%d\n" , sum1);
 		
-		int average = sum1 /3; 
-		System.out.printf("평균 :" + "%.1f\n", average);
+		// 평균
+		double average = sum1 / 3; // int / double -> 자동형변환 int -> double (double)sum1 / (double)3.0 , (double)sum1 / 3
+		String result = (input1 >= 40 && input2 >= 40 && input3 >= 40 && average >= 60)
+				? "합격" : "불합격";
 		
-		String result = input1 >= 40 && input2 >= 40 && input3 >= 40 && (input1 +input2 + input3)/3 >= 60 ?
-				"합격" : "불합격"; 
-		
+		System.out.println("합계 :" + sum1);
+		System.out.println("평균 :" + average);
 		System.out.println(result);	
 		
 		

@@ -15,7 +15,9 @@ public class OperatorPractice1 {
 		System.out.print("사탕 개수 : ");
 		int num2 = sc.nextInt();
 		
-		System.out.println("1인당 사탕 개수 : " + num2 /num1);
+		System.out.println(); // 줄 바꿈
+		
+		System.out.println("\n1인당 사탕 개수 : " + num2 /num1);
 		System.out.println("남는 사탕 개수 : " + num2 % num1);
 		
 		
