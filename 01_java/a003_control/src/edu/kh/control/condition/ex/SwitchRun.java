@@ -23,6 +23,7 @@ public class SwitchRun {
 	case 2 : sw.ex2(); break;
 	case 3 : sw.ex3(); break;
 	case 4 : sw.ex4(); break;
+	case 5 : sw.ex4(); break;
 	
 	default : System.out.println("존재하지 않는 예시 번호 입니다.");
 	}
