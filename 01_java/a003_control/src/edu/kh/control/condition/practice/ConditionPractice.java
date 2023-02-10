@@ -15,7 +15,7 @@ public class ConditionPractice {
 		 result = "양수만 입력해주세요";
 		} else if (input == 0) {
 			result = "짝수입니다";
-		} else {
+		} else if(input ) {
 		result = "홀수입니다";
 		}
 		System.out.println(result);

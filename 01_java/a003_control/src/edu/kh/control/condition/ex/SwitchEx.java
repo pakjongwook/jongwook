@@ -1,5 +1,6 @@
 package edu.kh.control.condition.ex;
 
+import java.nio.file.spi.FileSystemProvider;
 import java.util.Scanner;
 
 public class SwitchEx {
@@ -231,6 +232,9 @@ public class SwitchEx {
 		
 		}
 		System.out.println(result);
+		
+	}
+	public void ex6() {
 		
 	}
 	
