@@ -295,7 +295,7 @@ public class ForEx {
 					System.out.println("잘못 입력 하셨습니다. ");
 				} else {
 					for(int i=1; i<=9 ;i++) {
-						System.out.printf("%d x %d =%d \n",input,i,input*1);
+						System.out.printf("%d x %d =%d \n",input,i,input*i);
 					}
 					
 				}
