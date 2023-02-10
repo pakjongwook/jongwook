@@ -6,8 +6,10 @@ public class ForRun {
 		
 		ForEx fx = new ForEx();
 		// 변수명은 소문자
-		
-	fx.ex4();
+	
+    
+    // 응용	
+	fx.ex12();
 		
 	}
 }

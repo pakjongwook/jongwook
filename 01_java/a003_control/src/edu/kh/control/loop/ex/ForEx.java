@@ -115,9 +115,199 @@ public class ForEx {
 			System.out.println(i);
 		}
 		
+	System.out.println("---------------------");
+     
+	// A ~ z 까지 모든 알파벳 출력하기
+ 
+	// 1) A(65), z(90)의 유니코드 번호를 이용하기
+	    for(int i =65 ; i <=90 ; i++) {
+	     System.out.print((char) i);
+	     }
+     // 2) 유니코드 번호를 모를 떄
+	    for(int i = 'A'; i <='z'; i++) {
+		 System.out.print( (char)i );
+	  }
+      // 3) char 자료형은 문자형이지만 실제로는 정수를 저장한다!
+	    for(char i = 'A'; i <= 'Z' ; i++) {
+         System.out.print(i);
+        }
+	}
+	// for문 응용 사용법 1
+	public void ex7() {
+		// 감소하기 
+		
+		// 10부터 1까지 1씩 감소하며 출력
+		for(int i = 10 ; i >= 1 ; i--) { // true 일때 실행
+			System.out.print(i);
+		}
+		
+	}
+	
+	// for문 응용 사용법 2
+	public void ex8() {
+		// 입력, 합계(sum), for
+		
+		// 정수 5개를 입력 받아 합계 출력하기
+		Scanner sc = new Scanner(System.in);
+		int sum = 0; // 합계를 저장할 변수 선언 및 0으로 초기화
+		
+		for(int i =1; i<= 5; i++){
+			System.out.printf("정수 입력 %d : ", i); // 1~5까지 1씩 증가 (5회 반복)
+			sum += sc.nextInt();
+		}
+		
+		System.out.println(sum);
+		
+		
 	}
 		
+	// for문 응용 사용법 3
+	public void ex9() {
+		// ex8번 응용
+		
+		// 정수를 몇 번 입력 받을지 먼저 입력하고
+		// 입력된 정수의 합계를 출력
+		
+		// 입력 받을 정수의 개수 : 2
+		// 입력 1 : 3
+		// 입력 2 : 5
+		// 합계 : 8
+		
+		// 입력 받을 정수의 개수 : 4
+		// 입력 1 : 3
+		// 입력 2 : 5
+		// 입력 3 : 1
+		// 입력 4 : 2
+		// 합계 : 11
+		
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("입력 받을 정수의 개수: ");
+		int input = sc.nextInt(); 
+		int sum = 0;
+		
+		for(int i = 0 ; i <= input ; i++) {
+			System.out.printf("입력 %d : ", i);
+			sum += sc.nextInt();
+		}
+				System.out.println("합계 :" + sum);
+	}
 	
+	// for문 응용 사용법 4
+	public void ex10() {
+		// for + if 동시 사용
+		
+		// 1부터 10까지 반복하며 출력
+		// 단, 짝수일 경우()로 숫자를 감싸서 출력
+		
+		// 1 (2) 3 (4) 5(6) 7(8) 9(10)
+		for (int i =1 ; i <= 10; i++) {
+			
+			// 짝수인 경우
+			if( i % 2 == 0) {
+				System.out.printf("(%d) ", i);
+			} else {
+				System.out.print(i + " ");
+			}
+			
+		}
+		
+		
+	}
+	// for문 응용 사용법 5
+	public void ex11() {
+		// 1부터 10까지 1씩 증가하며 출력
+		// 단, 3의 배수의 경우 숫자를 [] 감싸서 출력
+		// 단, 5의 배수인 경우 숫자 대신 @ 출력
+		for(int i = 1; i<=10; i++) {
+			if(i % 3 == 0) {
+				System.out.printf("[%d]",i);
+			} else if(i % 5 == 0) { 
+				System.out.print("@");
+			} else {
+				System.out.print(i +" "+" ");
+			}
+			
+		}
+		
+	}
+	// for문 응용 사용법 6
+		public void ex12() {
+			
+		// for, printf
+			
+		// 구구단 2단 출력하기
+		//	2 X 1 = 2   2 고정 , 1는 1씩 증가
+		//	2 X 2 = 4
+		//	2 X 3 = 6
+		//	2 X 4 = 8
+		//	2 X 5 = 10
+		//	2 X 6 = 12
+		//	2 X 7 = 14
+		//	2 X 8 = 16
+		//	2 X 9 = 18
+		
+		for(int i =1; i <= 9; i++) {
+			System.out.printf("%d x %d = %d \n", 2, i , 2*i );
+		}
+			
+		
+	}
+	  // for문 응용 사용법 7
+	      public void ex13() {
+		
+	  // 원하는 단을 입력 받아서 역순으로 출력
+	  // 단 입력 : 3
+	  // 3 x 9 = 27  
+	  // 3 x 8 = 24  
+	  // 3 x 7 = 21  
+	  // 3 x 6 = 18  
+	  // 3 x 5 = 15  
+	  // 3 x 4 = 12  
+	  // 3 x 3 = 9  
+	  // 3 x 2 = 6  
+	  // 3 x 1 = 3 
+	   
+	    Scanner sc = new Scanner(System.in);
+	    System.out.println("입력 : ");
+	    int input = sc.nextInt();
+	    
+	    for(int i =9; i >= 1; i--) {
+	     if(input == 0) {
+	    	 System.out.printf("%d x %d = %2d \n",input, i, input*i );
+	     }
+	    }	  
+		
+	    
+	}
+	      
+	   // for문 응용 사용법 8
+			public void ex14() {
+				
+				// 입력 받은 단의 구구단 출력하기
+				// 단, 입력 받은 단이 2~9사이가 아니라면
+				//  "잘못 입력 하셨습니다." 출력
+				Scanner sc = new Scanner(System.in);
+				System.out.print("단 입력 : ");
+				int input = sc.nextInt();
+				
+				if(input < 2 || input >9) {
+					System.out.println("잘못 입력 하셨습니다. ");
+				} else {
+					for(int i=1; i<=9 ;i++) {
+						System.out.printf("%d x %d =%d \n",input,i,input*1);
+					}
+					
+				}
+				
+				
+				
+				
+				
+				
+				
+			}      
+		
 	
-	
+       
 }
