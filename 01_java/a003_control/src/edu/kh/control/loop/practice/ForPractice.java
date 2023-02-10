@@ -10,15 +10,14 @@ public class ForPractice {
 		System.out.print("1이상의 숫자를 입력하세요: ");
 		int input = sc.nextInt();
 		
-		for(int i =1; i<=input; i++) {
-			System.out.print(i + " ");
-			if(input < 1){
-				System.out.print("1이상의 숫자를 입력해주세요: ");
-			} else {
-				System.out.println();
-			}
-				
+		if(input < 1) {
+			System.out.println("1이상의 숫자를 입력해주세요. ");
+		} else {
+			for(int i=1; i<=input; i++) {
+				System.out.print(i + " "); 
 		}
+			}
+		
 	}
 	
 	public void practice2() {
@@ -26,21 +25,31 @@ public class ForPractice {
 		System.out.print("1이상의 숫자를 입력하세요: ");
 		int input = sc.nextInt();
 		
-		for(int i=4; input >= 11; i-- ){
-			System.out.print(i + " ");
+		if(input <1) {
+			System.out.println("1이상의 숫자를 입력해주세요: ");
+		} else {
+			for(int i=4;i>=input; i--) {
+				System.out.print(i + " ");
+			}
 		}
 		
-		
-		
+	}
+	public void practice3() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("정수를 하나 입력하세요 :");
+		int input = sc.nextInt();
+		int sum = 0;
 		
 		
 	}
+	
+	
 		
 		
-	 
+		
+		
 		
 }
-	
 	
 	
 
