@@ -1,6 +1,7 @@
 package edu.kh.control.loop.practice;
 
 import java.nio.file.spi.FileSystemProvider;
+import java.sql.SQLNonTransientConnectionException;
 import java.util.Scanner;
 
 // 실습문제용 클래스
@@ -70,35 +71,91 @@ public class ForPractice {
 	public void practice5() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("숫자 : ");
-		System.out.printf("=======%d단=======");
 		int input = sc.nextInt();
-		int input1 =sc.nextInt();
 		
-	   if(input <2 || input >9) {
-		   System.out.println("잘못입력하셨습니다 ");
-	   } else {
-		   for(int i = 1; i<=9; i++) {
-			   System.out.printf("%d*%d=%d\n ",input,i,input*i);
-		   }
-	   }
+		System.out.printf("========%단 ======\n",input);
+		for(int i =1; i<=9; i++) {
+		  System.out.printf("%d * %d = %d\n",input,i,input*i);
+	  }
 	}
 	public void practice6() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("숫자 : ");
 		int input = sc.nextInt();
 		
-		if(input >9) {
-			System.out.println("2~9 사이의 숫자만 입력해주세요. : ");
-		} else {
-			for() {
-				
+		if(input >9) {	
 			}
+		}
+	
+	
+		
+	public void practice12() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("정수 입력 : ");
+		int input = sc.nextInt();
+		
+		for(int row =1; row <= input ; row ++) {
+			for(int col =1; col<=input; col++) {
+				if(row ==1 || row ==input || col ==1 || col == input) {
+					System.out.print("*");
+				}else {
+				System.out.print(" "); }
+			}
+			System.out.println();
+		}
+		
+	}
+	
+	public void practice8() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("정수 입력 : ");
+		int input = sc.nextInt();
+		
+		for(int row =input; row>=1; row --) {
+			for(int col=row; col >=1; col--) {
+				System.out.print("*");
+				}
+			System.out.println();
 		}
 	}
 	
+	public void practice11() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		int input = sc.nextInt();
+		
+		for (int row=1; row<=input; row++) {
+		/*	// 빈칸 먼저 출력 for 문 2개
+			for(int col=input-row; col >=1; col--) {
+				System.out.print(" ");
+			}
+			// 1 2 3 4
+			for(int col=1; col<=row * 2 -1 ; col++) {
+				System.out.print("*");
+			} */
+			// for문 1개, if-else 1개
+			
+			for(int col=1; col<=input+row-1; col++) {
+				
+				if(input-row >= col) {
+					
+					System.out.print(" ");
+				} else {
+					System.out.print("*");
+				}
+				
+				System.out.println();
+				}
+			
+			}	
+		}		
+			
+			
+			
+		
 	
-		
-		
+	
 		
 }
 	
