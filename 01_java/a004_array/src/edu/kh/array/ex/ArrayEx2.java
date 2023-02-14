@@ -150,8 +150,6 @@ public class ArrayEx2 {
 	    	    System.out.println();
 	    }
 		
-		
-		
 	}
 	
 	
