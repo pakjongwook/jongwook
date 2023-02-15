@@ -41,6 +41,10 @@ public class Nation {
 	// 간접 접근 방법(기능)을 작성
 	public String getpNo() { // 외부에서 내부 데이터를 얻어가는 방법
 		return this.pNo;
+		
+		
+		
+		
 	}
 	
 	public void setpNO(String pNo) { // 외부에서 내부 데이터를 설정하는 방법
