@@ -66,12 +66,6 @@ public class Member {
 		 * */
 		
 		
-		
-		
-		
-		
-		
-		
 		// 객체 생성 시 특정 기능 수행
 		System.out.println("기본 생성자로 생성됨.");
 		
@@ -80,6 +74,12 @@ public class Member {
 		memberPw = "1q2w3e4r";
 		memberName = "얌마";
 		memberAge = 23;
+		
+		
+		
+		
+		
+		
 		
 				
 		
@@ -106,17 +106,39 @@ public class Member {
 		this.memberName = memberName;
 		this.memberAge = memberAge;
 		
-		
-		
 	}
 	
+	
+	// 오버로딩 : 한 클래스 내에 동일한 이름의 메소드(기능)를 
+	// 여러 개 작성하는 기법  ( 생성자 : 객체를 생성하는 기능) 
+	
+	// 조건 
+    // 1. 메서드(생성자) 이름이 같아야 한다.
+	// 2. (중요)****** 매개변수의 자료형 || 개수 || 순서 중 하나라도 달라야 한다!!*****
+	
+	
+	public Member(String memberId) {
+		
+		this.memberId = memberId;
+		
+		memberPw = "1q2w3e4r";
+		memberName = "얌마";
+		memberAge = 23;
+		
+		
+	} // 오버로딩 성립
+	
+	public Member(String memberId,String memberPw) {} // 개수가 다름 *성립
+	
+	public Member(String memberId, int memberAge) {} // 자료형(타입)이 틀림 *성립
+	
+	public Member(int memberAge, String memberId) {} // 성립 (순서)
+	
+//	public Member(int memberAge,String memberName) {} // 오류
+	 // 변수명이 아닌 자료형을 신경써야 한다.!!!!!
+	
+	
 	// 일반 기능(메서드)
-	
-	
-	
-	
-	
-	
 	
 	
 	

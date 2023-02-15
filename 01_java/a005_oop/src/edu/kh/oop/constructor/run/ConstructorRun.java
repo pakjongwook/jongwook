@@ -14,7 +14,7 @@ public class ConstructorRun {
 		// 매개변수 생성자를 이용해서 Member 객체 생성
 		Member mem2 = new Member("user02","pass02", "김삼순", 19); 
 		
-		
+		Member mem3 = new Member("user9999");
 		
 		System.out.println(Member.programName);
 		

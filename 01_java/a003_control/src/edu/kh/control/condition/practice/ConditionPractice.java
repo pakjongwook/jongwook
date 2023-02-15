@@ -47,7 +47,7 @@ public class ConditionPractice {
 	
 	public void practice3() {
 		
-	}
+	
 	
 	public void practice4() {
 		
