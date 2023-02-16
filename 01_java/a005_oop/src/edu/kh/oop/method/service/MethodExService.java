@@ -78,9 +78,10 @@ public class MethodExService {
 		
 		
 		// 해결 방법 : 참조형의 값 자체를 비교하는 equals() 사용
+		
 		// boolean a.equals(b)
-		// -> a와 b가 참조하는 객체의 값이 같다면  true, 아니면 false를
-		//    반환하는 메서드
+		// -> a와 b가 참조하는 객체의 
+		// 값이 같다면  true, 아니면 false를 반환하는 메서드
 		
 		if(num2 == 0 && (op.equals("/") || op.equals("%")) ) {
 			result = "0으로 나눌 수 없습니다. ";

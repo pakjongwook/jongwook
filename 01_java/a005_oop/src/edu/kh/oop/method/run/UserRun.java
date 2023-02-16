@@ -1,9 +1,15 @@
 package edu.kh.oop.method.run;
 
-public class UserRun {
+import edu.kh.oop.method.view.UserView;
 
-	public UserRun() {
-		// TODO Auto-generated constructor stub
+public class UserRun {	
+
+	public static void main(String[] args) {
+		
+		UserView view = new UserView();     // 기본생성자로 만들겠다
+		
+		view.displayMenu();
+		
 	}
 
 }
