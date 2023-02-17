@@ -6,6 +6,6 @@ public class WhlieRun {
 		whlieEx we = new whlieEx();
 		
 		
-		we.ex4();
+		we.ex3();
 	}
 }
