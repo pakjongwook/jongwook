@@ -51,7 +51,7 @@ public class Practice {
 	
 	System.out.println( (int)(iNum1 / fNum)); // 3
 	
-	System.out.println(iNum1 / fNum); // 3.333333 f
+	System.out.println(iNum1 / fNum); // 3.333333 fk
     System.out.println(iNum1 / (double)fNum); // 3.333333333333333335 
  		
     System.out.println( (int)ch ); // 65 문자로 저장이 아니라 숫자로 저장되어있어서 
