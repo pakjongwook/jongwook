@@ -299,6 +299,7 @@ public class ArrayPractice {
 		
 	}	
 	public void Practice14() {
+		Scanner sc = new Scanner(System.in);
 		
 		
 	}
