@@ -39,11 +39,11 @@ public class Student {
 		this.grade = grade;
 	} // 반환명 get필드명() {}
 
-	public int getclassRoom() {
+	public int getClassRoom() {
 		return classRoom;
 	}
 
-	public void setclassRoom(int classRoom) {
+	public void setClassRoom(int classRoom) {
 		this.classRoom = classRoom;
 	}
 
@@ -68,16 +68,16 @@ public class Student {
 	}
 	
 	
-	public void setkor(int kor) {
+	public void setKor(int kor) {
 		this.kor = kor;
 	}
 	
-	public int geteng() {
+	public int getEng() {
 		return eng;
 	}
 	
 	
-	public void seteng(int eng) {
+	public void setEng(int eng) {
 		this.eng = eng;
 	}
 	
