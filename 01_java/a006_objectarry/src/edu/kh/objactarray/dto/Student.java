@@ -63,7 +63,7 @@ public class Student {
 		this.name = name;
 	}
 	
-	public int kor() {
+	public int getkor() {
 		return kor;
 	}
 	

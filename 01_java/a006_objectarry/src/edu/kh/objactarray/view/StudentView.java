@@ -24,6 +24,7 @@ public class StudentView {
 			System.out.println("3. 학생 정보 조회(인덱스)");
 			System.out.println("4. 학생 정보 조회(이름)");
 			System.out.println("5. 학생 정보 수정(인덱스)");
+			System.out.println("6. 점수 합계 , 평균, 최고점, 최저점 조회 ");
 			System.out.println("0. 종료");
 			System.out.println("---------------------------------");
 			
@@ -40,6 +41,7 @@ public class StudentView {
 			case 3 : selcetIndex(); break;
 			case 4 : selcetName();	 break;
 			case 5 : updateStudent(); break;
+			case 6 : sumAvgMaxMin(); break;
 			case 0 : System.out.println("[프로그램이 종료됩니다.]"); break;
 			default : System.out.println("[잘못 입력 하셨습니다.]");
 			}
@@ -213,5 +215,39 @@ public class StudentView {
 	
 		
 	}
+	
+	/** 6. 점수 합계, 평균, 최고점 , 최저점 */
+	
+	private void sumAvgMaxMin() {
+		System.out.println("[학생 총점 점수 합계, 평균, 최고점, 최저점]");
+		
+		int[] arr = service.sumAvgMaxMin();
+		
+		//0번 인덱스 : 합계
+		//1번 인덱스 : 평균
+		//2번 인덱스 : 최고점
+		//3번 인덱스 : 최저점
+		
+		System.out.println("합계 : "+ arr[0]);
+		System.out.println("평균 : "+ arr[1]);
+		System.out.println("최고점 : "+ arr[2]);
+		System.out.println("최저점 : "+ arr[3]);
+		
+		
+		
+		
+	
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

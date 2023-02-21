@@ -1,5 +1,8 @@
 package edu.kh.objactarray.service;
 
+import java.util.Arrays;
+import java.util.Random;
+
 import edu.kh.objactarray.dto.Student;
 
 // 기능 제공용 클래스(비즈니스 로직 처리)
@@ -21,6 +24,23 @@ public class StudentService {
 		studentArr[1] = new Student(2, 3, 11, "김철수");
 		
 		studentArr[2] = new Student(1, 7, 3, "최미영");
+		
+		// 학생 랜덤 점수 추가
+	      Random random = new Random(); // import ctrl + shift + o
+	      for(Student s : studentArr) {
+	         
+	         if(s == null) break;
+	         
+	         // (int)(Math.random() * 101) == random.nextInt(101)
+	         s.setKor(random.nextInt(101));
+	         s.setEng(random.nextInt(101));
+	         s.setMath(random.nextInt(101));
+	      }
+	      
+		
+		
+		
+		
 	}
 	 // 3,4 비어있음 -> null 
 	
@@ -173,19 +193,56 @@ public class StudentService {
 		
 		}
 	
-	/** 6. 점수 합계, 평균, 최고점 , 최저점 
-	 * @return arr : int[](인덱스 순서대로 합계, 평균, 최고점, 최저점)
+	/** 6. 학생 총점 합계, 평균, 최고점 , 최저점 
+	 * @return arr : int[](인덱스 순서대로 총점 합계, 총점 평균, 총점 최고점, 총점 최저점)
 	 * 
 	 * */
 	public int[] sumAvgMaxMin() {
 		
 		int[] arr = new int[4];
 		
+		int size = 0;
 		
+		for(int i = 0; i<studentArr.length; i++) {
+			
+			if(studentArr[i] == null) {
+				break;
+			}else { 
+				size++;
+			}
+		}
 		
+		// 존재하는 학생의 합계를 저장할 배열
+		int[] sumArr = new int[size];
+		                      // 3 시작
 		
+		for(int i = 0; i<sumArr.length; i++) {
+			// 학생 한명의 점수 합
+			sumArr[i] = studentArr[i].getkor()
+					  + studentArr[i].getEng()	
+					  + studentArr[i].getMath();
+			// 전체 학생의 점수 합
+			arr[0] += sumArr[i];
+			
+		}
+		// 전체 총점 평균
+		arr[1] = arr[0] / size;
 		
+	//	arr[2] = sumArr[0];// 최고점
+	//	arr[3] = sumArr[0]; // 최저점
 		
+		int max = sumArr[0];
+		int min = sumArr[0];
+		
+		for(int s : sumArr) {
+			if(s > max) max = s;
+			if(s < min) min = s;
+		}
+		
+		arr[2] = max;
+		arr[3] = min;
+		
+		System.out.println(Arrays.toString(sumArr));
 		
 		return arr;
 		
