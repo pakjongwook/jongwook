@@ -9,7 +9,7 @@ public class ForRun {
 	
     
     // 응용	
-	fx.ex6();
+	fx.ex8();
 		
 	}
 }
