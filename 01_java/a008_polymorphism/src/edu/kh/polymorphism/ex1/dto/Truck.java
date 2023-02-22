@@ -11,7 +11,7 @@ public class Truck extends Car {
 	
 	// 매개변수 생성자
 	public Truck(int wheel, int seat, String fuel, double weight) {
-		super(); // 미작성시 컴파일러가 자동 추가
+		super(wheel, seat, fuel); // super 에 써야함
 		
 		this.weight = weight;
 		}

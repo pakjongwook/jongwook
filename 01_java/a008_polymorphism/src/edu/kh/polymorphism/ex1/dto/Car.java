@@ -18,7 +18,7 @@ public class Car extends Object{
 	//매개 변수 생성 
 //	alt + shift +s -> o 
 	public Car(int wheel, int seat, String fuel) {
-		super();
+		super(); // 미작성시 컴파일러가 자동 생성
 		this.wheel = wheel;
 		this.seat = seat;
 		this.fuel = fuel;
@@ -69,7 +69,7 @@ public class Car extends Object{
 	// Object.toString() 오버라이딩
 	@Override
 	public String toString() {
-		return String.format("%d / %d / %s", wheel, fuel, seat);
+		return String.format("%d / %d / %s", wheel,  seat, fuel); // 자료형 틀림 int int String 
 	}
 	
 	

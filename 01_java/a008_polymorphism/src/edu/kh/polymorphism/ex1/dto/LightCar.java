@@ -9,7 +9,7 @@ public class LightCar extends Car {
 		
 	}
 	public LightCar(int wheel, int seat, String fuel, double discountOffer ) {
-		
+		super(wheel, seat, fuel); // super wheel seat fuel 써야함
 		this.discountOffer = discountOffer;
 	}
 	public double getDiscountOffer() {

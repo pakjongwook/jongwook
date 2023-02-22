@@ -192,7 +192,7 @@ public class ArrayEx1 {
 			// 문제점 : for문의 조건식에서 i의 범위가             
 			//			arr 배열의 인덱스 범위를 초과하는 값까지 
 			//			증가하도록 작성되어 
-			//			실행 시 for문 내 출력 구문에서ㅗ
+			//			실행 시 for문 내 출력 구문에서
 			//			ArrayIndexoutofBoundsException 이 발생함.
 			
 			// 해결방법 : 조건식을 i < arr.length로 수정하여
