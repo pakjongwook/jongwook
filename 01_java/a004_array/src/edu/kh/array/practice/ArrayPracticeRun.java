@@ -8,7 +8,7 @@ public class ArrayPracticeRun {
 		
 //		ab.Practice1();
 //		ab.Practice2();		
-		ab.Practice11();		
+		ab.Practice4();		
 //		ab.Practice9();		
 		
 		
