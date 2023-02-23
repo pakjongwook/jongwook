@@ -102,7 +102,7 @@ public class ConditionEx {
 
 		} else if (input >= 6 && input <= 8) { // 6,7,8
 			result = "여름";
-		} else if (input >= 9 && input <= 11) { // 9,,10,11
+		} else if (input >= 9 && input <= 11) { // 9,10,11
 			result = "가을";
 		} else if (input == 12 || input == 1 || input == 2) {// 12,1,2
 			result = "겨울";
