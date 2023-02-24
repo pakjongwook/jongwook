@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import edu.kh.exception.user.exception.ScoreInputException;
+
 public class ExceptionService {
 
 	public void ex1() throws IOException  {
@@ -116,12 +118,14 @@ public class ExceptionService {
 			System.out.printf("%d / %d = %d \n", num1, num2, num1 / num2);
 		
 			
-		}catch(ArithmeticException e ) { // 개발자 문화 exception (e)
+		}catch(ArithmeticException e ) { // 개발자 문화 exception 변수명: (e)
 			// 산술적 예외를 잡아 처리
 			System.out.println("0으로 나눌 수 없습니다. ");
 		
 		}
-//		catch(Exception e) {} 상위타입의 exception 입력시  오류발생
+//		catch(Exception e) {} 
+//	코드는 기본적 위에서 아래로 해석되니까 
+//		--> 상위타입의 exception 먼저 입력시  오류발생
 		
 		catch(InputMismatchException e){
 			
@@ -135,7 +139,7 @@ public class ExceptionService {
 			// - 상위 타입을 처리하는 catch문을 
 			// 하위 타입을 처리하는 catch문 보다
 			// 먼저 작성하면 오류 발생
-			// Unreachable catch block for Exception. 
+			// Unreachable catch block for Exception. 도달 할 수 없다.
 			// It is already handled by the catch block for Exception
 			
 			
@@ -148,7 +152,7 @@ public class ExceptionService {
 			System.out.println("입력이 잘못되었습니다.");
 			
 		} 
-		catch(Exception e) { // 상위타입 대빵
+		catch(Exception e) { // 상위타입 대빵 나중에 작성 
 			System.out.println("예외가 발생해서 처리함");
 		}
 		
@@ -157,7 +161,7 @@ public class ExceptionService {
 		finally {
 			// finally 
 			//  : try-catch 구문이 끝난 후 마지막으로 수행 
-			// ** 예외가 발생 하든 말든 무조건 실행 ****
+			// ** 예외(오류)가 발생 하든 말든 무조건 실행 **** 
 			System.out.println("프로그램종료");
 			
 		}
@@ -172,8 +176,88 @@ public class ExceptionService {
 //System.out.printf("%d / %d = %d \n", num1, num2, num1 / num2);
 //}
 	
+	public void ex4() {
+		
+		// throw : 예외 강제 발생
+		//		   ex) throw new IOException();
+		
+		// throws : 해당 메서드에서 발생한 예외를 
+		//          호출한 메서드로 던져버리는 예외 처리 방법
+		
+		System.out.println("ex4() 실행");
+		
+		try {
+			methodA();  // IOException 던지겠다.
+			
+		}catch(IOException e) {
+//			e.getMessage(); // 메세지를 전달
+			e.printStackTrace();
+			// --> 예외가 발생한 지점까지의 stack 메모리를 추적하여 출력
+			
+			
+			System.out.println("catch문 처리");
+		}
+		
+	}
+	public void methodA() throws IOException { 
+		System.out.println("methodA() 실행");
+		methodB(); 
+	}
+	public void methodB() throws IOException {
+		System.out.println("methodB() 실행");
+		
+		methodC(); 
+		// methodC() 는 IOException 을 던질 수도 있기 때문에
+		// 호출 시 예외 처리 구문을 작성해야 한다. 
+	}
+	public void methodC() throws IOException  {  //  throws 작성 빨간줄 없어짐
+		System.out.println("methodC() 실행");
+		
+		throw new IOException();  // throw 던지는 것 빨간줄 : 컴파일에러(써져있는게없다...)
+		
+	}
+	public void ex5() throws ScoreInputException { // 무조건 강제 처리 (강력한 if문)
+		// 사용자 정의 예외
+		// -java에서 제공하지 않는 예외 상황이 있을 경우
+		//  이를 처리하기 위한 예외 클래스를 사용자가 직접 작성
+		
+		Scanner sc = new Scanner(System.in);
+		
+		
+		System.out.println("점수 입력(0~100) : ");
+		int score = sc.nextInt();
+		
+		if(score<0 || score >100) {
+			
+			// 사용자 정의 예외 강제 발생
+//			throw new ScoreInputException(); // 기본 생성자 이 시점에 코드 바로 끝남 == return
+			throw new ScoreInputException("0~100사이 범위 초과");  
+		}
+		
+		System.out.println("입력한 점수는 : "+ score);
+		
+		
+		
+		
+	}
 	
-	
+	public void StartEx5() {
+		
+		try {
+			ex5(); // ScoreInputException이 던저질 가능성이 있음
+		}catch(ScoreInputException e){
+			
+			//e.printStackTrace(); // 자세히 내용 가속성 떨어짐
+			//System.out.println("예외처리 진행");
+			
+			System.out.println("예외 내용" + e.getMessage());
+			System.out.println("예외처리 진행");  // 간략하게 호출확인
+			
+		}finally {
+			System.out.println("프로그램 종료");
+		}
+		
+	}
 	
 	
 	

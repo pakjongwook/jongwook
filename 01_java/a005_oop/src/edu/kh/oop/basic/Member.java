@@ -1,10 +1,10 @@
 package edu.kh.oop.basic;
 
 
-public Member() {}
+public Member() {} // 기본생성자 생성 : 클래스명과 같아야한다
 
-public class Member {
-	private String name;
+public class Member { // 매개변수 
+	private String name;   // 같은 클래스내에서 --> getter(외부에서 정보를얻어오는) , setter(외부에서 내부의 정보를설정)
 	private int age;
 	private String address;
 	private String hobby;
@@ -14,8 +14,8 @@ public class Member {
 		this.address = address;
 		this.hobby = hobby;
 	}
-	public String getName() {
-		return name;
+	public String getName() {  
+		return name;  // return 
 	}
 	public void setName(String name) {
 		this.name = name;

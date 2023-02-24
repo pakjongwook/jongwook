@@ -13,7 +13,9 @@ public class ExceptionRun {
 		
 //		service.ex1();
 //		service.ex2(); // 예외 catch
-		service.ex3(); 
+//		service.ex3(); 
+//		service.ex4();
+		service.StartEx5();
 		
 	}
 
