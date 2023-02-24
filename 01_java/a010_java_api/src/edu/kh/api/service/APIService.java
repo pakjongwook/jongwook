@@ -10,7 +10,7 @@ public class APIService {
 	// 	  사용자가 쉽게 사용할 수 있도록 제공하는 것 .
 	
 	
-	private Student[] studentList = new Student[10];
+	private Student[] studentList = new Student[10]; // Student[] 로 선언한 이유 !!
 	
 	public APIService() {
 		studentList[0] = new Student(1, 1, 1, "김영희");
@@ -76,7 +76,14 @@ public class APIService {
 				// s가 참조하는 학생과
 				// temp가 참조하는 
 				// 필드 값이 학생이 같을 경우(동등한 경우)
-				if(s.equals(temp)) return false;
+				// if(s.equals(temp)) return false;
+				
+				System.out.println(s.hashCode());
+				System.out.println(temp.hashCode());
+				System.out.println("=======================");
+				
+				// hashCode() 가 같다 == 필드가 같다 == 중복되는 학생이다.
+				if(s.hashCode() == temp.hashCode()) return false;
 					
 				index++;
 			}
@@ -87,6 +94,50 @@ public class APIService {
 			// 4) 임시 학생 객체를 학생 배열에 추가
 			studentList[index] =temp;
 			return true;
+		}
+		
+		/** 학생 배열에서 이름 검색
+		 * @param input
+		 * @return 일치하는 학생이 있으면 String[],
+		 *         없으면 null 
+		 */ 
+		public Student[] selectName(String input) {
+			 
+									// 김영희
+									// 손흥민 ,김영희 ,박민지
+			
+			// String.split([구분자]): 문자열을 구분자를 기준으로 나누어 String[] 형태로 반환
+		//	String[] names = input.split(","); // --> "/" 
+			String[] names = input.split(",|/"); // --> 복잡한것을 나누고 싶을때  ,|/ 
+			
+		
+			// 검색된 학생을 저장할 배열 
+			Student[] result = new Student[studentList.length];
+			
+			int index = 0; // result 배열에 저장될 위치를 지정할 변수
+			
+			for(String n : names) {
+			 // n : 이름
+			
+			for(Student s : studentList) {
+				if(s==null) break;
+				
+				// 입력받은 이름이랑 학생의 이름이 같다면 
+				if(s.getName().equals(input) ) {
+					
+					result[index] = s; //result 배열에 일치하는 학생 저장 (주소만 저장해서 얕은복사)
+					index++;
+				}
+			}
+		}	
+			
+			// 검색된 학생이 없으면 null 반환
+			if(index == 0) {
+				return null;
+			}
+			
+			// 검색된 학생이 있으면 검색 결과를 저장한 배열 반환
+			return result;
 		}
 		
 	

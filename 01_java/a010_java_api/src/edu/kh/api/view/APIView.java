@@ -3,6 +3,7 @@ package edu.kh.api.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import edu.kh.api.dto.Student;
 import edu.kh.api.service.APIService;
 
 public class APIView {
@@ -17,7 +18,8 @@ public class APIView {
 		do {
 			System.out.println("----APT 테스트 프로그램 ---");
 			System.out.println("1. equals() + hashcode() ");
-			System.out.println("2. String 클래스");
+			System.out.println("2. String 클래스 제공 메서드1(split)");
+			System.out.println("3. String 클래스 제공 메서드2(join)");
 			System.out.println("0. 프로그램 종료");
 			
 			System.out.print("메뉴 선택 : ");
@@ -29,7 +31,7 @@ public class APIView {
 				
 				switch(input) {
 				case 1 : ex1(); break;
-				case 2 : break;
+				case 2 : ex2(); break;
 				case 0 : break;
 				default : System.out.println("메뉴에 존재하는 번호만 입력 해주세요.");
 				
@@ -74,13 +76,37 @@ public class APIView {
 		String name = sc.nextLine();
 		
 		
-		if(service.addStudent(grade, classRoom, number, name)) {
+		if(service.addStudent2(grade, classRoom, number, name)) {
 			System.out.println("[추가되었습니다]");
 		} else {
 			System.out.println("중복되는 학생이 존재하거나 배열이 가득 찼습니다.");
 		}
 		
 	}
+	
+	public void ex2() {
+		// 이름을 여러명을 한 줄로 입력 받아
+		// 학생 배열에 같은 이름의 학생이 있다면 출력 
+		System.out.println("\n---- 학생 검색 ---\n");
+		System.out.print("검색할 이름(여러 명 검색 시 / 또는 ,로 구분) : ");  // , --> /
+		// 손흥민 ,김영희 박찬호
+		
+		Student[] result = service.selectName(sc.nextLine());
+		
+		if(result == null) {
+			System.out.println("검색 결과가 없습니다.");
+		}else {
+			
+			for(Student s : result) {
+				if(s == null) break;
+				
+				System.out.println(s.toString());
+			}
+			
+		} 
+		
+	}
+	
 	
 
 }
