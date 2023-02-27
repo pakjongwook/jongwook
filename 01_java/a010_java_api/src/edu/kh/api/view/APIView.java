@@ -32,6 +32,8 @@ public class APIView {
 				switch(input) {
 				case 1 : ex1(); break;
 				case 2 : ex2(); break;
+				case 3 : ex3(); break;
+				case 4 : ex4(); break;
 				case 0 : break;
 				default : System.out.println("메뉴에 존재하는 번호만 입력 해주세요.");
 				
@@ -106,6 +108,51 @@ public class APIView {
 		} 
 		
 	}
+	private void ex3() {
+		
+		System.out.println("\n--- 모든 학생 이름 출력 ---\n");
+		System.out.println( service.printName() ) ;
+	}
+	private void ex4() {
+		// String 특징, 문제점 
+
+		// String 객체 생성 방법 
+		String s1 = new String("abc"); // Heap 메모리 영역에 String 객체 생성 
+		
+		String s2 = "abc"; // String 사용 빈도가 높기 때문에
+						   // 별도의 리터럴 표기법을 부여하여 쉽게 객체 생성
+						   // --> Heap 영역 중 String Pool에 객체 생성 
+							
+		String s3 = "abc";
+		
+		// hashCode() : [필드값]이 같으면 같은 수
+//		System.out.println(s1.hashCode());	// 96354
+//		System.out.println(s2.hashCode());  // 96354
+		
+//		System.identityHashCode([객체주소])
+//		-> 객체 주소를 이용해서 만든 정수를 반환
+		System.out.println("s1 : " + System.identityHashCode(s1));
+		System.out.println("s1 : " + System.identityHashCode(s2));
+		System.out.println("s1 : " + System.identityHashCode(s3));
+		
+		// s3가 참조하는 String 객체의 값 변경
+		// "abc" 
+		s3 += "def"; // "abcdef";
+		
+		System.out.println("======================");
+		System.out.println("s2 : " + System.identityHashCode(s2));
+		System.out.println("s3 : "+ System.identityHashCode(s3));
+		// 왜 값이 달라졌을까? 
+		
+		// String은 불변성 (한번 저장된 값은 변할 수 없음 ) 특징 때문에
+		// String 값을 변경할 경우
+		// 기존 객체가 변경되는 것이 아닌
+		// 새 객체를 생성해서 참조하게 된다. 
+		
+		
+	}
+	
+	
 	
 	
 

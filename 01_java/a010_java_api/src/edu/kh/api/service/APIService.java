@@ -139,6 +139,44 @@ public class APIService {
 			// 검색된 학생이 있으면 검색 결과를 저장한 배열 반환
 			return result;
 		}
+		// alt + shift +j
+		/**
+		 * @return
+		 */
+		public String printName() {
+			// [김영희,홍길동,박민지,null,null,null....]
+			
+			int size = 0;
+			
+			// 현재 학생의 수 구하기
+			for(Student s :studentList) {
+				if(s==null) break;
+				
+				size++;
+				
+			}
+			
+			// 이름만 저장할 배열 생성 
+			String[] names = new String[size];
+			
+			for(int i = 0; i<size; i++) {
+				names[i] = studentList[i].getName();
+				
+			}
+			
+			// String.join("구분자", String[])
+			// -> String[] 의 요소를 하나의 문자열로 합침
+			// 단, 요소 사이사이에 "구분자" 추가
+			
+			// ex) String[] arr = {"aaa" , "bbb", "ccc"};
+			//	   String.join("@", arr);
+			//    -> "aaa@bbb@ccc"
+			
+			return String.join("<>", names); // names 배열
+			
+		}
+		
+		
 		
 	
 	
