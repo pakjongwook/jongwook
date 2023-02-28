@@ -8,7 +8,7 @@ import edu.kh.collection.list.dto.Student;
 public class StudentService { // 컬렉션
 	
 	private List<Student> studentList = new ArrayList<Student>();
-	
+											// ArrayList  각 장단점이 있다.
 
 	
 	
@@ -163,7 +163,7 @@ public class StudentService { // 컬렉션
 			// void Collections.reverse(List<?> list)
 			// - list 순서를 반대로 뒤집음
 			// -> 오름차순 ==> 내림차순으로 
-			Collections.reverse(studentList);
+			// Collections.reverse(studentList);
 			
 			return studentList;
 			
