@@ -48,7 +48,7 @@ public class StudentView {
 				case 6 : selectAddress(); break;
 				case 7 : selectGrade(); break;
 				case 8 : selectGender(); break;
-				case 9 : break;
+				case 9 : sortScore(); break;
 				case 0 : System.out.println("[프로그램 종료]"); break;
 				default : System.out.println("[잘못 입력하셨습니다.]");
 				
@@ -319,6 +319,26 @@ public class StudentView {
 
 		}
 
+	}
+	
+	/**
+	 * 성적순서조회
+	 */
+	private void sortScore() {
+		System.out.println("\n=== 성적 순서 조회 ===\n");
+		
+		// 성적 순서로 정렬
+		List<Student> studentList = service.sortScore();
+		
+		
+		for(Student s : studentList) {
+			System.out.println(s);  // 오름 차순(점점 증가) : 1 2 3 4  내림 차순(점점 감소) : 4 3 2 1 
+		}
+		
+		
+		//정렬 알고리즘  Array.toString 
+		
+		
 	}
 		
 		

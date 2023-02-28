@@ -1,6 +1,7 @@
 package edu.kh.collection.list.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import edu.kh.collection.list.dto.Student;
 
@@ -130,11 +131,42 @@ public class StudentService { // 컬렉션
 		public List<Student> selectGender(char inputGender){
 			List<Student> list = new ArrayList<>();
 			
-			for(Student s : studentList) {
+			for(Student s : studentList) { // studentList ==> 배열선언 Student s => 박종욱,강지영 입력한 것들을 뽑아내겠다.
 				if(s.getGender() == inputGender) list.add(s);
 			}
 			
-			return list;
+			return list; // view 지점에 반환
+		}
+
+		
+		/**
+		 * 성적 순서 조회 서비스
+		 * @return studentList
+		 */
+		public List<Student> sortScore () {
+			
+			// studentList 정렬(score 내림 차순)
+			//- Collections 클래스 : 컬렉션에 도움되는 유용한 기능을 모은 클래스
+			
+			//- Comparable<T> 인터페이스
+			//  -> 객체의 기본 정렬 기준을 제공하는 인터페이스
+			
+			
+//			<?> : 어떤게 작성될지 모름 == 아무거나 작성 가능
+//			<?> void Collections.sort(List<?> list) 
+			Collections.sort(studentList); // 왜 에러 ? -->StudentList ==>  Student객체들이 저장 ==> sort가 한명 씩 점수 비교  점수 낮은 쪽이라면 자리 바뀜 ==> 무한히 비교
+			// studentList에 저장된 객체 Student의
+			// 오버라이딩된 compareTo() 메서드를 이용해서 정렬 
+			// -> 현재 큰 숫자가 오른쪽으로 이동하도록 오버라이딩됨
+			// -> 오름차순 정렬
+			
+			// void Collections.reverse(List<?> list)
+			// - list 순서를 반대로 뒤집음
+			// -> 오름차순 ==> 내림차순으로 
+			Collections.reverse(studentList);
+			
+			return studentList;
+			
 		}
 		
 
