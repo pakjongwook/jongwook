@@ -76,6 +76,7 @@ public class MapService {
 		
 		// member에 값 추가 
 		member.put("memberId", "mem01");
+		
 		member.put("memberPw", "pass01");
 		member.put("memberName", "테스트1");
 		member.put("memberAge", 23); // 23 --> Integer Auto Boxing 적용

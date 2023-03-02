@@ -8,7 +8,6 @@ public class StudentRun {
 	public static void main(String[] args) {
 		
 		StudentView service = new StudentView();
-		
 		service.displayMenu();
 	}
 	
