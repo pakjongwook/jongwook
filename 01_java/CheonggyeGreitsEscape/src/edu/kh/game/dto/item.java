@@ -2,79 +2,44 @@ package edu.kh.game.dto;
 
 import java.util.Objects;
 
-public class item {
-
-	private String name;
-	private int HP;
+public class Item {
 	
-	public item() {}
-	
-	
-	public item(String name, int hP) {
-		super();
-		this.name = name;
-		HP = hP;
-	}
+   private String name;
+   private int Status = 0;
+   private int evasion = 0;
+   
+   public String getName() {
+      return name;
+   }
 
+   public void setName(String name) {
+      this.name = name;
+   }
 
+   public int getStatus() {
+      return Status;
+   }
 
+   public void setStatus(int status) {
+      Status = status;
+   }
 
-	public String getName() {
-		return name;
-	}
+   public int getEvasion() {
+      return evasion;
+   }
 
+   public void setEvasion(int evasion) {
+      this.evasion = evasion;
+   }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+   public Item() {
+      super();
+   }
 
-
-	public int getHP() {
-		return HP;
-	}
-
-
-	public void setHP(int hP) {
-		HP = hP;
-	}
-
-
-	@Override
-	public String toString() {
-		return "item [name=" + name + ", HP=" + HP + "]";
-	}
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(HP, name);
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		item other = (item) obj;
-		return HP == other.HP && Objects.equals(name, other.name);
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
-		
-		
-	
-
+   public Item(String name, int status, int evasion) {
+      super();
+      this.name = name;
+      this.Status = status;
+      this.evasion = evasion;
+   }
 }

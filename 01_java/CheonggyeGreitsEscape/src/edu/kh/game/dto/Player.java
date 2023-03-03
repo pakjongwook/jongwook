@@ -8,7 +8,7 @@ public class Player {
 	private int hp;
 	private int defense;
 	private int power;
-	private int Stamina;
+	private int stamina;
 	private int floor;
 	private String item1;
 	private String item2;
@@ -16,18 +16,15 @@ public class Player {
 	private String item4;
 	private String item5;
 	
-	public Player() {
-		super();
-	}
+	public Player() {}
 
 	public Player(String name, int hp, int defense, int power, int stamina, int floor, 
 			String item1, String item2, String item3, String item4, String item5) {
-		super();
 		this.name = name;
 		this.hp = hp;
 		this.defense = defense;
 		this.power = power;
-		Stamina = stamina;
+		this.stamina = stamina;
 		this.floor = floor;
 		this.item1 = item1;
 		this.item2 = item2;
@@ -69,11 +66,11 @@ public class Player {
 	}
 
 	public int getStamina() {
-		return Stamina;
+		return stamina;
 	}
 
 	public void setStamina(int stamina) {
-		Stamina = stamina;
+		this.stamina = stamina;
 	}
 
 	public int getFloor() {
@@ -126,7 +123,8 @@ public class Player {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Stamina, defense, floor, hp, item1, item2, item3, item4, item5, name, power);
+		return Objects.hash(stamina, defense, floor, hp,
+				item1, item2, item3, item4, item5, name, power);
 	}
 
 	@Override
@@ -138,12 +136,9 @@ public class Player {
 		if (getClass() != obj.getClass())
 			return false;
 		Player other = (Player) obj;
-		return Stamina == other.Stamina && defense == other.defense && floor == other.floor && hp == other.hp
+		return stamina == other.stamina && defense == other.defense && floor == other.floor && hp == other.hp
 				&& Objects.equals(item1, other.item1) && Objects.equals(item2, other.item2)
 				&& Objects.equals(item3, other.item3) && Objects.equals(item4, other.item4)
 				&& Objects.equals(item5, other.item5) && Objects.equals(name, other.name) && power == other.power;
 	}
-	
-	
-
 }

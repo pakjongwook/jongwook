@@ -8,12 +8,9 @@ public class Zombie {
 	private int hp;
 	private int power;
 	
-	public Zombie() {
-		super();
-	}
+	public Zombie() {}
 
 	public Zombie(String name, int hp, int power) {
-		super();
 		this.name = name;
 		this.hp = hp;
 		this.power = power;
@@ -59,5 +56,4 @@ public class Zombie {
 		Zombie other = (Zombie) obj;
 		return hp == other.hp && Objects.equals(name, other.name) && power == other.power;
 	}
-	
 }
