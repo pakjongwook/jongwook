@@ -19,7 +19,13 @@ public class Service {
 	}
 	
 	
-	
+	public void breakItem(String name) {
+		for(item s :itemList) {
+			itemList 
+		}
+		
+		
+	}
 		
 			
 			

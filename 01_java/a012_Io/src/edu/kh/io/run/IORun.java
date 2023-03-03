@@ -11,7 +11,12 @@ public class IORun {
 //		service.byteOutPut();
 //		service.charOutPut();
 //		service.byteInput();
-		service.charInput();
+//		service.charInput();
+//		service.fileCopy();
+//		service.objectOutput();
+//		service.objectinput();
+//		service.listOutput();  // object 폴더 에서 F5
+		service.listInput();
 		
 	}
 	

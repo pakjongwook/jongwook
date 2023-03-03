@@ -1,11 +1,20 @@
 package edu.kh.io.service;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import edu.kh.io.dto.Student;
 
 public class IOService {
 
@@ -197,7 +206,198 @@ public class IOService {
 	}
 	
 	
+	public void fileCopy() {
+		// 어떤 형식의 파일이든 복사하기 ==> byte 기반(파일자체)
+		
+		Scanner sc = new Scanner(System.in);
+		
+		// 바이트 기반 스트림 이용
+//		BufferedReader // --> Reader 문자기반
+		// 성능 향상을 위한 보조 스트림을 함께 사용
+		BufferedInputStream bis = null; // 들어올 것
+		BufferedOutputStream bos = null; // 나올 것
+		
+		try {
+			
+			System.out.print("복사할 파일의 경로 : ");
+			String target = sc.nextLine();
+			
+			System.out.print("복사된 파일의 경로 + 파일명 : ");
+			String copy = sc.nextLine();
+			
+			bis = new BufferedInputStream(new FileInputStream(target));
+			// 복사 대상을 읽어올 스트림(보조 스트림으로 성능 향상)
+			
+			bos = new BufferedOutputStream(new FileOutputStream(copy));
+			// 복사된 파일을 출력할 스트림(보조 스트림으로 성능 향상)
+			
+			int value = 0;
+			
+			while(true) {
+				value = bis.read(); // 읽어오기 (다른 경로로) 
+				if(value == -1) break; 
+				
+				bos.write(value); // 출력하기 (또 다른 경로로 ) 
+			}
+			
+			System.out.println("복사완료");
+			
+		}catch(FileNotFoundException e) {
+			System.out.println("지정된 경로가 존재하지 않거나 파일이 없습니다.");
+			e.printStackTrace(); // 예외내용을 상세하게
+		} catch(IOException e) {
+			System.out.println("입/출력 과정에서 문제가 발생했습니다.");
+			e.printStackTrace();
+			
+		} finally {
+			
+			try {
+				// 스트림 닫기
+				if(bis != null) bis.close();
+				if(bos != null) bos.close();
+				
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
+	public void objectOutput() {
+		// 객체 출력 보조 스트림
+		
+		// Object XXXStream : 객체를 파일 또는 네트워크를 통해 
+		//					  일/출력할 수 있는 스트림
+		
+		// ObjectOutputStream
+		// -> 객체를 바이트 기반 스트림으로 출력할 수 있게 하는 스트림
+		// 조건 : 출력하려는 객체에 직렬화 가능여부를 나타내는 
+		//		  Serializable  [일자형태로 바꿀수 있다.] 인터페이스를 상속 받아야 한다.
+		
+		ObjectOutputStream oos = null;
+		
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream("object/Student.txt"));
+			
+			// 내보낼 학생 객체 생성
+			Student s = new Student("김경섭", 3, 5, 1, '남');
+			
+			// 학생 객체를 파일로 출력
+			oos.writeObject(s); // 객체를 출력 
+			
+			System.out.println("[학생 출력 완료]"); 
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(oos != null) oos.close();
+				
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public void objectinput() {
+		// 객체 입력 보조 스트림
+		
+		ObjectInputStream ois = null;
+		
+		try {
+			
+			ois = new ObjectInputStream(new FileInputStream("object/Student.txt"));
+			
+			Student s = (Student)ois.readObject(); // 부모 --> 자식으로 다운캐스팅  [object 최상위클래스 => Student(자식)] 
+//			readObject(); : 직렬화된 객체 데이터를 읽어와
+//							역직렬화 시켜 정상적인 객체 형태로 반환
+//			throwIOException , ClassNotFoundException
+			System.out.println(s);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				if(ois != null) ois.close();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void listOutput() { // list 객체를 담는 list
+		// List에 Student 객체를 담아서 파일로 출력 
+		
+		
+		ObjectOutputStream oos = null;
+		
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream("object/StudentList.ini"));
+			 																// ini 
+			List<Student> list = new ArrayList<>();
+			
+			list.add(new Student("A", 2, 5, 7, '여'));
+			list.add(new Student("B", 3, 4, 5, '여'));
+			list.add(new Student("C", 5, 4, 6, '남'));
+			list.add(new Student("D", 6, 5, 7, '남'));
+			
+			oos.writeObject(list);
+//			writeObject(객체) : 출력하려는 객체는 직렬화가 가능해야만 한다.!!
+//			                    Serializable 인터페이스 구현 필수
+//			컬렉션은 모두 직렬화가 가능하도록 serializable 인터페이스 구현 O
+//			-> 단, 컬렉션에 저장하는 객체가 직렬화 가능하지 않다면 
+//			출력이 되지 않는다 (NotSerializableException 발생)
+			
+			System.out.println("학생 목록 출력 완료");
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(oos != null) oos.close();
+				
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void listInput() {
+		
+		
+		ObjectInputStream ois = null;
+		
+		try {
+			
+			ois = new ObjectInputStream(new FileInputStream("object/StudentList.ini"));
+			
+			List<Student> list = (List<Student>) ois.readObject();
+			
+			for(Student s : list) {
+				System.out.println(s); 
+				
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				if(ois != null) ois.close();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
+	
+	
+	
+	
+	
+	
+
 
 
