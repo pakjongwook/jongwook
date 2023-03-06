@@ -130,25 +130,4 @@ public class Student implements Comparable<Student>{ // 오버라이딩 Student 
 //		                5           10   = -5 음수     ==> 그대로     		
 		                		
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-
 }
