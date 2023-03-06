@@ -45,7 +45,7 @@ public class ConditionPractice {
 	}  System.out.println(result);
 }
 	
-	public void practice3() {
+	public void practice3() {}
 		
 	
 	

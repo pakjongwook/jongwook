@@ -44,9 +44,9 @@ public class ForPractice {
 		
 		for(int a = 1; a<=input; a++) {
 			if( a == input) {
-				System.out.print(a"+");
+				System.out.print(a);
 			} else {
-				System.out.print
+				System.out.print(input);
 			}
 		}
 		
