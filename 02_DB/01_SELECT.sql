@@ -132,7 +132,7 @@ SELECT DISTINCT DEPT_CODE FROM EMPLOYEE;
 /*3*/SELECT EMP_ID,EMP_NAME, SALARY,DEPT_CODE
 /*1*/FROM EMPLOYEE
 /*2*/WHERE SALARY > 3000000;
--- 단 SALARY 값이 300만 초과 , 쓰는 것은 2,1,3
+-- 단 SALARY 값이 300만 초과
 
 
 -- EMPLOYEE 테이블에서
@@ -185,7 +185,80 @@ SELECT *
 FROM EMPLOYEE
 -- WHERE SALARY < 3000000 OR SALARY > 5000000;
  WHERE SALARY NOT BETWEEN 3000000 AND 5000000;
+
+
+-- EMPLOYEE 테이블에서
+-- 부서코드가 'D5' 또는 'D6' 또는 'D9'인 사원의
+-- 사번, 이름, 부서코드 조회
+
+SELECT EMP_ID , EMP_NAME , DEPT_CODE
+FROM EMPLOYEE
+WHERE DEPT_CODE ='D5'
+OR	  DEPT_CODE ='D6' 
+OR	  DEPT_CODE ='D9';
+
+
+-- 컬럼명 IN(값1, 값2, 값3,.....) : 컬럼 값에 ( ) 안의 값이 포함된 행은 TRUE
+
+SELECT EMP_ID,EMP_NAME,DEPT_CODE
+FROM EMPLOYEE
+WHERE DEPT_CODE IN ('D5', 'D6', 'D9');
+
+
+-- EMPLOYEE 테이블에서
+-- 부서코드가 'D5' 또는 'D6' 또는 'D9' 아닌 사원의
+-- 사번, 이름, 부서코드 조회
+
+SELECT EMP_ID , EMP_NAME , DEPT_CODE
+FROM EMPLOYEE
+WHERE DEPT_CODE !='D5'
+AND	  DEPT_CODE !='D6' 
+AND	  DEPT_CODE !='D9';
+
+
+-- NOT IN(값1, 값2, 값3,....) : ( )내 값을 제외한 행 TRUE
+SELECT EMP_ID,EMP_NAME,DEPT_CODE
+FROM EMPLOYEE
+WHERE DEPT_CODE NOT IN ('D5', 'D6', 'D9');
+
 --------------------------------------------------------
+
+-- <NULL 처리 연산>
+
+-- JAVA에서 NULL  : 참조하는 객체가 없다.
+-- DB에서 NULL  : 컬럼 값이 없다.
+
+-- IS NULL :     컬럼 값이 NULL인     경우 TRUE
+-- IS NOT NULL : 컬럼 값이 NULL이 아닌 경우 TRUE
+
+-- EMPLOYEE 테이블에서 부서가 없는 사원의 모든 컬럼 조회
+SELECT * 
+FROM EMPLOYEE
+-- WHERE DEPT_CODE = NULL;  -- NULL을 제외하는 경우가 많음
+WHERE DEPT_CODE IS NULL;
+
+-- EMPLOYEE 테이블에서 부서가 있는 사원의 모든 컬럼 조회
+SELECT * 
+FROM EMPLOYEE
+WHERE DEPT_CODE IS NOT NULL;
+
+-----------------------------------------------------
+
+-- 연결 연산자( || ) 
+-- 여러 값을 하나의 컬럼 값으로 연결하는 연산자
+-- (== 자바의 문자열 이어쓰기(+) )
+--(자바)"ASD" + "FGH"
+
+-- 000의 급여는 000원 입니다.
+SELECT EMP_NAME || '의 급여는 ' || SALARY || '원 입니다.' AS 결과
+FROM EMPLOYEE;
+
+-- '' : 값, 리터럴
+-- "" : 계정명, 비밀번호, 컬럼명, 테이블명(리터럴X)
+--      값이 아닌 것들에 대한 대소문자 구분
+
+
+
 
 
 
