@@ -1,6 +1,9 @@
 package edu.kh.array.practice;
 
+import java.util.Arrays;
 import java.util.Scanner;
+
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 public class ArrayPractice {	
 	
