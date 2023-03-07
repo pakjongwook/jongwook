@@ -358,6 +358,91 @@ WHERE SALARY >='3000000';  -- '3000000원' 오류
 -- 3000000 : NUMBER
 --"3000000" : CHAR
 
+---------------------------------------------------
+
+/* ORDER BY 절
+ *
+ * - SELECT문의 조회 결과(RESULT SET)를 정렬할 때 사용하는 구문
+ * 
+ * - *** SELECT구문에서 제일 마지막에 해석된다! *******
+ * 
+ * [작성법]
+ * 3: SELECT 컬럼명 AS 별칭, 컬럼명 ,컬럼명, ...
+ * 1: FROM 테이블명
+ * 2: WHERE 조건식
+ * 4: ORDER BY 컬럼명 | 별칭 | 컬럼 순서 [오름/내림 차순]
+ * 			[NULLS FIRST | LAST]		
+ * 
+ * */
+
+-- EMPLOYEE 테이블에서 모든 사원의 이름, 급여를
+-- 급여 오름차순으로 조회
+SELECT EMP_NAME, SALARY
+FROM EMPLOYEE
+ORDER BY SALARY /*ASC*/;
+      --> 오름차순(ASC)가 기본값
+
+-- 급여 내림차순으로 조회
+SELECT EMP_NAME , SALARY 
+FROM EMPLOYEE
+ORDER BY SALARY DESC;
+		--> 내림차순을 원할경우 DESC 작성	
+
+-- 급여가 200만 이상인 사원을 급여 오름차순으로 조회
+SELECT EMP_NAME , SALARY 
+FROM EMPLOYEE
+WHERE SALARY >= 2000000
+ORDER BY SALARY;
+-- 해석 순서 기억하기 
+
+/***************문자열, 날짜 ,숫자 모두 정렬 가능******************/
+
+-- 이름 오름차순 정렬
+SELECT EMP_NAME 
+FROM EMPLOYEE ORDER BY EMP_NAME;
+
+-- 입사일 내림차순 정렬
+SELECT EMP_NAME ,HIRE_DATE 
+FROM EMPLOYEE
+ORDER BY HIRE_DATE DESC;
+
+-- ORDER BY절에 별칭|순서 사용하기
+
+-- 연봉 내림차순 조회
+/*2*/SELECT EMP_NAME ,SALARY * 12 AS 연봉
+/*1*/FROM EMPLOYEE
+/*3*/ORDER BY /*SALARY * 12*/ /*연봉*/ 2 DESC;
+			 -- 컬럼명         |	별칭  | 순서
+
+/************ (주의) WHERE절에서 별칭|순서는 사용할 수 없다 *************/
+/*3*/SELECT EMP_NAME ,SALARY * 12 AS 연봉
+/*1*/FROM EMPLOYEE
+/*2*/WHERE 연봉 >= 50000000; 
+-- 오류 발생(SELECT절 해석이 안된 상태에서 별칭을 WHERE절 작성)
+
+-- NULLS FIRST|LAST 확인
+-- 전화번호 오름차순 조회
+SELECT EMP_NAME ,PHONE 
+FROM EMPLOYEE
+ORDER BY PHONE /*NULLS LAST*/ NULLS FIRST;
+				-- 오름차순 기본값
+				
+-- 전화번호 내림차순 조회
+SELECT EMP_NAME ,PHONE 
+FROM EMPLOYEE
+ORDER BY PHONE DESC /*NULLS FIRST*/ NULLS LAST; -- DESC 내림차순 
+				    -- 내림차순 기본값
+-- NULLS FIRST , NULLS LAST 없고 그대로 출력하면 NULLS은 맨위로 올라간다.
+--> 만약 NULLS을 밑으로 내리고 싶으면 NULLS LAST 도 같이 쓰여야 한다.
+
+/*<정렬 중첩>
+ * - 큰 분류를 먼저 정렬하고, 내부 분류를 다음에 정렬하는 방식
+ * */
+
+-- 부서 코드 별 급여 내림 차순 (부서코드는 오름차순)
+SELECT EMP_NAME , DEPT_CODE ,SALARY 
+FROM EMPLOYEE
+ORDER BY DEPT_CODE DESC NULLS LAST , SALARY DESC;
 
 
 
