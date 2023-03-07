@@ -313,7 +313,7 @@ OR PHONE IS NULL;
 SELECT EMP_ID , EMP_NAME , PHONE 
 FROM EMPLOYEE
 -- WHERE PHONE LIKE '010%';
-WHERE PHONE LIKE '010________';
+WHERE PHONE LIKE '010________'; -- 010 뒤에 8글자인 사원,사원이름,폰번호
 
 -- EMPLOYEE 테이블에서
 -- 이메일에 @ 앞글자가 5글자인 사원의 
@@ -357,6 +357,10 @@ SELECT EMP_NAME, SALARY || '원' AS "결과" FROM EMPLOYEE
 WHERE SALARY >='3000000';  -- '3000000원' 오류 
 -- 3000000 : NUMBER
 --"3000000" : CHAR
+
+
+
+
 
 
 
