@@ -140,7 +140,7 @@ FROM DUAL;
  
 SELECT FLOOR(123.5), TRUNC(123.5) 
 FROM DUAL;
--- TRUNC 123.5 ==> 123 버림 FLOOR 123.5 ==> 124 소수점 내림
+-- TRUNC -123.5 ==> -123 버림 FLOOR -123.5 ==> -124 소수점 내림
 
 SELECT EMP_NAME ,TRUNC(SALARY,-6) || '원 이상'급여 -- 10만자리 잘라내기 
 FROM EMPLOYEE;
@@ -200,5 +200,136 @@ SELECT EMP_NAME 이름,
 FROM EMPLOYEE
 WHERE EXTRACT(YEAR FROM HIRE_DATE) >= 2000
 ORDER BY 년; -- 오름차순
+
+------------------------------------------------------------
+
+-- <형변환 함수>
+
+-- 문자열(CHAR) <-> 숫자(NUMBER)
+-- 문자열(CHAR) <-> 날짜(DATE)
+-- 숫자(NUMBER) --> 날짜(DATE)
+
+/* TO_CHAR(날짜 | 숫자 [, 포맷]) : 문자열로 변환
+ * 
+ * 숫자 -> 문자열
+ * 포맷 
+ * 1) 9 : 숫자 한 칸을 의미, 오른쪽 정렬  
+ * 2) 0 : 숫자 한 칸을 의미, 오른쪽 정렬, 빈 칸에 0을 추가
+ * 3) L : 현재 시스템이나 DB에 설정된 나라의 화폐 기호 
+ * 4) , : 숫자의 자릿수 구분
+ * */
+
+SELECT 1234,
+	TO_CHAR(1234,'99999'), 
+	TO_CHAR(1234,'00000')
+FROM DUAL;
+--1234, 1234, 01234
+
+SELECT 1000000,
+	TO_CHAR(1000000,'L9999999'), -- ￦1000000
+	TO_CHAR(1000000,'$9999999'),  -- $1000000
+	TO_CHAR(1000000, '$9,999,999') --  $1,000,000
+FROM DUAL;
+
+-- EMPLOYEE 테이블에서
+-- 사번, 이름, 연봉 조회(\100,000,000 형식으로 조회)
+SELECT EMP_ID ,EMP_NAME, 
+	TO_CHAR(SALARY * 12, 'L999,999,999') 연봉
+FROM EMPLOYEE;
+--[ EX)'L9,999,999' ] 숫자를 문자열로 바꿀 때 칸 수가 충분하지 않으면 '#' 으로 채워짐
+
+/* 날짜 -> 문자열
+ * YY   : 년도(짧게) EX) 23
+ * YYYY : 년도(길게) EX) 2023
+ * 
+ * RR   : 년도(짧게) EX) 23
+ * RRRR : 년도(길게) EX) 2023
+ * 
+ * MM : 월
+ * DD : 일
+ * AM / PM : 오전/오후
+ * 
+ * HH   : 시간 (12시간)
+ * HH24 : 시간 (24시간)
+ * MI   : 분
+ * SS   : 초
+ * 
+ * DAY : 요일(전체) EX) 월요일, MONDAY
+ * DY  : 요일(짧게) EX) 월, MON
+ * */
+
+SELECT SYSDATE , TO_CHAR(SYSDATE, 'AM HH:MM:SS')FROM DUAL;
+
+SELECT SYSDATE , TO_CHAR(SYSDATE,'YY-MM-DD DAY HH:MI:SS') FROM DUAL;
+
+-- * 포맷에 포함되지 않는 글자는 "" 내부에 작성 *
+-- 2023년 03월 07일 화요일
+
+SELECT TO_CHAR(SYSDATE,'YYYY"년" MM"월" DD"일" DAY') TODAY FROM DUAL; 
+-- ORA-00933 : 날짜 형식이 부적합합니다.
+
+-- EMPLOYEE 테이블에서 모든 사원의 입사일을
+-- '2023년 03월 07일 (화)' 형식으로 조회
+SELECT EMP_NAME,
+	TO_CHAR(HIRE_DATE, 'RRRR"년" MM"월" DD"일" (DY)') -- "문자만"
+FROM EMPLOYEE;
+
+------------------------------------------------------------
+
+-- TO_DATE(문자열, 숫자[,포맷])
+--> 문자열이나 숫자를 지정된 포맷의 날짜 형식으로 해석하여 DATE타입으로 반환
+
+SELECT '2023-03-07', TO_DATE('2023-03-07') FROM DUAL; 
+
+SELECT TO_DATE('2023년 03월 07일', 'YYYY"년" MM"월" DD"일"') FROM DUAL;
+
+-- 숫자 -> 날짜
+SELECT 20230308, TO_DATE(20230308) FROM DUAL; 
+
+/***************************날짜 팬턴 Y, R의 차이점 */
+-- 년도를 짧게 해석하는 경우 앞부분에 현재 세기(21c == 2000년대)를 적용
+-- 50 미만 : Y,R 둘다 앞부분에 현재 세기(21C == 2000년대)를 적용
+-- 50 이상 : Y == 현재 세기(2000년대) 
+--          R == 이전 세기(1900년대)
+
+
+-- 1949-01-15
+-- 1950-01-15
+SELECT TO_DATE('490115','YYMMDD'),
+	   TO_DATE('490115','RRMMDD'),
+	   
+	   TO_DATE('500115','YYMMDD'),-- YY 2050-01-15 00:00:00.000
+	   TO_DATE('500115','RRMMDD') -- RR [50년 기준] 1950-01-15 00:00:00.000
+FROM DUAL;
+
+
+-------------------------------------------
+
+-- TO_NUMBER(문자열 [,포맷]) : 문자열 -> 숫자
+
+SELECT TO_NUMBER('$1,500','$9,999')FROM DUAL; -- 1,500의 문자를 9,999 숫자(형식)로 바꾸어라.  
+											  -- 컬럼 키 가 123 나오는 것은 문자열 --> 숫자 바뀌었다는 것
+-----------------------------------------------
+
+-- <NULL 처리 함수>
+
+-- NVL(컬럼명, 컬럼 값이 NULL일 경우 바꿀 값)
+-- 컬럼 값이 NULL일 경우 지정된 값으로 변경
+
+-- EMPLOYEE 테이블에서 이름, 급여, 보너스 조회, 급여 * 보너스 조회
+/***DB에서 NULL과 연산하는 경우 모든 결과는 NULL***/
+
+SELECT EMP_NAME , SALARY ,NVL(BONUS,0) , SALARY * NVL(BONUS,0)  -- ,NVL(BONUS,'가나다')  
+FROM EMPLOYEE;                                                  --  (지정된 컬럼숫자)-->(문자)했기 때문에 오류 지정된 컬럼에 데이터타입 맞는 것에만 출력될 수 있다.
+
+
+
+-- NVL2(컬럼명, NULL [X]인 경우 값, NULL [O]인 경우 값)
+
+-- EMPLOYEE 테이블에서
+-- 기존에 보너스를 받지 못했던 사원은 0.3으로 변경
+-- 기존에 받았던 사원은 기존 보너스 + 0.2으로 변경
+SELECT EMP_NAME ,BONUS ,NVL2(BONUS, BONUS + 0.2 , 0.3)"변경된 BONUS" 
+FROM EMPLOYEE;                   -- NULL 아닌 경우, NULL 경우 
 
 
