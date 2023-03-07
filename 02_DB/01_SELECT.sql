@@ -257,14 +257,106 @@ FROM EMPLOYEE;
 -- "" : 계정명, 비밀번호, 컬럼명, 테이블명(리터럴X)
 --      값이 아닌 것들에 대한 대소문자 구분
 
+-----------------------------------------------------
+
+/* LIKE
+ * 
+ * - 비교하려는 값이 특정한 패턴을 만족 시키면(TRUE) 조회하는 연산자
+ * 
+ * [작성법]
+ * WHERE 컬럼명 LIKE '패턴'
+ * 
+ * -LIKE 패턴( == 와일드 카드)
+ * 
+ * '%'(포함)
+ * - '&A' : 문자열이 앞은 어떤 문자든 포함되고 마지막은 A 
+ * 			--> A로 끝나는 문자열 
+ * - 'A&' : A로 시작하는 문자열 
+ * - '%A%': A가 포함된 문자열 ex) BAC , AC, A 
+ * 
+ * '_'(글자 수)
+ * - 'A_' : A 뒤에 아무거나 한 글자만 있는 문자열
+ *          (AB, A1, AQ, A가)
+ * 
+ * - '___A' : A 앞에 아무거나 3글자만 있는 문자열 
+ * */
+
+-- EMPLOYEE 테이블에서 성이 '전' 씨인 사원의 사번, 이름 조회
+
+/*3*/ SELECT EMP_ID ,EMP_NAME 
+/*1*/FROM EMPLOYEE
+/*2*/WHERE EMP_NAME LIKE '전%';
+
+-- EMPLOYEE 테이블에서 이름에 '하'가 포함되는 사원의 사번,이름 조회
+
+SELECT EMP_ID ,EMP_NAME 
+FROM EMPLOYEE;
+WHERE EMP_NAME LIKE '%하%';
+
+-- EMPLOYEE 테이블에서
+-- 전화번호가 '010'으로 시작하는 사원의
+-- 사번, 이름, 전화번호 조회
+SELECT EMP_ID , EMP_NAME , PHONE 
+FROM EMPLOYEE
+WHERE PHONE LIKE '010%';
+
+-- EMPLOYEE 테이블에서
+-- 전화번호가 '010'으로 시작하지 않는 사원의
+-- 사번, 이름, 전화번호 조회
+--> NOT LIKE
+SELECT EMP_ID ,EMP_NAME ,PHONE 
+FROM EMPLOYEE
+WHERE PHONE  NOT LIKE '010%'
+OR PHONE IS NULL;
 
 
+SELECT EMP_ID , EMP_NAME , PHONE 
+FROM EMPLOYEE
+-- WHERE PHONE LIKE '010%';
+WHERE PHONE LIKE '010________';
 
+-- EMPLOYEE 테이블에서
+-- 이메일에 @ 앞글자가 5글자인 사원의 
+-- 사번, 이름, 이메일 조회
+SELECT EMP_ID, EMP_NAME, EMAIL
+FROM EMPLOYEE
+WHERE EMAIL LIKE '_____@%';
 
+-- EMPLOYEE 테이블에서
+-- 이메일에 _앞글자가 3글자인 사원의 
+-- 사번, 이름, 이메일 조회
+SELECT EMP_ID,EMP_NAME,EMAIL
+FROM EMPLOYEE
+WHERE EMAIL LIKE '____%';
+--> 문제점 : 와일드 카드 문자(_)와 패턴에 사용된 일반 문자가 같은 문자 이기 때문에
+--         구분이 안되는 문제가 발생
 
+---> 해결 방법 : ESCAPE 옵션을 이용하여 일반 문자를(_)를 구분                                                                                                                                                                                                          
 
+SELECT EMP_ID,EMP_NAME,EMAIL
+FROM EMPLOYEE
+WHERE EMAIL LIKE '___$_%' ESCAPE '$';  -- 아무 문자나 가능                                                         
+                 --> '$' 뒤에 한 글자(_)를 일반 문자로 벗어나게함
 
+-------------------------------------------------------
 
+--<WHERE절 날짜(시간) 비교>
+-- EMPLOYEE 테이블에서 입사일(고용일)이
+--'1990/01/01' ~ '2000/12/31' 사이인 사원의
+-- 사번, 이름, 고용일 조회
+SELECT EMP_ID ,EMP_NAME ,HIRE_DATE 
+FROM EMPLOYEE
+WHERE HIRE_DATE >='1990@01@01' 
+AND   HIRE_DATE <='2000-12-31';
+--> '1990/01/01' == 문자열 -> DATE 타입으로 변경
+--> 오라클 DB는 작성된 값이 다른 형식의 데이터 타입이여도
+--  표기법이 다른 데이터 타입과 일치하다면
+--  자동으로 데이터 타입을 변경 할 수 있다.
+
+SELECT EMP_NAME, SALARY FROM EMPLOYEE
+WHERE SALARY >='3000000';  -- '3000000원' 오류 
+-- 3000000 : NUMBER
+--"3000000" : CHAR
 
 
 
