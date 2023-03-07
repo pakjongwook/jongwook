@@ -353,7 +353,7 @@ AND   HIRE_DATE <='2000-12-31';
 --  표기법이 다른 데이터 타입과 일치하다면
 --  자동으로 데이터 타입을 변경 할 수 있다.
 
-SELECT EMP_NAME, SALARY FROM EMPLOYEE
+SELECT EMP_NAME, SALARY || '원' AS "결과" FROM EMPLOYEE
 WHERE SALARY >='3000000';  -- '3000000원' 오류 
 -- 3000000 : NUMBER
 --"3000000" : CHAR
