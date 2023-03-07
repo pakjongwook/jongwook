@@ -178,7 +178,7 @@ public class GameView {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃             Game End               ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-		Service.zombieKill();
+		Service.zombiekill();
 		
 	}
 
