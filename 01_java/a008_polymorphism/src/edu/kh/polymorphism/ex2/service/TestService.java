@@ -64,7 +64,7 @@ public class TestService {
 		 // 객체 배열 + 다형성 + 동적바인딩
 		KH[] arr = new KH[2]; // KH 참조 변수의 묶음 생성
 		
-		arr[0] = new HongGilDong();
+		arr[0] = new HongGilDong(); // kH 객체배열을 초기화 
 		arr[1] = new KimSamSun();
 		
 		for(KH K : arr) {
