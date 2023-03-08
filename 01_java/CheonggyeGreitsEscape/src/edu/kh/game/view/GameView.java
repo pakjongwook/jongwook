@@ -1,5 +1,7 @@
 package edu.kh.game.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import edu.kh.game.service.Service;
@@ -13,6 +15,9 @@ public class GameView {
    public void displayGame() {
       int input = 0;
       String straight = "┃";
+      List<List<String>> list = new ArrayList<>(7);
+      
+      
 
       while (viewFloor()<10) {
          

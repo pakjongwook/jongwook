@@ -7,6 +7,6 @@ public class GameRun {
 	public static void main(String[] args) {
 		GameView view = new GameView();
 				
-		view.displayMenu();
+		view.displayGame();
 	}
 }
