@@ -5,7 +5,7 @@ import edu.kh.oop.basic.Member;
 public class MemberRun {
 	public static void main(String[] args) {
 		
-		Member m = new Member(); // The constructor Member() is undefined 기본생성자가 생성되지 않았다.
+		Member m = new Member();  // The constructor Member() is undefined 기본생성자가 생성되지 않았다.
 
 		m.setName("홍길동");
 		m.setAge(25);
