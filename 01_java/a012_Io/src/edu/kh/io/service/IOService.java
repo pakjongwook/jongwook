@@ -266,7 +266,7 @@ public class IOService {
 		// 객체 출력 보조 스트림
 		
 		// Object XXXStream : 객체를 파일 또는 네트워크를 통해 
-		//					  일/출력할 수 있는 스트림
+		//					  입/출력할 수 있는 스트림
 		
 		// ObjectOutputStream
 		// -> 객체를 바이트 기반 스트림으로 출력할 수 있게 하는 스트림
