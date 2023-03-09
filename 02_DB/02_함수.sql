@@ -483,7 +483,7 @@ SELECT SUM(DECODE(SUBSTR(EMP_NO,8,1), '1',1,0)) "남자 사원 수",
        SUM(DECODE(SUBSTR(EMP_NO,8,1), '2',1,0)) "여자 사원 수"
 FROM EMPLOYEE;
 
--- * 서브쿼리를 이용한 방법*
+-- * 서브쿼리를 이용한 방법* 하나의 쿼리문 안에 포함되어 있는 또 하나의 쿼리문
 SELECT 
 	(SELECT COUNT(*) FROM EMPLOYEE
 	WHERE SUBSTR(EMP_NO,8,1)='1' ) "남자 사원 수",
