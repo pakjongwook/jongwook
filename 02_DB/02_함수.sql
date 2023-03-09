@@ -431,7 +431,7 @@ FROM EMPLOYEE;
 
 -- MAX(컬럼명) : 해당 컬럼의 최대값
 -- MIN(컬럼명) : 해당 컬럼의 최소값
---> 타입 개수 X (숫자 : 대/소, 문자열 : 문자 순서, 날짜 : 과거 < 미래)
+--> 타입 개수 X (숫자 : 대/소 , 문자열 : 문자 순서 , 날짜 : 과거 < 미래)
 
 SELECT MIN(SALARY) , MAX(SALARY),
 	MIN(EMP_NAME), MAX(EMP_NAME), 
