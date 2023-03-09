@@ -16,11 +16,8 @@ GROUP BY DEPT_CODE; -- 2) DEPT_CODE가 같은 행끼리 그룹을 지어
 /* SELECT문 해석 순서
  * 
  *5* : SELECT 컬럼명, 함수, 계산식, 리터럴[[AS] 별칭]
- *1* : FROM 테이블명
- *2* : WHERE 조건식
- *3* : GROUP BY 그룹으로 묶을 컬럼명|함수
- *4* : HAVING 그룹함수를 이용한 조건식 (GROUP BY가 있어야 작성가능!)
- * 
+ *1* : 
+
  *6* : ORDER BY 컬럼명|별칭|컬럼순서 정렬방식 [NULL FIRST|LAST]
  *
  * */ 
@@ -59,7 +56,7 @@ SELECT DECODE(SUBSTR(EMP_NO,8,1) ,'1','남','2','여') 성별
 	  COUNT(*) "인원 수"
 FROM EMPLOYEE
 GROUP BY DECODE(SUBSTR(EMP_NO,8,1),'1','남','2','여') -- *** 함수도 쓸수 있다.***
-       --> SELECT절 해석이 되지 않아 성별 별칭 사용 불가능 
+       --> SELECT절 이전에는 해석이 되지 않아 성별 별칭 사용 불가능  
 ORDER BY "인원 수";
 
 -- WHERE + GROUP BY 
@@ -97,4 +94,174 @@ SELECT DEPT_CODE ,JOB_CODE ,SUM(SALARY)
 FROM EMPLOYEE
 GROUP BY DEPT_CODE , JOB_CODE  
 --       (큰 그룹)     (작은 그룹)
-ORDER BY DEPT_CODE ;
+ORDER BY DEPT_CODE;
+
+
+-- EMPLOYEE 테이블에서
+-- 부서 별로 급여 등급(SAL_LAVEL)같은 직원 수 => (COUNT) 
+-- 부서코드 오름차순, 급여 등급 내림차순으로 조회
+
+SELECT DEPT_CODE ,SAL_LEVEL ,COUNT(*)  -- SAL_LEVEL 의 COUNT 함수을 써서 직원 수 출력
+FROM EMPLOYEE
+GROUP BY DEPT_CODE , SAL_LEVEL
+ORDER BY DEPT_CODE, SAL_LEVEL DESC;  --DESC --> 급여 등급 내림차순
+
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+
+
+-- ** HAVING 절 : 그룹합수로 조회할 그룹에 대한 조건을 설정할 때 사용
+
+-- 부서별 평균 급여가 300백만원 이상인 부서를 조회
+/*4*/SELECT DEPT_CODE ,AVG(SALARY) 
+/*1*/FROM EMPLOYEE 
+/*2*/GROUP BY DEPT_CODE
+/*3*/HAVING AVG(SALARY) >= 3000000 -- GROUP BY에서 묶인 그룹에 조건을 대입
+/*5*/ORDER BY 1; -- 1과 가까운 오름차순
+
+
+-- 부서별 급여가 300백만 이상인 사원들의 평균 급여을 조회
+SELECT DEPT_CODE , AVG(SALARY) --4 
+FROM EMPLOYEE  --1
+WHERE SALARY >= 3000000 --2  EMPLOYEE 테이블의 모든 행에 조건을 대입
+GROUP BY DEPT_CODE  --3
+ORDER BY 1;  -- 5  1 가까운 숫자부터 오름차순
+
+-- 부서별 급여 합이 900만을 초과하는 부서의
+-- 부서코드, 급여합, 인원 수 조회
+SELECT DEPT_CODE ,SUM(SALARY),COUNT(*)  
+FROM EMPLOYEE
+GROUP BY DEPT_CODE
+HAVING SUM(SALARY) > 9000000; 
+
+-- EMPLOYEE 테이블에서
+-- 부서별 70년대생의 급여 평균이 300만 이상인 부서를 찾아
+-- 부서코드, 평균 급여(소수점 내림)을 부서코드 내림 차순 조회
+
+SELECT DEPT_CODE , FLOOR(AVG(SALARY)) "평균 급여"  
+FROM EMPLOYEE
+-- WHERE SUBSTR(EMP_NO,1,2) >= 70 AND SUBSTR(EMP_NO,0,2) <80  --  비교
+-- WHERE SUBSTR(EMP_NO,1,2) BETWEEN '70' AND '79'
+-- WHERE SUBSTR(ENP_NO,1,6) BETWEEN '700101' AND '791231' 
+-- WHERE SUBSTR(EMP_NO,1,1) = '7' 
+WHERE SUBSTR(EMP_NO,1,2) LIKE '7%' -- LIKE : WHERE절에 주로 사용되며 부분적으로 일치하는 칼럼을 찾을때 사용됩니다.
+GROUP BY DEPT_CODE                 -- 7% : 7로 시작한 숫자 찾기
+HAVING AVG(SALARY) >= 3000000
+ORDER BY DEPT_CODE DESC;
+
+
+-------------------------------------------------------------------------
+
+-- 집계 함수
+-- GROUP BY절에 작성하여
+-- 그룹 별로 산출한 결과를 집계하는 함수
+-- ROLLUP,CUBE 가 있음
+
+-- ROLLUP : 그룹별로 중간 집계와 전체 합계를 처리하는 함수
+
+-- EMPLOYEE 테이블에서
+-- 각 부서에 소속된 직급 별 급여 합
+-- 부서 별 급여 합
+-- 전체 직원의 급여 합을 조회 
+SELECT DEPT_CODE ,JOB_CODE ,SUM(SALARY) 
+FROM EMPLOYEE
+GROUP BY ROLLUP(DEPT_CODE ,JOB_CODE ) 
+ORDER BY 1; 
+
+-- CUBE : 그룹으로 지정된 모든 그룹에 대한 중간 집계와 총 합계를 처리하는 함수
+
+SELECT JOB_CODE ,SUM(SALARY) 
+FROM EMPLOYEE 
+GROUP BY JOB_CODE 
+ORDER BY JOB_CODE;
+
+SELECT DEPT_CODE ,JOB_CODE ,SUM(SALARY) 
+FROM EMPLOYEE
+GROUP BY CUBE (DEPT_CODE ,JOB_CODE ) 
+ORDER BY 1;
+
+----------------------------------------------------------
+
+-- ****************** SET OPERATION(집합 연산) **************
+
+-- 2개 이상의 SELECT 결과(RESULT SET)을 이용해 
+-- 하나의 결과를 조회하는 연산자
+
+-- 조건에 따른 SELECT 결과가 다른 경우
+-- 많이 SELECT를 한번에 조회할 때 유용
+
+-- (주의사항) 집합 연산에 사용되는 SELECT문은 
+-- SELECT절의 타입,순서,개수가 동일해야 한다. 
+
+-- UNION : 합집합
+-- UNION ALL : 합집합 + 교집합
+-- MINUS : 차집합
+
+-- UNION 확인
+-- 부서코드가 'D5'인 사원의 사번, 이름, 부서코드, 급여 조회
+SELECT EMP_ID ,EMP_NAME ,DEPT_CODE ,SALARY 
+FROM EMPLOYEE
+WHERE DEPT_CODE ='D5'
+UNION  -- D5 부서와 300만 이상의 사원, 부서 가 결과로 나온다.
+-- 급여가 300만 초과인 사원의 사번, 이름, 부서코드, 급여조회
+SELECT EMP_ID ,EMP_NAME ,DEPT_CODE ,SALARY 
+FROM EMPLOYEE
+WHERE SALARY > 3000000;
+
+-- INTERSECT 확인
+-- 부서코드가 'D5'인 사원의 사번, 이름, 부서코드 ,급여 조회
+SELECT EMP_ID ,EMP_NAME ,DEPT_CODE ,SALARY 
+FROM EMPLOYEE
+WHERE DEPT_CODE ='D5'
+INTERSECT 
+SELECT EMP_ID ,EMP_NAME ,DEPT_CODE ,SALARY 
+FROM EMPLOYEE
+WHERE SALARY > 3000000;
+
+
+-- UNION ALL 확인
+-- 부서코드가 'D5' 또는 급여 300만 초과인 사원 조회(중복 O)
+SELECT EMP_ID ,EMP_NAME ,DEPT_CODE ,SALARY 
+FROM EMPLOYEE
+WHERE DEPT_CODE ='D5'
+UNION ALL 
+SELECT EMP_ID ,EMP_NAME ,DEPT_CODE ,SALARY 
+FROM EMPLOYEE
+WHERE SALARY > 3000000;
+
+
+
+-- MINUS 확인
+-- 부서코드가 'D5' 이지만 급여 300만 초과인 사원 제외 조회
+SELECT EMP_ID ,EMP_NAME ,DEPT_CODE ,SALARY 
+FROM EMPLOYEE
+WHERE DEPT_CODE ='D5'
+MINUS  
+SELECT EMP_ID ,EMP_NAME ,DEPT_CODE ,SALARY 
+FROM EMPLOYEE
+WHERE SALARY > 3000000;
+
+
+
+
+-- 집합 연산은 2개 이상의 SELECT 문에 사용 가능 
+SELECT EMP_NAME , DEPT_CODE 
+FROM EMPLOYEE
+WHERE DEPT_CODE = 'D5'  -- 6
+UNION
+SELECT EMP_NAME , DEPT_CODE 
+FROM EMPLOYEE
+WHERE DEPT_CODE = 'D6'  -- 3   -- 첫번째 + 두번째 = 첫,두번째 + 세번째
+UNION
+SELECT EMP_NAME , DEPT_CODE 
+FROM EMPLOYEE
+WHERE DEPT_CODE = 'D9'; -- 3
+
+
+
+-- ****** SELECT 절의 타입, 개수, 순서 동일해야 한다. ***** 
+SELECT '이름', '부서코드' FROM DUAL;
+
+
+
+

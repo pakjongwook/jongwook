@@ -384,7 +384,7 @@ SELECT EMP_ID ,EMP_NAME ,
 	CASE
 		WHEN SUBSTR(EMP_NO,8,1) = '1' THEN '남자'	
 		WHEN SUBSTR(EMP_NO,8,1) = '2' THEN '여자'	
-	END 성별                              -- CASE ~END 는 컬럼 > END뒤 별칭  
+	END 성별                              -- CASE ~END 는 컬럼 , END뒤 별칭  
 	
 FROM EMPLOYEE;
 
@@ -414,7 +414,7 @@ ORDER BY JOB_CODE /*ASC*/; -- 오름차순
 -- 모든 사원의 급여 합
 SELECT SUM(SALARY) FROM EMPLOYEE;
 
--- 북서 코드가 'D9'인 사원들의 급여 합
+-- 부서 코드가 'D9'인 사원들의 급여 합
 SELECT SUM(SALARY) --3
 FROM EMPLOYEE  -- 1
 WHERE DEPT_CODE ='D9'; --2
@@ -431,7 +431,7 @@ FROM EMPLOYEE;
 
 -- MAX(컬럼명) : 해당 컬럼의 최대값
 -- MIN(컬럼명) : 해당 컬럼의 최소값
---> 타입 게한 X (숫자 : 대/소, 문자열 : 문자 순서, 날짜 : 과거 < 미래)
+--> 타입 개수 X (숫자 : 대/소, 문자열 : 문자 순서, 날짜 : 과거 < 미래)
 
 SELECT MIN(SALARY) , MAX(SALARY),
 	MIN(EMP_NAME), MAX(EMP_NAME), 
