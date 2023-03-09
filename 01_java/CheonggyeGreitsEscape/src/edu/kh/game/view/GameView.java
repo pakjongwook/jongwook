@@ -15,7 +15,7 @@ public class GameView {
    public void displayGame() {
       int input = 0;
       String straight = "┃";
-      List<List<String>> list = new ArrayList<>(7);
+    
       
       
 
