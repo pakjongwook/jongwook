@@ -353,15 +353,15 @@ FROM EMPLOYEE;
 
 
 -- EMPLOYEE 테이블에서
--- 직급코드가 'J7'인 직원은 급여 + 급여의 10%
--- 직급코드가 'J6'인 직원은 급여 + 급여의 15%
--- 직급코드가 'J5'인 직원은 급여 + 급여의 20%
+-- 직급코드가 'J7'인 직원은 급여 + 급여의 10%    1(0.1)
+-- 직급코드가 'J6'인 직원은 급여 + 급여의 15%    1(0.1)5
+-- 직급코드가 'J5'인 직원은 급여 + 급여의 20%    2(0.2)0
 -- 나머지 직급코드의  직원은 급여 + 급여의 5%  지급
 -- 사원명,직급코드, 기존급여, 지급급여 조회
 SELECT EMP_NAME , JOB_CODE , SALARY 기존급여,
 	DECODE(JOB_CODE,
 		'J7', SALARY  + (SALARY * 0.1),   	
-		'J6', SALARY  * 1.1, -- 110 %       1(100%) SALARY  .1(10%)급여 보너스 .(소수점)
+		'J6', SALARY  * 1.1, -- 110 %       1(100%) SALARY  .1(10%)급여 보너스 .(소수점) 
 		'J5', SALARY  * 1.2, -- 120 %         
 		SALARY  * 1.05			
 		)지급급여 
@@ -437,6 +437,60 @@ SELECT MIN(SALARY) , MAX(SALARY),
 	MIN(EMP_NAME), MAX(EMP_NAME), 
 	MIN(HIRE_DATE), MAX(HIRE_DATE)       -- MIN 가장 늦게  MAX 가장 빨리 입사 
 FROM EMPLOYEE;
+
+-------------------------------------------------------------------------------
+
+-- COUNT(* | 컬럼명) : 조회된 행의 개수를 반환 
+-- COUNT(*) : NULL을 포함한 모든 행의 개수를 반환
+-- COUNT(컬럼명) : 지정된 컬럼의 값이 NULL인 경우를 제외한 행의 개수를 반환 
+-- COUNT(DISTINCT 컬럼명)
+--   : 지정된 컬럼에서 중복된 값을 제외한 행의 개수를 반환 
+
+-- EMPLOYEE 테이블에서 존재하는 모든 사원의 수 
+SELECT COUNT(*) -- 23
+FROM EMPLOYEE;
+
+-- EMPLOYEE 테이블에서 부서코드가 있는 사원의 수
+SELECT COUNT(DEPT_CODE )   -- 21 (NULL 제외)
+FROM EMPLOYEE;
+
+SELECT COUNT(*) FROM EMPLOYEE
+WHERE DEPT_CODE IS NOT NULL; -- 이렇게도 가능하다 위에 꺼라 똑같음
+
+-- EMPLOYEE 테이블에 존재하는 직급코드의 개수
+SELECT  COUNT( DISTINCT JOB_CODE )  -- 7 (중복 제외하고 카운트)
+FROM EMPLOYEE;
+
+-- EMPLOYEE 테이블의 남자 사원 수, 여자 사원 수 조회
+SELECT COUNT(DECODE(SUBSTR(EMP_NO,8,1), '1','남자')), 
+       COUNT(DECODE(SUBSTR(EMP_NO,8,1), '2','여자'))
+FROM EMPLOYEE;
+
+-- 남자 사원 수
+SELECT COUNT(*) FROM EMPLOYEE
+WHERE SUBSTR(EMP_NO,8,1) = '1';
+
+-- 여자 사원 수
+SELECT COUNT(*) FROM EMPLOYEE
+WHERE SUBSTR(EMP_NO,8,1) = '2';
+
+-- EMPLOYEE 테이블의 남자 사원 수, 여자 사원 수 조회
+SELECT COUNT(DECODE(SUBSTR(EMP_NO,8,1), '1',3, NULL)) "남자 사원 수",-- '1' 을 3로 대체 , 1이 아닐경우는 NULL로 대체
+       COUNT(DECODE(SUBSTR(EMP_NO,8,1), '2',2, NULL)) "여자 사원 수" -- '2' 가 2로 반환 , 2가 아닐경우는 NULL로 대체
+FROM EMPLOYEE;
+
+SELECT SUM(DECODE(SUBSTR(EMP_NO,8,1), '1',1,0)) "남자 사원 수",
+       SUM(DECODE(SUBSTR(EMP_NO,8,1), '2',1,0)) "여자 사원 수"
+FROM EMPLOYEE;
+
+-- * 서브쿼리를 이용한 방법*
+SELECT 
+	(SELECT COUNT(*) FROM EMPLOYEE
+	WHERE SUBSTR(EMP_NO,8,1)='1' ) "남자 사원 수",
+
+	(SELECT COUNT(*) FROM EMPLOYEE
+	WHERE SUBSTR(EMP_NO,8,1)='2' ) "여자 사원 수"
+FROM DUAL;
 
 
 
