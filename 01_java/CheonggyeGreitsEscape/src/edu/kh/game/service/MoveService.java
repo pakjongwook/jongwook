@@ -35,6 +35,35 @@ public class MoveService extends Building {
 		// 커피 21% coffee
 		// 빵 21% bread
 		// 컵라면 21% ramen
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		int getItemRandom = random.nextInt(100)+1;
 		if(getItemRandom>=1 && getItemRandom<=33) { // 아이템을 얻을 수 있다 33퍼 확률로

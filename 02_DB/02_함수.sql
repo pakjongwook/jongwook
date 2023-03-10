@@ -475,12 +475,12 @@ SELECT COUNT(*) FROM EMPLOYEE
 WHERE SUBSTR(EMP_NO,8,1) = '2';
 
 -- EMPLOYEE 테이블의 남자 사원 수, 여자 사원 수 조회
-SELECT COUNT(DECODE(SUBSTR(EMP_NO,8,1), '1',3, NULL)) "남자 사원 수",-- '1' 을 3로 대체 , 1이 아닐경우는 NULL로 대체
-       COUNT(DECODE(SUBSTR(EMP_NO,8,1), '2',2, NULL)) "여자 사원 수" -- '2' 가 2로 반환 , 2가 아닐경우는 NULL로 대체
+SELECT COUNT(DECODE(SUBSTR(EMP_NO,8,1), '1',3, NULL)) "남자 사원 수",-- '1' 을 3(숫자)로 대체 , 1이 아닐경우는 NULL로 대체
+       COUNT(DECODE(SUBSTR(EMP_NO,8,1), '2',2, NULL)) "여자 사원 수" -- '2' 가 2(숫자)로 반환 , 2가 아닐경우는 NULL로 대체
 FROM EMPLOYEE;
 
 SELECT SUM(DECODE(SUBSTR(EMP_NO,8,1), '1',1,0)) "남자 사원 수",
-       SUM(DECODE(SUBSTR(EMP_NO,8,1), '2',1,0)) "여자 사원 수"
+       SUM(DECODE(SUBSTR(EMP_NO,8,1), '2',1,0)) "여자 사원 수"  -- 숫자 1로 한 이유는 2로 할 경우 컴퓨터가 2명으로 인식되어서 합을 구하기 때문
 FROM EMPLOYEE;
 
 -- * 서브쿼리를 이용한 방법* 하나의 쿼리문 안에 포함되어 있는 또 하나의 쿼리문

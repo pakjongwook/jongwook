@@ -16,8 +16,10 @@ GROUP BY DEPT_CODE; -- 2) DEPT_CODE가 같은 행끼리 그룹을 지어
 /* SELECT문 해석 순서
  * 
  *5* : SELECT 컬럼명, 함수, 계산식, 리터럴[[AS] 별칭]
- *1* : 
-
+ *1* : FROM 테이블명
+ *2* : WHERE 조건식
+ *3* : GROUP BY 그룹으로 묶을 컬럼명|함수
+ *4* : HAVING 그룹합수를 이용한 조건식 (GROUP BY가 있어야 작성 가능 !!)
  *6* : ORDER BY 컬럼명|별칭|컬럼순서 정렬방식 [NULL FIRST|LAST]
  *
  * */ 
