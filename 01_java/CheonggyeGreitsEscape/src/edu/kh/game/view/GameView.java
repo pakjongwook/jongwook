@@ -232,6 +232,122 @@ public class GameView {
       }
    }
    
+   public void secondClassRoom1() {  // 2층 구현
+	      int input = 0;
+	      String straight = "┃";
+	     
+	         System.out.println();
+	         System.out.println();
+	         System.out.println("┏━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┓");
+	         System.out.printf("┃HP : %d/5┃STN : %d/3   ┃현재 위치 : %d F ┃\n", viewHp(), viewStamina(), viewFloor());
+	         System.out.println("┃━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┫");
+	         System.out.println("                                     ");
+	         System.out.println("            강의실에 입장했습니다                ");
+	         System.out.println("            강사님의 코드 지옥이 쏟아졌습니다.       ");
+	         System.out.println("                                     ");
+	         System.out.println("    1.강사님과 코드공부(잠자기 포함)                         ");
+	         System.out.println("    2.나가기                                  ");
+	         System.out.println("                                     ");
+	         System.out.println("    9. 아이템 사용                       ");
+	         System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+	         System.out.print("메뉴 선택 >> ");
+	         input = sc.nextInt();
+	         sc.nextLine(); // 입력 버퍼 개행문자 제거
+	         System.out.println();
+
+	         switch (input) {
+	         case 1:
+	        	 secondClassRoom2();
+	            break;
+	         case 2:
+	            displayGame();
+	            break;
+	         case 9:
+//	         itemUse();
+	            break;
+	         default:
+	            System.out.println("[메뉴에 존재하는 번호만 입력 해주세요]");
+	         }
+	      
+	   }
+	   public void secondClassRoom2() {
+	      int input = 0;
+	      String straight = "┃";
+	    //  if ((int) (Math.random() * 100) <= 60) {}  조건문이 틀릴 경우 else 구문 작성 필요  
+	     While(input != case 1 || case 2 || case 9) 
+	         System.out.println();
+	         System.out.println();
+	         System.out.println("┏━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┓");
+	         System.out.printf("┃HP : %d/5┃STN : %d/3   ┃현재 위치 : %d F ┃\n", viewHp(), viewStamina(), viewFloor());
+	         System.out.println("┃━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┫");
+	         System.out.println("                                     ");
+	         System.out.println("     백동현강사님이 좀비로 변하셨습니다.                 ");
+	         System.out.println("                                    ");
+	         System.out.println("                                     ");
+	         System.out.println("    1.코드 작성하는 척하면서 공격하기                       ");
+	         System.out.println("    2.도망가기                                  ");
+	         System.out.println("                                     ");
+	         System.out.println("    9. 아이템 사용                       ");
+	         System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+	         System.out.print("메뉴 선택 >> ");
+	         input = sc.nextInt();
+	         sc.nextLine(); // 입력 버퍼 개행문자 제거
+	         System.out.println();
+
+	         switch (input) {
+	         case 1:
+	            Attackview();
+	            break;
+	         case 2:
+	            displayGame();
+
+	            break;
+	         case 9:
+//	         itemUse();
+	            break;
+	         default:
+	            System.out.println("[메뉴에 존재하는 번호만 입력 해주세요]");
+	         }
+	      
+	   }
+	   public void secondClassRoom() {
+		      int input = 0;
+		      String straight = "┃";
+		      
+		      if ((int) (Math.random() * 100) <= 60) {
+		         System.out.println();
+		         System.out.println();
+		         System.out.println("┏━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┓");
+		         System.out.printf("┃HP : %d/5┃STN : %d/3   ┃현재 위치 : %d F ┃\n", viewHp(), viewStamina(), viewFloor());
+		         System.out.println("┃━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┫");
+		         System.out.println("                                     ");
+		         System.out.println("     백동현강사님이 좀비를 물리쳤습니다.                 ");
+		         System.out.println("                                    ");
+		         System.out.println("                                     ");
+		         System.out.println("    1.돌아가기            ");
+		         System.out.println("                                    ");
+		         System.out.println("                                     ");
+		         System.out.println("    9. 아이템 사용                       ");
+		         System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+		         System.out.print("메뉴 선택 >> ");
+		         input = sc.nextInt();
+		         sc.nextLine(); // 입력 버퍼 개행문자 제거
+		         System.out.println();
+
+		         switch (input) {
+		         case 1:
+		            displayGame();  
+		            break;
+		         case 9:
+//		         itemUse();
+		            break;
+		         default:
+		            System.out.println("[메뉴에 존재하는 번호만 입력 해주세요]");
+		         }
+		      }
+		   }
+	   
+	  
    
 
    private int viewHp() {
