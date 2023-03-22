@@ -27,10 +27,10 @@ GROUP BY DEPT_CODE; -- 2) DEPT_CODE가 같은 행끼리 그룹을 지어
 -- * GROUP BY 절 : 같은 값들이 여러 개 기록된 행을 하나의 그룹으로 묶음 
 
 -- 부서별 급여 평균
-SELECT AVG(SALARY) --4
+SELECT AVG(SALARY) --3
 FROM EMPLOYEE   -- 1
 GROUP BY DEPT_CODE --2
-ORDER BY DEPT_CODE; --3
+ORDER BY DEPT_CODE; --4
 
 -- 부서별 급여합, 급여평균, 인원 수, 최고참 입사일, 막내 입사일 
 -- 부서코드 오름차순으로 조회
@@ -55,7 +55,7 @@ ORDER BY JOB_CODE;
 SELECT DECODE(SUBSTR(EMP_NO,8,1) ,'1','남','2','여') 성별
 	, FLOOR(AVG(SALARY)) "급여 평균",
 	  SUM(SALARY ) "급여 합",
-	  COUNT(*) "인원 수"
+	  COUNT(*) "인원 수" -- 띄어쓰기 포함 
 FROM EMPLOYEE
 GROUP BY DECODE(SUBSTR(EMP_NO,8,1),'1','남','2','여') -- *** 함수도 쓸수 있다.***
        --> SELECT절 이전에는 해석이 되지 않아 성별 별칭 사용 불가능  

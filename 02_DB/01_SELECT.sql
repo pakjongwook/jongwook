@@ -424,13 +424,13 @@ ORDER BY HIRE_DATE DESC;
 -- 전화번호 오름차순 조회
 SELECT EMP_NAME ,PHONE 
 FROM EMPLOYEE
-ORDER BY PHONE /*NULLS LAST*/ NULLS FIRST; -- ASC(오름차순) --> NULLS은 아래로
+ORDER BY PHONE /*NULLS LAST*/ NULLS FIRST; -- ASC(오름차순) --> NULLS은 위로
 				-- 오름차순 기본값
 				
 -- 전화번호 내림차순 조회
 SELECT EMP_NAME ,PHONE 
 FROM EMPLOYEE
-ORDER BY PHONE DESC /*NULLS FIRST*/ NULLS LAST; -- DESC 내림차순 
+ORDER BY PHONE DESC /*NULLS FIRST*/ NULLS LAST; -- DESC 내림차순 , NULL 맨아래로
 				    -- 내림차순 기본값
 -- DESC로 출력하면 NULLS은 맨위로 올라간다. 
 --> 만약 NULLS을 밑으로 내리고 싶으면 NULLS LAST 도 같이 쓰여야 한다.
