@@ -2,6 +2,7 @@ package edu.kh.jdbc.model.dto;
 
 import java.sql.Date;
 
+// 자동차 도안 
 public class Emp {
 	private int empId; 		// 사원 번호(사번)
 	private String empName; // 사원 이름
