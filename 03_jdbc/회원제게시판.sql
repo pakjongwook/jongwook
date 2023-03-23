@@ -184,7 +184,6 @@ COMMIT;
 -- 게시글 목록 조회
 -- 게시글번호, 제목, 댓글 수 ,작성자(이름), 작성일, 조회수 , 댓글 수(COMMENT_COUNT)
 -- 최신 게시글이 위쪽으로 오도록 정렬해서 조회
-
 SELECT BOARD_NO, BOARD_TITLE, MEMBER_NM, CREATE_DT, READ_COUNT,
 --	(서브쿼리) COMMENT_COUNT
 	(SELECT COUNT(*) FROM "COMMENT" SUB
