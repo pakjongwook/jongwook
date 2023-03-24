@@ -24,7 +24,7 @@ public class EmployeeDAO {
 	
 	private PreparedStatement pstmt; // 오류뜨면 마우스클릭 두 번쨰
 	// prepared : 준비된 
-	// -> 외부 변수(값)를 SQL에 삽입할 준비가 된 Statment
+	// -> 외부 변수(값)를 SQL에 삽입할 준비가 된 Statement
 	
 	// PreparedStatement는 Statement 클래스의 자식 클래스로
 	// SQL 구문에 ? 기호를 작성해서
