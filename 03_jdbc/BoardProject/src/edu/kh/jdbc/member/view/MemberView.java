@@ -1,8 +1,11 @@
 package edu.kh.jdbc.member.view;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
+import edu.kh.jdbc.common.Session;
+import edu.kh.jdbc.member.model.dto.Member;
 import edu.kh.jdbc.member.model.service.MemberService;
 
 // alt + shift + J antor (코드을 쓴 사람)
@@ -45,8 +48,8 @@ public class MemberView {
 				
 				
 				switch(input) {
-				case 1 : break;
-				case 2 : break;
+				case 1 : selectMyInfo(); break;
+				case 2 : selectMemberList(); break;
 				case 3 : break;
 				case 4 : break;
 				case 5 : break;
@@ -63,8 +66,8 @@ public class MemberView {
 					// Terminates the currently running Java Virtual Machine.
 					
 				default : System.out.println("\n*** 메뉴 번호만 입력 해주세요 ***\n");
-				
 				}
+				
 				
 				
 			}catch (InputMismatchException e) {
@@ -75,7 +78,69 @@ public class MemberView {
 			}
 			
 		
-		}while(input != 9); // 9가 입력되면 메서드 끝나고 돌아갈수 있게
+		}while(input != 9); // 9가 입력되면 메서드가 끝나고 돌아갈수 있게
+		
+	}
+	
+	/**
+	 * 내 정보 조회
+	 */
+	private void selectMyInfo() {
+		System.out.println("\n====== 내 정보 조회 =====\n");
+
+		// 회원 번호, 아이디, 이름, 성별(남/여), 가입일
+		// Session.loginMember 이용
+		
+		System.out.println("회원 번호 : " + Session.loginMember.getMemberNO());
+		System.out.println("아이디 : " + Session.loginMember.getMemberId());
+		System.out.println("이름 : " + Session.loginMember.getMemberName());
+		
+		if(Session.loginMember.getMemberGender().equals("M")) {
+			System.out.println("성별 : 남");
+		}else {
+			System.out.println("성별 : 여");
+		}
+		
+		System.out.println("가입일 : " + Session.loginMember.getEnrollDate());
+		
+	}
+	
+	/**
+	 * 회원 목록 조회
+	 */
+	private void selectMemberList() {
+		System.out.println("\n======== 회원 목록 조회 =====\n");
+		
+		try {
+			// 회원 목록 조회 서비스 호출 후 결과 반환 받기
+			List<Member>memberList  = service.selectMemberList();
+			
+			if(memberList.isEmpty()) { // 조회 결과 X
+				System.out.println("\n===== 조회 결과가 없습니다 ===\n"); 
+				return;
+			}
+			
+			// 1 user04 유저사 남
+			// 2 user03 유저삼 여
+			// 3 user02 유저이 남
+			// 4 user01 유저일 여
+			
+			for(int i=0; i<memberList.size(); i++) {
+				
+				System.out.printf("%d\t\t%s\t\t%s\t\t%s \n",
+						i+1,
+				memberList.get(i).getMemberId(),
+				memberList.get(i).getMemberName(),
+				memberList.get(i).getMemberGender());
+			}
+			
+			
+			
+			
+		}catch(Exception e) {
+			System.out.println("\n****** 회원 목록 조회 중 예외 발생 ****\n");
+			e.printStackTrace();
+		}
 		
 	}
 	

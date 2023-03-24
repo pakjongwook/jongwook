@@ -99,10 +99,8 @@ CREATE SEQUENCE SEQ_COMMENT_NO NOCACHE;
 INSERT INTO "MEMBER"
 VALUES(SEQ_MEMBER_NO.NEXTVAL, 'user01', 'pass01', '유저일', 
        'F', DEFAULT, DEFAULT);
-VALUES(SEQ_MEMBER_NO.NEXTVAL, 'user05', 'pass05', '유저5', 
-       'F', DEFAULT, DEFAULT);
       
-INSERT in
+     
       
 -- 위에서 SEQUENCE 설정했기 때문에
 -- 시퀀스란 자동으로 순차적으로 증가하는 순번을 반환하는 데이터베이스 객체, 보통 PK값에 중복값을 방지하기위해 사용.
@@ -221,6 +219,16 @@ SELECT COUNT(*) FROM "MEMBER"
 WHERE UNREGISTER_FL = 'N'
 AND MEMBER_ID = 'user01'
 ;
+
+--회원 목록 조회(아이디, 이름, 성별(남/여) + 회원 번호 내림차순)
+SELECT MEMBER_ID ,MEMBER_NM ,
+	DECODE(MEMBER_GENDER,'M','남','여') 성별
+FROM "MEMBER"
+WHERE UNREGISTER_FL = 'N'            --탈퇴한 사람
+ORDER BY MEMBER_NO DESC;
+-- DECODE (컬럼명, '조건','조건','else') 별칭
+
+
 
 
 
