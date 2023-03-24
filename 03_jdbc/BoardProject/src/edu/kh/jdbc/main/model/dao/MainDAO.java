@@ -36,7 +36,7 @@ public class MainDAO {
 			prop.loadFromXML(new FileInputStream("main-sql.xml"));
 			// -> Properties 객체에
 			// key:value 형식으로 xml 내용이 저장됨
-			// loadFromXML : 
+			// loadFromXML : xml 로부터 읽어 오겠다. 
 			
 			// -> prop.getProperty("key") 호출
 			// --> value (SQL) 반환 
@@ -63,14 +63,113 @@ public class MainDAO {
 			// 2. SQL 작성 후 수행
 			String sql = prop.getProperty("login");
 			
-			System.out.println(sql);
+			// PreaparedStatement 객체를 생성하고 SQL를 담아둠 placeholder (?)
+			pstmt = conn.prepareStatement(sql);
+			
+			// placeholder에 알맞은 값 대입
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, memberPw);
+			
+			rs = pstmt.executeQuery(); // sql 이미 담았기 때문에 안써야 함
+								  // SELECT 수행 후 결과 반환 받기
+			// executeUpdate : DB 에서 DELETE,INSERT,CREATE,DROP ... 사용할 때 사용
+			
+			// 3. 조회 결과를 1행씩 접근해서 얻어오기
+			if(rs.next()) {
+				int memberNo = rs.getInt("MEMBER_NO");
+//				String memberId = rs.getString("MEMBER_ID"); 오류는 변수명 중복
+				// 입력 받은 아이디 == 조회한 아이디
+				// -> DB에서 얻어올 필요가 없음
+				
+				String memberName = rs.getString("MEMBER_NM");
+				String memberGender = rs.getString("MEMBER_GENDER"); // DB : CHAR == String
+				String enrollDate = rs.getString("ENROLL_DT");
+				
+				// Member 객체 생성 후 값 세팅
+				member = new Member();
+				
+				member.setMemberNO(memberNo);
+				member.setMemberId(memberId);
+				member.setMemberName(memberName);
+				member.setMemberGender(memberGender);
+				member.setEnrollDate(enrollDate);
+				
+			}
 			
 		}finally {
+			// 4. 사용한 JDBC 객체 자원 반환
+			close(rs);
+			close(pstmt);
+			
 			
 		}
 		
-		return null;
+		return member;
 	}
+
+
+	/** 아이디 중복 검사 SQL 수행
+	 * @param conn
+	 * @param memberId
+	 * @return
+	 * @throws Exception
+	 */
+	public int idDuplicationCheck(Connection conn, String memberId) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("idDuplicationCheck");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
+
+	/** 회원 가입 SQL 수행(INSERT)
+	 * @param conn
+	 * @param member
+	 * @return result
+	 * @throws Exception
+	 */
+	public int signUp(Connection conn, Member member) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("signUp"); // signUp key의 value 얻어오겠다.
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getMemberPw());
+			pstmt.setString(3, member.getMemberName());
+			pstmt.setString(4, member.getMemberGender());
+			
+			// 수행 후 결과 반환
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+			
+		}
+		return result;
+	}
+	
 	
 	
 }

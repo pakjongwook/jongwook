@@ -99,6 +99,10 @@ CREATE SEQUENCE SEQ_COMMENT_NO NOCACHE;
 INSERT INTO "MEMBER"
 VALUES(SEQ_MEMBER_NO.NEXTVAL, 'user01', 'pass01', '유저일', 
        'F', DEFAULT, DEFAULT);
+VALUES(SEQ_MEMBER_NO.NEXTVAL, 'user05', 'pass05', '유저5', 
+       'F', DEFAULT, DEFAULT);
+      
+INSERT in
       
 -- 위에서 SEQUENCE 설정했기 때문에
 -- 시퀀스란 자동으로 순차적으로 증가하는 순번을 반환하는 데이터베이스 객체, 보통 PK값에 중복값을 방지하기위해 사용.
@@ -212,6 +216,11 @@ AND MEMBER_PW = 'pass01'
 AND UNREGISTER_FL = 'N'  -- 탈퇴한 회원을 제외하기 위해서
 ;
 
+-- 탈퇴하지 않은 회원 중 아이디 중복 검사
+SELECT COUNT(*) FROM "MEMBER" 
+WHERE UNREGISTER_FL = 'N'
+AND MEMBER_ID = 'user01'
+;
 
 
 
