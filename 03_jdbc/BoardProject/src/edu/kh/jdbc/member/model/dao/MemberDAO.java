@@ -58,12 +58,13 @@ public class MemberDAO {
 			
 			rs = stmt.executeQuery(sql); // SELECT 구문을 실행할 때 사용 , 
 										 // executeUpdate : SELECT을 제외한 다른 구문을 실행할 때( INSERT / DELETE / UPDATE )
+										 // ResultSet : 행
 			
-			while(rs.next()) {
+			while(rs.next()) { // 행의 여러개일수도 있기 때문에 while
 				
 				String memberId = rs.getString("MEMBER_ID");
 				String memberName = rs.getString("MEMBER_NM");
-				String memberGender = rs.getString("성별"); // ResultSet DB에서 결과 값 
+				String memberGender = rs.getString("성별"); // ResultSet DB에서 결과 값(별칭) 
 				
 				// 컬럼 값을 Member 객체에 저장
 				Member member = new Member();
@@ -72,7 +73,7 @@ public class MemberDAO {
 				member.setMemberGender(memberGender);
 				
 				// Member 객체를 List 에 추가
-				memberList.add(member);
+				memberList.add(member); // 구문이 진행될수록 새로운 정보을 넣는다.
 				
 			}
 			

@@ -226,6 +226,7 @@ SELECT MEMBER_ID ,MEMBER_NM ,
 FROM "MEMBER"
 WHERE UNREGISTER_FL = 'N'            --탈퇴한 사람
 ORDER BY MEMBER_NO DESC;
+
 -- DECODE (컬럼명, '조건','조건','else') 별칭
 
 
