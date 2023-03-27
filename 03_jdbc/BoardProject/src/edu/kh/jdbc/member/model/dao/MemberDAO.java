@@ -46,7 +46,7 @@ public class MemberDAO {
 	public List<Member> selectMemberList(Connection conn) throws Exception{
 		
 		// 결과 저장용 변수 선언 / 객체 생성
-		List<Member> memberList = new ArrayList<>();
+		List<Member> memberList = new ArrayList<>(); // member 누가 있는지 
 									// 객체 배열 : 객체을 참조하는 참조변수을 저장 ,DAO에서도 새롭게 ArrayList을 선언해줘야 한다. 
 		
 		try {
@@ -84,6 +84,72 @@ public class MemberDAO {
 		}
 		
 		return memberList;
+	}
+
+
+	/** 회원 정보 수정 SQL 수행
+	 * @param conn
+	 * @param memberName
+	 * @param memberGender
+	 * @param memberNO
+	 * @return
+	 * @throws Exception
+	 */
+	public int updateMember(Connection conn, String memberName, String memberGender, int memberNO)throws Exception{
+		
+		// 1. 결과 저장용 변수 선언
+		int result = 0; 
+		
+		try {
+			// 2. SQL 작성, 수행
+			String sql = prop.getProperty("updateMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberName);
+			pstmt.setString(2, memberGender);
+			pstmt.setInt(3, memberNO);
+			
+			result = pstmt.executeUpdate();  // 결과 값의 행의 수정되기 때문에 ... 1행, 2행,3행...
+			
+			
+		}finally {
+			// 3. JDBC 객체 자원 반환
+			close(pstmt);
+		}
+		
+		// 4. 결과 반환 
+		return result;
+	}
+
+
+	/** 비밀번호 변경 SQL 수행
+	 * @param conn
+	 * @param memberPw
+	 * @param newPw
+	 * @param memberNO
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updatePassword(Connection conn, String memberPw, String newPw, int memberNO) throws Exception {
+		int result = 0; // 결과 저장할 변수선언 // 비밀번화가 변경되었는지 안되어 있는지 확인 -> int확인(MemberView 확인)
+		
+		try {
+			String sql = prop.getProperty("updatePw");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPw);
+			pstmt.setInt(2, memberNO);
+			pstmt.setString(3, memberPw); // member-sql where 구문 순서 확인
+			
+			result = pstmt.executeUpdate(); 
+			
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
 	}
 	
 }

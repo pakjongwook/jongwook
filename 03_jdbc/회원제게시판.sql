@@ -230,21 +230,6 @@ ORDER BY MEMBER_NO DESC;
 -- DECODE (컬럼명, '조건','조건','else') 별칭
 
 
--- 회원 정보(이름, 성별) 수정
-UPDATE "MEMBER"
-SET MEMBER_NM = ?,
-    MEMBER_GENDER = ?
-WHERE MEMBER_NO = ?
-;
-
-SELECT * FROM "MEMBER";
-
--- 비번 변경
-UPDATE "MEMBER"
-    SET MEMBER_PW = ? -- 새 비번
-    WHERE MEMBER_NO = ? AND MEMBER_PW = ?
--- 회원 번호 , 현재 비번
-
 
 
 
