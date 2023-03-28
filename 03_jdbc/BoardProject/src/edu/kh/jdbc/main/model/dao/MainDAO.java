@@ -155,6 +155,8 @@ public class MainDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
+			// 
+			
 			pstmt.setString(1, member.getMemberId());
 			pstmt.setString(2, member.getMemberPw());
 			pstmt.setString(3, member.getMemberName());

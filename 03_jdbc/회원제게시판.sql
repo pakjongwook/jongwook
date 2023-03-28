@@ -229,7 +229,68 @@ ORDER BY MEMBER_NO DESC;
 
 -- DECODE (컬럼명, '조건','조건','else') 별칭
 
+-- 탈퇴한 처리한 회원
 
+SELECT *
+FROM "MEMBER"; -- 제약조건이 위배가 된다면 데이터베이스저장을 안해야 한다. 
+
+
+-- 게시글 상세 조회
+SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT,
+	MEMBER_NO, MEMBER_NM, READ_COUNT,CREATE_DT
+FROM "BOARD"
+JOIN "MEMBER" USING(MEMBER_NO)
+WHERE DELETE_FL = 'N'
+AND BOARD_NO = 1; 
+
+-- BOARD_NO 게시글 번호 
+	
+-- MEMBER_NO 누가 썻는가
+
+-- 조회 수 증가(BOARD 테이블 READ_COUNT 컬럼 값 수정)
+UPDATE "BOARD"
+SET READ_COUNT = READ_COUNT +1 -- 이전 조회수 +1 값으로 수정
+WHERE BOARD_NO = 1;
+
+SELECT * FROM "BOARD" WHERE BOARD_NO = 1;
+
+ROLLBACK;
+
+-- = 수정할 때만 대입연산자
+
+-- 게시글 수정
+UPDATE "BOARD"
+SET BOARD_TITLE = ?,
+    BOARD_CONTENT = ?
+WHERE BOARD_NO;
+
+SELECT * FROM "MEMBER";
+
+-- 게시글 삭제(UPDATE)
+UPDATE "BOARD"
+SET DELETE_FL = 'Y'
+WHERE BOARD_NO = ?
+;
+
+SELECT * FROM "BOARD";
+
+-- 게시글 삭제 복구
+UPDATE "BOARD"
+SET DELETE_FL = 'N'
+WHERE BOARD_NO = 1;
+COMMIT;
+
+SELECT * FROM "BOARD";
+-- 게시글 삽입
+INSERT INTO "BOARD"          -- 테이블명
+VALUES(SEQ_BOARD_NO.NEXTVAL,?,?,
+DEFAULT, DEFAULT, DEFAULT, ?)          -- ?는 인식불가
+;
+
+--> 성공 1 실패 0
+
+-- 다음 시퀸스 번호 생성
+SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL;
 
 
 

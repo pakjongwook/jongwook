@@ -100,7 +100,7 @@ public class MemberService {
 		
 	}
 
-	/**
+	/** 회원 탈퇴 서비스
 	 * @param memberPw
 	 * @param memberNO
 	 * @return
@@ -110,8 +110,10 @@ public class MemberService {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.unRegisterMember(memberPw,memberNO);
-		
+		int result = dao.unRegisterMember(conn,memberPw,memberNO);
+		// UPDATE 결과(int)를 반환하기 위해서 
+		if(result>0) commit(conn);
+		else 		 rollback(conn);
 		
 		
 		close(conn);		

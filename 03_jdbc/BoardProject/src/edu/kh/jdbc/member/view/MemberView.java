@@ -273,7 +273,7 @@ public class MemberView {
 		String input = sc.next();
 		
 		// 보안문자 일치여부 확인
-		if(input.equals(code)) { // 일치하지 않으면
+		if(!input.equals(code)) { // 일치하지 않으면 , 오류가 발생(보안코드가 일치하지않다라고 뜨면 그부문에 가서 확인)
 			System.out.println("\n**** 보안문자가 일치하지 않음 ***\n");
 			return false;
 		}

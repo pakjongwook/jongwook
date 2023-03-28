@@ -51,10 +51,10 @@ public class MemberDAO {
 		
 		try {
 			String sql = prop.getProperty("selectMemberList"); // Member-sql.xml 파일에 selectMemberList(내가 쓴) 작성
-			// 외부파일에서 읽어온 데이터를 prop . get(얻는다.)--> placeholder 가 없다.
+			// 외부파일에서 읽어온 데이터를 prop . get(얻는다.) 
 			
 			// c(Connection[Service]) s(Statement) r(ResultSet)
-			stmt = conn.createStatement(); // createStatement => 통로 
+			stmt = conn.createStatement(); // createStatement => 통로  stmt(statement) --> placeholder 가 없다.
 			
 			rs = stmt.executeQuery(sql); // SELECT 구문을 실행할 때 사용 , 
 										 // executeUpdate : SELECT을 제외한 다른 구문을 실행할 때( INSERT / DELETE / UPDATE )
@@ -154,20 +154,28 @@ public class MemberDAO {
 
 
 	/**
+	 * @param conn 
 	 * @param memberPw
 	 * @param memberNO
 	 * @return
 	 * @throws Exception
 	 */
-	public int unRegisterMember(String memberPw, int memberNO) throws Exception{
+	public int unRegisterMember(Connection conn, String memberPw, int memberNO) throws Exception{
 		int result = 0;
 		
 	try {	
 		String sql = prop.getProperty("unRegisterMember");
 		
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, memberPw);
+		pstmt.setInt(2, memberNO);
+		
+		result = pstmt.executeUpdate();
 		
 		}finally {
-			close
+			close(pstmt);
+			
 		}
 		return result;
 	}
