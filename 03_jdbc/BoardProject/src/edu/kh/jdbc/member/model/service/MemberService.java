@@ -99,6 +99,25 @@ public class MemberService {
 		return code.toString(); // 저장된 내용을 문자열로 반환
 		
 	}
+
+	/**
+	 * @param memberPw
+	 * @param memberNO
+	 * @return
+	 * @throws Exception
+	 */
+	public int unRegisterMember(String memberPw, int memberNO) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.unRegisterMember(memberPw,memberNO);
+		
+		
+		
+		close(conn);		
+		return result;
+	}
+
 	
 	
 

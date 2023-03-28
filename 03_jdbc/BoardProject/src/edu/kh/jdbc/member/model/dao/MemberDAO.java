@@ -151,5 +151,27 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+
+	/**
+	 * @param memberPw
+	 * @param memberNO
+	 * @return
+	 * @throws Exception
+	 */
+	public int unRegisterMember(String memberPw, int memberNO) throws Exception{
+		int result = 0;
+		
+	try {	
+		String sql = prop.getProperty("unRegisterMember");
+		
+		
+		}finally {
+			close
+		}
+		return result;
+	}
+
+
 	
 }
