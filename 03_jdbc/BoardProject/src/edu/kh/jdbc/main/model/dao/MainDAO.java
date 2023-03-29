@@ -21,7 +21,8 @@ public class MainDAO {
 	private PreparedStatement pstmt; // placeholder 를 포함한 SQL 세팅/수행
 	private ResultSet rs; // SELECT 수행 결과 저장
 	
-	private Properties prop;
+	private Properties prop; 
+	
 	
 	// - Map<String, String> 형태
 	// - XML 파일 입/출력 메서드를 제공
@@ -71,7 +72,7 @@ public class MainDAO {
 			pstmt.setString(2, memberPw);
 			
 			rs = pstmt.executeQuery(); // sql 이미 담았기 때문에 안써야 함
-								  // SELECT 수행 후 결과 반환 받기
+								  	   // SELECT 수행 후 결과 반환 받기
 			// executeUpdate : DB 에서 DELETE,INSERT,CREATE,DROP ... 사용할 때 사용
 			
 			// 3. 조회 결과를 1행씩 접근해서 얻어오기

@@ -214,6 +214,7 @@ public class BoardView {
 		try {
 			// 게시글 수정 서비스 호출
 			int result = boardService.updateBoard(boardTitle, sb.toString() ,boardNo); // (매개변수)
+			// toString 쓰는 이유 sb(StringBuffer의 내용을 문자열로 받기위해)
 			
 			if(result >0) {
 				System.out.println("\n==== 게시글이 수정되었음 ====\n");

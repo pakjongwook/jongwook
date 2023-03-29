@@ -264,9 +264,9 @@ public class EmployeeDAO {
 				// Employee 객체를 생성해서 컬럼 값을 세팅
 				// (기본 생성자 + setter)
 				
-				Employee emp = new Employee();
+				Employee emp = new Employee();  // get의 있는 값들을 저장할 객체를 새롭게 만들기 위해서 객체을 생성한다. 
 				
-				emp.setEmpId(empId);
+				emp.setEmpId(empId);   // get에서 얻어온 값을 set(외부에서 정보을 얻어오는 것) 값을 설정하기 위해서 씀 
 				emp.setEmpName(empName);
 				emp.setJobName(jobName);
 				emp.setSalary(salary);
@@ -277,7 +277,7 @@ public class EmployeeDAO {
 			
 		} finally {
 			// 4. JDBC 객체 자원 반환 (생성 역순 권장)
-			close(rs);
+			close(rs);     
 			close(stmt);
 		}
 		// 5. 결과 실행
