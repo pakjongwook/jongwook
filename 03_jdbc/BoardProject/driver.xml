@@ -11,7 +11,7 @@
 	<!-- 각자 컴퓨터에 설치된 DB(18c) -->
 	<!-- entry key="url">jdbc:oracle:thin:@localhost:1521:XE</entry> 
 
-	<!-- 학원 DB 서버 -->
+	<! 학원 DB 서버 -->
 	<!-- <entry key="url">jdbc:oracle:thin:@115.90.212.22:9000:XE</entry> -->
 
 	<!-- kh 계정 -->
