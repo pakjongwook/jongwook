@@ -21,7 +21,7 @@ public class MemberView {
 	
 	private MemberService service = new MemberService();
 	
-	// ss
+	
 	
 	
 	/**
