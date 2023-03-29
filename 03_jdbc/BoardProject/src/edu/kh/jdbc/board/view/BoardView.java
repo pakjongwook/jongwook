@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import edu.kh.jdbc.board.model.dto.Board;
+import edu.kh.jdbc.board.model.dto.Comment;
 import edu.kh.jdbc.board.model.service.BoardService;
 import edu.kh.jdbc.common.Session;
 
@@ -15,6 +16,9 @@ public class BoardView {
 	
 	private BoardService boardService = new BoardService();
 //                       변수명 소문자 시작     연결되는 문자 --> 대문자
+	
+	// 댓글 화면 출력 객체
+	private CommentView commentView = new CommentView();
 	
 	
 	public void boardMenu() {
@@ -149,6 +153,37 @@ public class BoardView {
             System.out.println(board.getBoardContent());
             System.out.println("\n--------------------------------------------------------");
 			
+            
+            // *****************************************************************
+
+            /* 해당 게시글의 댓글 목록 조회*/
+            if(!board.getCommentList().isEmpty()) {
+                for(Comment c : board.getCommentList()) {
+                        System.out.printf("[댓글번호: %d]  작성자: %s  작성일: %s\n%s\n",
+                              c.getCommentNo(), c.getMemberName(), c.getCreateDate(), c.getCommentContent());
+                        System.out.println("--------------------------------------------------------");
+                     }
+             }
+            
+            
+            
+            
+            /* 댓글 메뉴 출력  */
+            commentView.commentMenu(input); // 게시글 번호(몇번 계시글)
+            // 1) 댓글 등록 - 누가 몇번 계시글에 작성하는가?
+            // 2) 댓글 수정 - 누가 몇번 계시글에있는 몇번 댓글을 수정할 것인가?
+            // 3) 댓글 삭제 - 누가 몇번 계시글에있는 몇번 댓글을 삭제할 것인가?
+            
+            // 누가 : Session.loginMember.getMemberNo()
+            
+            
+            
+            
+            // *****************************************************************
+            
+            
+            
+            
             // 로그인한 회원이 작성한 게시글일 경우
             // 게시글 수정/삭제 기능 노출
             
@@ -308,7 +343,7 @@ public class BoardView {
 				
 				// 등록된 게시글 상세 조회 서비스 호출
 				// -> 게시글 번호, 로그인 회원 번호 (Session)
-				Board board = boardService.selectBoard(result, Session.loginMember.getMemberNO());;
+				Board board = boardService.selectBoard(result, Session.loginMember.getMemberNO());
 														// 등록된 게시글 번호, 회원 번호
 				
 				System.out.println("--------------------------------------------------------");
@@ -330,7 +365,6 @@ public class BoardView {
 		
 		
 	}
-	
 	
 	
 	

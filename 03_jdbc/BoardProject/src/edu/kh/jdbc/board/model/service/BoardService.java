@@ -7,13 +7,17 @@ import java.sql.Connection;
 import java.util.List;
 
 import edu.kh.jdbc.board.model.dao.BoardDAO;
+import edu.kh.jdbc.board.model.dao.CommentDAO;
 import edu.kh.jdbc.board.model.dto.Board;
+import edu.kh.jdbc.board.model.dto.Comment;
 
 // 데이터을 가공 (새로운 데이터을 가공..)
 // 트랜잭션 처리
 public class BoardService {
 	
 	private BoardDAO dao = new BoardDAO();
+	
+	private CommentDAO commentDao = new CommentDAO();
 
 	/** 게시글 목록 조회 서비스
 	 * @return
@@ -48,6 +52,17 @@ public class BoardService {
 		
 		// 3. 게시글이 조회된 경우
 		if(board != null) {
+			
+			// *************************************************************
+			// ** 해당 게시글에 대한 목록 조회 DAO 호출 **
+			List<Comment> commentList = commentDao.selectCommentList(conn,input); // input 게시글 번호 
+			
+			// board에 댓글 목록 세팅
+			board.setCommentList(commentList); // 두번째 단어 부터 대문자
+			
+			
+			
+			// *************************************************************
 			
 			// 4. 조회수 증가
 			// 단, 게시글 작성자와 로그인한 회원이 다를 경우에만 증가
