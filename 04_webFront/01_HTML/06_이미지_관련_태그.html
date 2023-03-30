@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06_이미지_관련_태그</title>
+</head>
+<body>
+    <h1>img 태그</h1>
+
+    <pre>
+        - 웹 문서에서 사진이나 그림 같은 이미지를 삽입하는 용도의 태그 <!-- 99p-->
+
+        [속성]
+
+        1. src : 삽입할 이미지의 경로를 작성하는 속성(파일 경로,웹 주소)
+
+        2. width / height : 이미지 크기(px, %)
+
+        3. alt (대안) : 이미지의 설명을 작성하는 속성
+                    -> 이미지가 출력되지 않는 경우 화면에 표시됨
+                        + 웹 접근성(스크린 리더가 이미지 설명을 읽어줌)
+
+    </pre>
+
+    <hr>
+    <!-- 절대 경로 : 변하지 않는 하나의 기준점으로 부터 목표까지의 경로 -->
+    <!-- 라이브 서버로 확인 불가!!! , 직접 html 파일 열어서 확인! -->
+    <img src="C:\workspace\04_webFront\images (1)\cats\cat1.jpg" 
+        alt="cat1.jpg 이미지"> 
+
+    
+        <hr>
+
+        <!-- 상대 경로 : 현재 파일 위치로 부터 목표까지의 경로 -->
+        <!--
+            .. : 상위 폴더로 이동
+
+        -->
+        <img src="../images (1)/dogs/dog1.jpg" alt="">
+
+
+        <hr>
+
+        <!-- 웹 주소-->
+        <img src="data:image/jpeg;base64,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">
+        
+
+        <hr> <!-- 가로줄 긋기-->
+
+        <h2>고정 크기 단위(px) - 항상 지정된 크기를 지님</h2>
+        <!-- px, pt-->
+
+        <img src="../images (1)/cats/cat1.jpg" width="300px" height="240px">
+        <img src="../images (1)/cats/cat2.jpg" width="300px" height="240px">
+        <img src="../images (1)/cats/cat3.jpg" width="300px" height="240px">
+        <img src="../images (1)/cats/cat4.jpg" width="300px" height="240px">
+        <img src="../images (1)/cats/cat5.jpg" width="300px" height="240px">
+
+
+        <hr>
+
+        <h2>가변 크기 단위(%) - 화면 또는 영역에 대한 상대적인 크기 단위</h2>
+        <!-- %, em, rem, vh, vw -->
+
+        <img src="../images (1)/flowers/flower1.jpg" width="15%" height="240px">
+        <img src="../images (1)/flowers/flower2.jpg" width="15%" height="240px">
+        <img src="../images (1)/flowers/flower3.jpg" width="15%" height="240px">
+        <img src="../images (1)/flowers/flower4.jpg" width="15%" height="240px">
+        <img src="../images (1)/flowers/flower5.jpg" width="15%" height="240px">
+</body>
+</html>
