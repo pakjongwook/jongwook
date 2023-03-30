@@ -57,7 +57,7 @@ public class CommentView {
 			// 2-2) !wq가 입력될 때 까지 내용 입력 후
 			// 댓글번호, 내용을 이용해 댓글을 수정하는 서비스 호출 (UPDATE)
 
-//	            case 3: deleteComment(boardNo); break; // 댓글 삭제
+	            case 3: deleteComment(boardNo); break; // 댓글 삭제
 			// 1) 해당 댓글이 현재 게시글의 댓글이며
 			// 로그인한 회원이 쓴 댓글이 맞는지 확인하는 서비스 호출
 
@@ -153,6 +153,7 @@ public class CommentView {
 			comment.append(str);
 			comment.append("\n"); // 줄바꿈을 추가
 		}
+		
 		int input = 0;
 		try {
 			int c = CommentService.commentNo(commentNo); // service 로 댓글번호 전달
@@ -179,7 +180,60 @@ public class CommentView {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	// 1) 해당 댓글이 현재 게시글의 댓글이며
+	// 로그인한 회원이 쓴 댓글이 맞는지 확인하는 서비스 호출
+
+	// 2-1) 1번 결과가 맞지 않으면
+	// "작성한 댓글만 삭제할 수 있습니다" 출력
+
+	// 2-2) 맞으면 "정말로 삭제 하시겠습니까?(Y/N) : " 출력 후
+	// Y 입력 시 : 삭제 서비스 호출(댓글번호)
+	// N 입력 시 : "취소되었습니다";
+
+	
+	/** 댓글 삭제
+	 * @param boardNo
+	 */
+	private void deleteComment(int boardNo) {
+		System.out.println("\n===== 댓글 삭제=====\n");
+		System.out.println("수정할 댓글 번호 : ");
+		int input = sc.nextInt();
+		while(true) {
+			System.out.println("정말 삭제 하냐?");
+			char check = sc.next().toUpperCase().charAt(0);
+			
+			if(check == 'N') {
+				System.out.println("[삭제 취소]");
+				
+			} 
+			
+			if(check != 'Y') {
+				System.out.println("[잘못 입력함]");
+				continue;
+			}
+			break;
+		}
 		
+		
+		try {
+			
+			
+			int result = CommentService.deleteComment(input); // 값을 선언 해주는 것이기 떄문에 {} 삭제
+				
+				if(result >0) {
+					System.out.println("\n===== 삭제 되었습니다 ======\n");
+				}else {
+					System.out.println("\n**** 삭제 실패 ****\n");
+				}
+				
+			
+			
+		}catch(Exception e) {
+			System.out.println("\n**** 댓글 삭제 중 예외 발생 ****\n");
+			e.printStackTrace();
+		}
 		
 	}
 

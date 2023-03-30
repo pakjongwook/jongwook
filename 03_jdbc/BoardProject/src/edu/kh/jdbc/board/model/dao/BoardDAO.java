@@ -54,11 +54,11 @@ public class BoardDAO {
 		
 			// SQL 수행 후 결과 반환 받기
 			stmt = conn.createStatement(); // DB에 전달한 데이터 통로 만들기
-			rs = stmt.executeQuery(sql);
+			rs = stmt.executeQuery(sql); // rs 값을 꺼내와야 함 
 			
 			
 			// 1행 씩 접근하여 컬럼 값을 얻어와 옮겨담기
-			while(rs.next()) {
+			while(rs.next()) { // rs의 값을 꺼내옴
 				int boardNo = rs.getInt("BOARD_NO");
 				String boardTitle = rs.getString("BOARD_TITLE");
 				String memeberName = rs.getString("MEMBER_NM");

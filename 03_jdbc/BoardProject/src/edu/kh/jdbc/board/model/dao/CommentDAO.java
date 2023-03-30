@@ -204,4 +204,30 @@ public class CommentDAO {
 		return comm;
 	}
 
+	/** 댓글 삭제 SQL 수행
+	 * @param conn
+	 * @param boardNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int deleteComment(Connection conn, int boardNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteComment");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
 }

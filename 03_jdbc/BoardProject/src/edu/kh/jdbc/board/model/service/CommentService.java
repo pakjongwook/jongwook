@@ -85,7 +85,7 @@ public class CommentService {
 		return result;
 	}
 
-	/** 현재 댓글 확인
+	/** 현재 댓글 확인 서비스
 	 * @param boardNo
 	 * @return
 	 * @throws Exception
@@ -102,6 +102,23 @@ public class CommentService {
 		close(conn);
 		
 		return comm;
+	}
+
+	/** 댓글 삭제 서비스
+	 * @param boardNo
+	 * @return
+	 * @throws Exception
+	 */
+	public static int deleteComment(int boardNo) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = commentDao.deleteComment(conn,boardNo);
+		
+		if(result>0) commit(conn);
+		else 		 rollback(conn);
+		
+		return result;
 	}
 	
 	

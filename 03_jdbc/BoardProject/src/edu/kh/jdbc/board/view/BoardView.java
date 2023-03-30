@@ -280,7 +280,7 @@ public class BoardView {
 			
 			if(check != 'Y') {
 				System.out.println("[잘못 입력하셨습니다]");
-				continue; // continue
+				continue; // continue : 해당 if을 실행하고 종료 
 			}
 			
 			break; // check == 'Y' 인 경우
