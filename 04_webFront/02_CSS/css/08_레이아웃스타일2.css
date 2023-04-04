@@ -85,7 +85,7 @@
             /* 상하 좌우 */
     /* margin : auto  auto; */
     /* margin : 100px  auto; */
-    margin : 100px 200px  /*100+100*/
+    margin : 100px 200px  /*좌100+100 우100+100  가운데사각형 100*/
 
     /* margin : auto :  
         -> 다른 요소와의 간격을 자동으로 계산해서
