@@ -16,7 +16,7 @@ p[name='name-1'] {background-color: lightgreen;}
 
 /* class 속성 값이 name-test인 요소 중
     name 속성 값이 name-2인 요소만 선택 */
-.name-test[name='name-2']{color: whitesmoke;}
+.name-test[name='name-2']{color: tomato;}
 
 /* 자식 선택자 */
 
