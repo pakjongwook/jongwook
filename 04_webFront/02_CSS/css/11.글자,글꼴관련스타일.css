@@ -1,0 +1,58 @@
+/* color 속성 */
+#colorList>li{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+#colorList > li:nth-child(1){color : red}
+#colorList > li:nth-child(2){color :rgb(50, 80,150)}
+#colorList > li:nth-child(3){color :rgba(255, 0, 0, 0.5)}
+#colorList > li:nth-child(4){color :#abc}
+#colorList > li:nth-child(5){color :#8918F5}
+#colorList > li:nth-child(6){color :hsl(189, 76%, 33%)}
+#colorList > li:nth-child(7){color :hsla(100, 69%, 30%, 0.5)}
+
+
+#decorationList > li:nth-child(1){text-decoration: overline;}
+#decorationList > li:nth-child(2){text-decoration: line-through;}
+#decorationList > li:nth-child(3){text-decoration: underline;}
+#decorationList > li:nth-child(4) > a{text-decoration: none;}
+
+
+/* text-align */
+#alignTest>p:nth-child(1){text-align: left;}
+#alignTest>p:nth-child(2){text-align: right;}
+#alignTest>p:nth-child(3){text-align: center;}
+#alignTest>p:nth-child(4){text-align: justify;}
+
+/* line-height */
+#line-height{ line-height: 30px;}
+
+/* letter-spacing */
+#letterSpacing{ letter-spacing: -30px;}
+
+/* font-family */
+#fontFamily>li:nth-child(1){ font-family: '궁서';}
+#fontFamily>li:nth-child(2){ font-family: '궁서체';}
+#fontFamily>li:nth-child(3){ font-family: '동현체','궁서체';}
+#fontFamily>li:nth-child(4){ font-family: 'East Sea Dokdo', cursive;}
+
+@font-face {
+    font-family: 'ClimateCrisisKR-1979';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/ClimateCrisisKR-1979.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+#fontFamily>li:nth-child(5){font-family: 'ClimateCrisisKR-1979';}
+
+/* 다운 받은 폰트 적용 */
+@font-face{
+    font-family: 'Gugi';
+    src: url('NanumMyeongjo-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#fontFamily>li:nth-child(6){font-family: 'Gugi';}
