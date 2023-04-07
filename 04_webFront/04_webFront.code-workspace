@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "H:/Do it! HTML+CSS+자바스크립트 웹 표준의 정석_본문_예제소스_220311/07"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "04_webFront"
+	}
+}

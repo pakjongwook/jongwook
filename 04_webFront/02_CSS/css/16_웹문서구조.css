@@ -27,7 +27,7 @@ header{
     height: 200px;
     display: flex;
     
-    flex-direction: row;
+    flex-direction: row; /*중심축 : 가로 방향*/
 }
 
 header > section:nth-child(1){
@@ -116,7 +116,7 @@ nav{
 
     top : 0;  /* 최상단에 붙임 */
     background-color: white;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid black; /*테두리 하단 두께*/
 }
 
 nav >ul{
