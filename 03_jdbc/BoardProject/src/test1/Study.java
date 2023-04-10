@@ -29,9 +29,8 @@ public class Study {
 		System.out.println(Arrays.toString(answer));
 	}
 	
-	public void study2() {
-		
-	}
+	
+	
 }
 
 	
