@@ -154,6 +154,7 @@ function typeTest(){
         // function (* 함수도 자료형이다!!! *)
         const sumFn = function(n1, n2){ return n1 + n2; };
         // sumFn 합계를 구하는 함수
+        // function 함수명(){}
         box.innerHTML += "<br>sumFn : " + sumFn + " / "+ typeof sumFn;
 
         // 함수명만 작성 : 함수에 작성된 코드가 그대로 출력
