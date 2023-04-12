@@ -146,16 +146,29 @@ const opList = document.getElementsByClassName("op");
 //     result.innerText = Number(test1.value) / Number(test2.value);
 // });
 
-const box = document.getElementsByClassName("box");
-const color = document.getElementsByClassName("color");
+const boxList = document.getElementsByClassName("box");
+const colorList = document.getElementsByClassName("color");
 
-for(let i = 0; i < color.length; i++){ // i == 0~4
-    color[i].addEventListener("keyup", function(){ // keyup(손을 땔때) 이벤트가 발생 
-        box[i].style.backgroundColor = color[i].value; // box[i]번째와 color[i]가 같을 때 배경색을 변경하겠다.
+for(let i = 0; i < colorList.length; i++){ // i == 0~4
+    colorList[i].addEventListener("keyup", function(){ // keyup(손을 땔때) 이벤트가 발생 
+        boxList[i].style.backgroundColor = colorList[i].value; // box[i]번째와 color[i]가 같을 때 배경색을 변경하겠다.
     });
 }
 
-// for(let color of color){
+// 둘다 0 ~ 4 인덱스
+
+// for(let i=0  ; i< boxList.length ; i++){ // i == 0 ~ 4
+
+//     // input 태그 i번째에 키가 올라올 때 == 입력된 후
+//     colorList[i].addEventListener("keyup", function(e){
+//         // e.target == keyup이 발생한 input 요소
+
+//         // boxList[i].style.backgroundColor = e.target.value;
+//         boxList[i].style.backgroundColor = colorList[i].value;
+//     })
+// }
+
+// for(let color of colorList){
 //     color.addEventListener("keyup", function(e){ 
 //         // previousElementSibling : 이전 형제 요소
 //         e.target.previousElementSibling.style.backgroundColor = e.target.value;
