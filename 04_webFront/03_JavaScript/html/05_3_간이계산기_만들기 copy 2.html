@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_3_간이계산기_만들기</title>
+</head>
+<body>
+    두 수를 입력 받아 버튼에 작성된 연산을 수행하는 계산기 만들기
+    <!-- 
+        if, for, while, switch, break, continue
+     -->
+    
+     <hr>
+     
+     첫 번째 값 : <input type="text" id="test1"> <br>
+     두 번째 값 : <input type="text" id="test2"> <br>
+    
+     <!-- 매개변수 this는 무엇일까?
+        this == 클릭된 버튼(요소)
+
+        -> this는 이벤트가 발생한 요소 자체를 나타냄
+    -->
+     <button onclick="calculate(this)">+</button>
+     <button onclick="calculate(this)">-</button>
+     <button onclick="calculate(this)">*</button>
+     <button onclick="calculate(this)">/</button>
+     <button onclick="calculate(this)">%</button>
+
+     <br><br>
+     계산 결과 : <span id="result"></span>
+     
+    <script>       /* 매게변수 작성*/
+        function calculate(op){
+          // console.log(op.innerText); // this 가 무엇인지
+                                    // 버튼 별로 써져있는 내용을 읽어옴
+            
+            // 함수가 호출되는 시점에 input에 작성된 값을 얻어와 number로 변경
+            const test1 = Number(document.getElementById("test1").value);
+            const test2 = Number(document.getElementById("test2").value);
+
+            // const 상수을 넣어야 하는 함수 -> 값을 바로 대입해야되서 let을 사용 
+            // 결과 저장용 변수
+            let result ;
+            switch(op.innerText){
+                case '+': result = test1 + test2; break;
+                case '-': result = test1 - test2; break;
+                case '*': result = test1 * test2; break;
+                case '/': result = test1 / test2; break;
+                case '%': result = test1 % test2; break;
+            }
+
+            // id가 result인 요소의 내용으로 계산 결과(result 변수) 값 대입
+            document.getElementById("result").innerText = result;
+        }
+     
+     </script>
+
+</body>
+</html>
