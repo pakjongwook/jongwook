@@ -1,0 +1,26 @@
+code{
+    color: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#btn1{
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    border: 1px solid black;
+    /* text-align: center; 글자만 가운데 */
+    /* 글자는 정가운데 배치 */
+    display: flex;
+    /* flex :   요소 정렬되는 방향, 순서, 요소간의 간격을 
+                하나하나 수치적으로 처리하지 않아도 
+                알아서 유연하게 처리해주는 형식*/
+    justify-content: center;
+    /* justify-content :  */
+    align-items: center;
+    /* align-items : 교차축 기준으로 정렬(중심축 전체 이동) */
+    /* 블록처리(드레그) 불가 */
+    user-select: none;
+    cursor: pointer;
+}
