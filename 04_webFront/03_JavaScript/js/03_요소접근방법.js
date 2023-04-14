@@ -31,7 +31,7 @@ function accessClass(){
 
     // 배열.length : 배열 길이
     // 배열[i] : i번 인덱스 요소
-    // lenght 오류 확인
+    // length 오류 확인
     for (var i = 0; i < div2Arr.length; i++){
         div2Arr[i].style.backgroundColor = "rgb(135, 70, "+(i*100)+")";
     }                                                     // 인덱스 i 번째의 색을 변경하기위해 *100을 사용
