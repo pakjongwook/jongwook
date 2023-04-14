@@ -20,8 +20,8 @@
     justify-content: center;
     /* flex-direction: column; 열방향으로 정렬 */
 
-    justify-content: space-around;
-    justify-content: space-evenly;
+    justify-content: space-around; /*일정한*/
+    justify-content: space-evenly; /*동일한*/
     justify-content: space-between;
     
     /*  align-items : 교차축을 기준으로 item정렬 */
