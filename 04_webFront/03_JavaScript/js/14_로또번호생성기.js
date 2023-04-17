@@ -9,7 +9,6 @@ createBtn.addEventListener('click', () => {
     //         0 ,1,2,3,4,5
     while(arr.length <6) { // arr에 저장된 값이 6개 미만인 경우 반복
         const random = Math.floor(random() * 45 +1); // 난수 생성
-        
         // arr 요소 중 중복되는 값 제거
         // == arr 요소 중 중복되는 값이 있으면 push를 안하겠다
         // == arr 요소 중 중복되는 값이 없으면 push를 하겠다
