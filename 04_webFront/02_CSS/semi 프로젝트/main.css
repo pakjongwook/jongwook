@@ -2,8 +2,69 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    background-color: rgb(245, 245, 245);
   }
 
+
+.init{
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+
+.frame{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo h2{
+  font-size: 50px;
+  font-weight: 700;
+  color: rgb(35, 60, 235);
+  padding: 30px;
+  margin: auto;
+}
+
+.logo h3{
+  margin-right: 30px;
+  margin-left: 20px;
+}
+
+.authentication{
+  background-color: white;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.login{
+  border-radius: 8px;
+  padding: 25px;
+  text-align: center;
+}
+
+.login input{
+  font-size: 25px;
+  line-height: 50px;
+}
+
+.login submit{
+  font-size: 25px;
+  width: 275px;
+  background-color: #1877f2;
+  color: #fff;
+}
+.login.signup {
+  font-size: 25px;
+  background-color: #0ae728;
+  color: #fff;
+  padding-left: 25px;
+  padding-right: 25px;
+}
   
 
 
