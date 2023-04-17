@@ -42,6 +42,7 @@
 }
 
 .login{
+  background-color: #fff;
   border-radius: 8px;
   padding: 25px;
   text-align: center;
@@ -52,7 +53,7 @@
   line-height: 50px;
 }
 
-.login submit{
+ .submit2{
   font-size: 25px;
   width: 275px;
   background-color: #1877f2;
