@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+                                // HttpServlet 을 상속해야함
 public class ExampleController1 extends HttpServlet { // 클래스 : 첫글자는 대문자 연결된 단어도 첫글자도 대문자
 	
 	// doGet() 메서드
