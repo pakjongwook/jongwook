@@ -24,14 +24,19 @@ createBtn.addEventListener('click', () => {
             
             // active 클래스가 있다면 제거
             if (e.target.classList.contains('active')) {
-                e.target.classList.remove('active');
+                // e.target.classList.remove('active');
+                e.target.classList.togle('active');
             }else {
                 // active 클래스기 없으면 추가
-                e.target.classList.add('active');
+                // e.target.classList.add('active');
+                if(document.getElementsByClassName('active').length >=6){
+                    alert("6개 까지만 선택할 수 있습니다")
+                }else{
+                    e.target.classList.toggle('active');
+                }
             }
         });
         // 로또판에 innerDiv 추가
         lottoBoard.append(innerDiv);
     }
-
 });
