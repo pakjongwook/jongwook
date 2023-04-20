@@ -52,6 +52,14 @@ public class ELTestController extends HttpServlet{
 		 
 		 req.setAttribute("book", book);
 		 
+		 List<String> list1 = null;				 // null
+		 List<String> list2 = new ArrayList<>(); // 비어있음
+		 
+		 req.setAttribute("list1", list1);
+		 req.setAttribute("list2", list2);
+		 
+		 
+		 
 		 
 		 // 요청 위임(forward) 구문 작성
 		 RequestDispatcher dispatcher
