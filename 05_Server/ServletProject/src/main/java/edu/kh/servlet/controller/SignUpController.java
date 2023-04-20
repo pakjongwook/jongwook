@@ -48,9 +48,9 @@ public class SignUpController extends HttpServlet{
 		
 		
 		RequestDispatcher dispatcher
-			= req.getRequestDispatcher("/WEB-INF/views/result.jsp");
+			= req.getRequestDispatcher("/WEB-INF/views/result.jsp"); // jsp의 경로
 		
-		dispatcher.forward(req, resp);
+		dispatcher.forward(req, resp); // req :  요청 정보를 담고 있는 객체   resp : 서버가 클라이언트한테 응답하는 방법을 담고 있는 객체
 		
 		
 		

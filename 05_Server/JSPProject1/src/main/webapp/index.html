@@ -28,5 +28,71 @@
     
     <a href="/test/result">페이지 이동</a>
 
+    <hr>
+
+    <h1>피자 주문하기</h1>
+
+    <form action="/pizzaOrder" method="POST">
+        <!-- POST : 전달되는 값이 주소에 없고 http body에 숨겨줘서 넘어온다. -->
+
+            피자 :
+            <select name="pizza">
+                <option value="1">치즈피자(8000)</option>
+                <option value="2">콤피네이션 피자(9000)</option>
+                <option value="3">핫치킨 피자(10000)</option>
+            </select>
+
+            <br><br>
+
+            사이즈 <br>
+            <label>
+                R <input type="radio" name="size" value="R">
+            </label>
+            <label>
+                L <input type="radio" name="size" value="L">
+            </label>  <!-- for가 없어도 label 다 연결됨-->
+
+            <br><br>
+
+            수량 : 
+            <button id="minus" type="button">-</button>
+            <span id="amount">0</span>
+            <button id="plus" type="button">+</button>
+
+            <input type="hidden" name="amount" value="0"> 
+            
+            <br><br>
+            <button>주문하기</button>
+    </form>
+
+    <script>
+        const plus = document.getElementById("plus");
+        const minus = document.getElementById("minus");
+        const amount = document.getElementById("amount");
+
+        const input = document.querySelector("[name='amount']");
+        // name 속성값이 amount가 있는데 그중에 첫 번째 요소을 얻어와라
+
+        // plus 버튼 클릭시 amount,input 1 증가
+        plus.addEventListener("click",()=>{
+            amount.innerText++;
+            input.value = amount.innerText;
+        });
+
+        // minus 버튼 클릭시 amount,input 1 감소
+        minus.addEventListener("click",()=>{
+            
+            // 만약 수량이 0이면 이벤트 핸들러 종료
+            if(amount.innerText == 0)return;
+            
+            amount.innerText--;
+            input.value = amount.innerText;
+        });
+
+
+    </script>
+
+
+
 </body>
 </html>
