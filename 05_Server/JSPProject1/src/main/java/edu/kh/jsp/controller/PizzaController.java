@@ -58,7 +58,7 @@ public class PizzaController extends HttpServlet {
 		if(size.equals("L")) price += 2000;
 		
 		// price에 amount값 곱하기
-		price *= Integer.parseInt("amount");
+		price *= Integer.parseInt(amount); // amount은 숫자
 		
 		// req에 pizzaName, price를 속성으로 추가
 		req.setAttribute("pizzaName", pizzaName);  // "pizzaName(String)" , 핫치킨, 치즈피자... 
