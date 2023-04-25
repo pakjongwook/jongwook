@@ -4,95 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSP Project1</title>
+    <title>JSP 전용 언어/태그/객체</title>
 </head>
 <body>
-    <h1>로그인 테스트</h1>
-    <pre>
-        입력된 ID/PW가 user01/pass01이면 로그인 성공
-        아니면 "아이디 또는 비밀번호가 일치하지 않습니다" 출력
-    </pre>
-    
-    <form action="/login" method="POST">
+    <ul>
+        <!-- 절대 경로 (최상위 주소 / 기준으로 작성) -->
+        <li><a href="/elTest">EL (Expression Language)</a></li>
 
-        ID : <input type="text" name="id"> <br>
-        pw : <input type="password" name="pw"> <br>
-        <button>Login</button>
-    </form>
+        <!-- 상대 경로 (현재 주소(위치)를 기준으로 작성) -->
+        <li><a href="scope">Servlet/JSP 내장 객체와 범위(scope)</a></li>
+                <!-- 차이점 : / -->
 
-    <hr>
-
-    <h1>a 태그 클릭 시 화면 전환하기</h1>
-
-    <h3 style="color: red;">a, js코드(location) 요청은 모두 GET 방식</h3>
-    
-    <a href="/test/result">페이지 이동</a>
-
-    <hr>
-
-    <h1>피자 주문하기</h1>
-
-    <form action="/pizzaOrder" method="POST">
-        <!-- POST : 전달되는 값이 주소에 없고 http body에 숨겨줘서 넘어온다. -->
-
-            피자 :
-            <select name="pizza">
-                <option value="1">치즈피자(8000)</option>
-                <option value="2">콤피네이션 피자(9000)</option>
-                <option value="3">핫치킨 피자(10000)</option>
-            </select>
-
-            <br><br>
-
-            사이즈 <br>
-            <label>
-                R <input type="radio" name="size" value="R">
-            </label>
-            <label>
-                L <input type="radio" name="size" value="L">
-            </label>  <!-- for가 없어도 label 다 연결됨-->
-
-            <br><br>
-
-            수량 : 
-            <button id="minus" type="button">-</button>
-            <span id="amount">0</span>
-            <button id="plus" type="button">+</button>
-
-            <input type="hidden" name="amount" value="0"> 
-            
-            <br><br>
-            <button>주문하기</button>
-    </form>
-
-    <script>
-        const plus = document.getElementById("plus");
-        const minus = document.getElementById("minus");
-        const amount = document.getElementById("amount");
-
-        const input = document.querySelector("[name='amount']");
-        // name 속성값이 amount가 있는데 그중에 첫 번째 요소을 얻어와라
-
-        // plus 버튼 클릭시 amount,input 1 증가
-        plus.addEventListener("click",()=>{
-            amount.innerText++;
-            input.value = amount.innerText;
-        });
-
-        // minus 버튼 클릭시 amount,input 1 감소
-        minus.addEventListener("click",()=>{
-            
-            // 만약 수량이 0이면 이벤트 핸들러 종료
-            if(amount.innerText == 0)return;
-            
-            amount.innerText--;
-            input.value = amount.innerText;
-        });
-
-
-    </script>
-
-
-
+        <li><a href="jstl/main">JSTL JSP 라이브러리</a></li>
+    </ul>
 </body>
 </html>
