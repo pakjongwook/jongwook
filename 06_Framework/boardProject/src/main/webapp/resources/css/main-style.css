@@ -441,7 +441,7 @@ label[for='headerMenuToggle']:hover {text-decoration: underline;}
 #headerMenuToggle:checked +div{ display: block;}
 
 /* 닉네임 클릭 시 보이는 메뉴 */
-.header-Menu{
+.header-menu{
     position: absolute;
     width: 100px;
     height: 80px;
@@ -450,18 +450,18 @@ label[for='headerMenuToggle']:hover {text-decoration: underline;}
     border: 1px solid black;
 }
 
-.header-Menu > a {
+.header-menu > a {
     display: flex;
     height: 50%;
     justify-content: center;
     align-items: center;
 }
 
-.header-Menu > a:first-child {
+.header-menu > a:first-child {
     border-bottom: 1px #ccc;
 }
 
-.header-Menu >a:hover{
+.header-menu >a:hover{
     background-color: #455ba8;
     color: white;
 }

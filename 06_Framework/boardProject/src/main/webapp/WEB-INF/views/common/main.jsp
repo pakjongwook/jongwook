@@ -14,18 +14,16 @@
 <body>
    
     <main>
-        
         <%-- header.jsp 추가(포함) --%>
+       
+        <%-- 다른 JSP 코드를 현재 위치에 포함 
+            webapp 부터의 jsp 경로를 작성 --%>
 
-        <%-- <jsp:include page="jsp파일경로" /> 
-        
-            - JSP 액션 태그 (jsp에 기본 내장된 태그)
-            - 다른 jsp 파일의 코드를 현재 위치에 추가(포함)
-            - jsp 파일 경로는 webapp 폴더를 기준으로 작성
-        --%>
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-        <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+
+       
         <section class="content">
             <section class="content-1">
                 
@@ -84,7 +82,7 @@
                     </label>
 
                     <article class="signup-find-area">
-                        <a href="#">회원가입</a>
+                        <a href="/member/signUp">회원가입</a>
                         <span>|</span>
                         <a href="#">ID/PW 찾기</a>
                     </article>
@@ -97,13 +95,13 @@
                     <c:otherwise>
                         <article class="login-area">
 
-                            <a href="#">
+                            <a href="/myPage/profile">
                                 <img src="/resources/images/user.png" id="memberProfile">
                             </a>
 
                             <div class="my-info">
                                 <div>                                                  
-                                    <a href="#" id="nickname">${sessionScope.loginMember.memberNickname}</a>
+                                    <a href="/myPage/info" id="nickname">${sessionScope.loginMember.memberNickname}</a>
 
                                     <a href="/member/logout" id="logoutBtn">로그아웃</a>
                                 </div>

@@ -13,6 +13,7 @@ import edu.kh.project.member.model.dto.Member;
 //	-> AOP는 spring-proxy를 이용해서 동작하는데
 //	이 때 Service 인터페이스가 필요하다!
 
+
 public interface MemberService {
 
 	/** 로그인 서비스
@@ -20,6 +21,13 @@ public interface MemberService {
 	 * @return email,pw가 일치하는 회원 정보 또는 null
 	 */
 	Member login(Member inputMember);
+
+	
+	/** 회원 가입 서비스(비밀번호 암호화 필요)
+	 * @param inputMember
+	 * @return result (0: 실패 , 1: 성공)
+	 */
+	int signUp(Member inputMember);
 	
 	
 	

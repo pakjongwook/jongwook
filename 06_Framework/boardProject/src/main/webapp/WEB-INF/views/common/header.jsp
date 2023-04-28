@@ -65,13 +65,13 @@
                     <c:otherwise>
                         <%-- 로그인 O --%>
                         <label for="headerMenuToggle">
-                            ${loginMember.memberNickname}  <i class ="fa-soild fa-caret-down"></i>
+                            ${loginMember.memberNickname}  <i class ="fa-solid fa-caret-down"></i>
                         </label>
                         
                         <input type="checkbox" id="headerMenuToggle">
 
                         <div class="header-menu">
-                            <a href="#">내정보</a>
+                            <a href="/myPage/info">내정보</a>
                         <a href= "/member/logout">로그아웃</a>
                     </c:otherwise>
                 </c:choose>
