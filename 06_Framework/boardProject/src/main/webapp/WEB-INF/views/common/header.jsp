@@ -10,7 +10,7 @@
    <header>
             <section>
                 <!-- 클릭 시 메인 페이지로 이동하는 로고 -->
-            <a href="#">
+            <a href="/">
                 <img src="/resources/images/logo.jpg" alt="로고" id="homeLogo"> 
                 <!-- id는 카멜표기법 -->
             </a>
@@ -51,9 +51,41 @@
                 </article>
 
             </section>
-            <section>
+            <section></section>
 
-            </section>
+            <%-- 우측 상단 드롭다운 메뉴 --%>
+            <div class="header-top-menu">
+                <c:choose>           
+                    <c:when test="${empty loginMember}">
+                      <!-- loginmember가 세팅된 session 에서 비어있다면-->
+                        <%-- 로그인 X --%>
+                        <a href="/"> 메인 페이지 </a> | <a href="/member/login">로그인 </a>
+                    </c:when>
+                
+                    <c:otherwise>
+                        <%-- 로그인 O --%>
+                        <label for="headerMenuToggle">
+                            ${loginMember.memberNickname}  <i class ="fa-soild fa-caret-down"></i>
+                        </label>
+                        
+                        <input type="checkbox" id="headerMenuToggle">
+
+                        <div class="header-menu">
+                            <a href="#">내정보</a>
+                        <a href= "/member/logout">로그아웃</a>
+                    </c:otherwise>
+                </c:choose>
+
+                
+
+                </div>
+                
+            
+            </div>
+
+
+
+
         </header>
         <!-- div block 형식이라 한줄 씩  -->
 
