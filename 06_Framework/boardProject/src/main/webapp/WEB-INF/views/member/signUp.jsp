@@ -34,7 +34,7 @@
                     <span class="required">*</span> 아이디(이메일)
                 </label>
 
-                <div class="signUp-input-area">
+                <div class="signUp-input-area">  
                     <input type="text" name="memberEmail" id="memberEmail" 
                     placeholder="아이디(이메일)" maxlength="30" autocomplete="off">
                     
@@ -156,6 +156,9 @@
         }).open();
     }
 </script>
+
+
+    <script src="/resources/js/member/signUp.js"></script>
 
 </body>
 </html>
