@@ -1,5 +1,115 @@
+main{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#insert{
+    position: absolute;
+    
+    top: 19%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    width: 500px;
+    height: 650px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    
+}
+
+#insert > *{box-sizing: border-box;}
+
+/* 가입하기 (맨위) insert2 폰트크기 */
+#insert2{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* 빠르고 쉽게 가입할 수 있습니다. */
 #cross{
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
+    font-size: 15px;
 }
+
+/* input (이름,성별..) 박스 크기 */
+.box>input{
+    margin-bottom: 10px;
+    width: 304px;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* input을 감싸고 있는 div의 display */
+
+#box1{
+    display: inline-block;
+}
+
+/* 연도 */
+.bir{
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 연도 선택 */
+#date>select{
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+}
+
+/* 성별 */
+.gender{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#choose{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#choose>input{
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+}
+
+
+
+
+
+
+
+/* 가입하기 버튼 */
+#btn{
+    display: block;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: rgb(61, 234, 61);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin : auto;
+    margin-top: 10px;
+}
+
+
+
+
 
