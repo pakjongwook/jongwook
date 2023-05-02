@@ -16,7 +16,9 @@ openBtn.addEventListener("click", () => {
 });
 
 // 닫기 버튼을 누르면 nav의 display가 none으로 변경
-closeBtn.addEventListener("click", function () {
+remove.addEventListener("click", function () {
     modal.style.display = "none";
 });
+
+
 

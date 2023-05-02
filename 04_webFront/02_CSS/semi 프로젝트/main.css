@@ -105,6 +105,12 @@
   padding-right: 25px;
   border-radius: 40%;
 }
+/* 새계정 배경색 */
+.create{
+  background-color:#fff;
+
+}
+
 
 /* 새 계정 만들기 */
 .signup{
@@ -122,6 +128,11 @@
 .signup:hover{
   background-color: #13671e;
 
+}
+
+/* modal 닫기 버튼 */
+#remove{
+  cursor: pointer;
 }
 
 
@@ -179,15 +190,25 @@ footer span{
   transform: translateX(-50%);
   width: 500px;
   height: 650px;
-  border: 1px solid black;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: whitesmoke;
   
+  
 }
 
 #insert > *{box-sizing: border-box;}
+
+/* 닫기 버튼 */
+#remove{
+  display: flex;
+  position: absolute;
+  top: 10px; 
+  right: 10px;
+}
+
 
 /* 가입하기 (맨위) insert2 폰트크기 */
 #insert2{
@@ -213,7 +234,7 @@ footer span{
 
 /* phone 화살표 제거 */
 #phone{
-  webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 
