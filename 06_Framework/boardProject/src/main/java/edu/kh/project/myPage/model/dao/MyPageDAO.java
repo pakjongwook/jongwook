@@ -46,8 +46,9 @@ public class MyPageDAO {
 		// Map 또는 DTO로 묶어서 전달
 		Member member = new Member();
 		member.setMemberNo(memberNo);
+		member.setMemberPw(newPw);
 		
-		return sqlSession.update("myPageMapepr.changePw",memberNo);
+		return sqlSession.update("myPageMapper.changePw",member); 
 	}
 
 	/** 회원 탈퇴 DAO

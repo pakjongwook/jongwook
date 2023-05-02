@@ -211,6 +211,12 @@ footer span{
   outline: none;
 }
 
+/* phone 화살표 제거 */
+#phone{
+  webkit-appearance: none;
+}
+
+
 /* input을 감싸고 있는 div의 display */
 
 #box1{
@@ -253,10 +259,6 @@ footer span{
 
 
 
-
-
-
-
 /* 가입하기 버튼 */
 #btn{
   display: block;
@@ -272,6 +274,7 @@ footer span{
   margin : auto;
   margin-top: 10px;
 }
+
 
 
 

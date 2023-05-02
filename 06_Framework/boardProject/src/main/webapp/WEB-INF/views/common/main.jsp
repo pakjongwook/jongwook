@@ -12,10 +12,10 @@
 
 </head>
 <body>
-   
+
     <main>
         <%-- header.jsp 추가(포함) --%>
-       
+    
         <%-- 다른 JSP 코드를 현재 위치에 포함 
             webapp 부터의 jsp 경로를 작성 --%>
 
@@ -23,7 +23,7 @@
 
 
 
-       
+    
         <section class="content">
             <section class="content-1">
                 
@@ -31,6 +31,11 @@
                 
                 ${sessionScope.loginMember}
 
+                <h3>닉네임이 일치하는 회원의 전화번호 조회</h3>
+
+                <input type="text" id="inputNickname">
+                <button id="btn1">조회</button>
+                <h4 id="result1"></h4>
 
 
             </section>
@@ -41,10 +46,10 @@
                         c:choose 내부에는 c:when, c:otherwise, jsp 주석만 작성 가능
 
                         c:when , c:otherwise 내부에는 다른 코드 작성 가능!!
-                     --%>
+                    --%>
                     <%-- EL empty 연산자 : 비어있거나 null 이면 true --%>
                     <c:when test="${empty sessionScope.loginMember}">
-                   
+                
                 <form action="/member/login" method="post" id="loginFrm">
                 <!-- method="post": 제출 되는 값이 주소에 안보임  -->
 
@@ -73,7 +78,7 @@
                         <c:if test="${not empty cookie.saveId.value}" >
                             <%-- 쿠키에 저장된 이메일이 있으면 save 변수 선언
                                     -> page scope (페이지 내에서 사용 가능, if문 끝나도 가능!)
-                             --%>
+                            --%>
                             <c:set var="save" value="checked"/>
                         </c:if>
                         
@@ -117,7 +122,7 @@
 
                 </c:choose>
 
-              
+                
 
             </section>
         </section>
