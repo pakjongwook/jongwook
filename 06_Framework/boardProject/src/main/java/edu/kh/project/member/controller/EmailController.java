@@ -15,11 +15,11 @@ import edu.kh.project.member.model.service.EmailService;
 
 @Controller
 @RequestMapping("/sendEmail")
-@SessionAttributes("authKey")
+@SessionAttributes("authKey") // session에 올리고 가져오는 역할
 public class EmailController {
     
-    @Autowired
-    private EmailService service;
+    @Autowired // 등록된 bean 중에서 자료형이 같은 객체를 자동으로 의존성 주입(대입) [참조 변수 wire 줄로 연결 serviceimpl의 객체를 쓰기 위해 사용] 
+    private EmailService service; 
     
     @GetMapping("/signUp")
     @ResponseBody

@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.project.member.model.dao.EmailDAO;
 
-@Service
+@Service 
 public class EmailServiceImpl implements EmailService {
 
     @Autowired
@@ -23,7 +23,7 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private JavaMailSender mailSender;
     
-    private String fromEmail = "ejck@naver.com";
+    private String fromEmail = "ejck@gmail.com";
     private String fromUsername = "수업용프로젝트";
 
     @Override
