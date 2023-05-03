@@ -173,3 +173,48 @@ AND MEMBER_DEL_FL ='N';
 
 
 
+-- 이메일로 회원 정보 조회
+SELECT MEMBER_NO, MEMBER_EMAIL,MEMBER_NICKNAME,MEMBER_TEL ,
+		MEMBER_ADDR,
+		TO_CHAR(ENROLL_DATE,'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE  
+FROM "MEMBER"
+WHERE MEMBER_EMAIL ='user01@kh.or.kr'
+AND MEMBER_DEL_FL ='N';
+
+
+-- 이메일이 일부라도 일치하는 모든회원 조회
+SELECT MEMBER_NO ,MEMBER_EMAIL ,MEMBER_NICKNAME 
+FROM "MEMBER" 
+WHERE MEMBER_DEL_FL ='N'
+AND MEMBER_EMAIL LIKE '%user%'
+ORDER BY MEMBER_NO ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
