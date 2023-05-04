@@ -42,7 +42,7 @@
                 <h3> 이메일을 입력 받아 일치하는 회원의 정보를 모두 조회</h3>
                 email : <input type="text" id="inputEmail">
                 <button id="btn2">조회</button>
-                <ul id="result2">
+                <ul id="result2">   
                 </ul>
 
                 <hr>

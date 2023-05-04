@@ -148,7 +148,7 @@ public class MemberController {
 						,@RequestHeader(value="referer")String referer
 						,@RequestParam(value="saveId",required=false) String saveId
 						, HttpServletResponse resp
-						, RedirectAttributes ra
+						, RedirectAttributes ra 
 						) {
 		
 		System.out.println(saveId);

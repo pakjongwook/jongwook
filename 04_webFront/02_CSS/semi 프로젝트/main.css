@@ -59,20 +59,28 @@
   padding: 25px;
   text-align: center;
   border-color: #ccc;
-  
 }
 
 .login input{
+  width: 340px;
   font-size: 22px;
   line-height: 50px;
-  border-radius: 6px;
+  border-radius: 7px;
   border: 0.5px solid #6f6d6d;
   outline: none;
 }
+.login input:hover{
+  border-width: 2px;
+  border-color : rgb(105, 105, 247)
+}
+
+
+
 
  .submit2{
   font-size: 22px;
-  width: 275px;
+  width: 340px;
+  height: 43px;
   background-color: #1877f2;
   color: #fff;
   border-radius: 6px;
@@ -195,8 +203,6 @@ footer span{
   justify-content: center;
   align-items: center;
   background-color: whitesmoke;
-  
-  
 }
 
 #insert > *{box-sizing: border-box;}
