@@ -117,6 +117,7 @@ nav{
     top : 0;  /* 최상단에 붙임 */
     background-color: white;
     border-bottom: 2px solid black; /*테두리 하단 두께*/
+    z-index: 1000; /* Z(가로)축으로 더 앞으로(쌓이는) 오는 것 */
 }
 
 nav >ul{
