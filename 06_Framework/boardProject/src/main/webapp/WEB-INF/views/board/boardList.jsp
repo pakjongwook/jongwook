@@ -5,8 +5,16 @@
 <c:set var="pagination" value="${map.pagination}"/>
 <c:set var="boardList" value="${map.boardList}"/>
 
-
+<%-- 
 <c:set var="boardName" value="${boardTypeList[boardCode-1].BOARD_NAME}"/>
+ --%>
+
+<c:forEach items="${boardTypeList}" var="boardType">
+    <c:if test="${boardType.BOARD_CODE == boardCode}" >
+        <c:set var="boardName" value="${boardType.BOARD_NAME}"/>
+    </c:if>
+</c:forEach>
+
 
 
 <!DOCTYPE html>
@@ -59,7 +67,7 @@
 						<!-- 게시글 목록 조회 결과가 있다면 -->
 
                         <c:forEach items="${boardList}" var="board">
-                       
+                                                                
                                 <tr>
                                     <td>${board.boardNo}</td>
                                     <td> 
@@ -68,7 +76,8 @@
                                             <img class="list-thumbnail" src="${board.thumbnail}">
                                         </c:if>
                                         <%-- ${boardCode} : @pathvariable로 request scope에 추가된 값 --%>
-                                        <a href="/board/${boardCode}/${board.boardNo}">${board.boardTitle}</a>   
+                                        <a href="/board/${boardCode}/${board.boardNo}?cp=${pagination.currentPage}">${board.boardTitle}</a>   
+                                                                                    <%-- 현재페이지(목록)으로 돌아오고 싶을때 --%>
                                         [${board.commentCount}]                        
                                     </td>
                                     <td>${board.memberNickname}</td>

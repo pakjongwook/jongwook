@@ -106,6 +106,7 @@
                 <c:forEach var="boardType" items="${boardTypeList}" >
                     <li>
                         <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                                                <%-- 키값이 컬럼값이기 때문에 대문자, a 태그는 get방식 --%>
                     </li>
 
                 </c:forEach>
