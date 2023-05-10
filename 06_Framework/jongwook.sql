@@ -642,7 +642,7 @@ WHERE BOARD_NO = 1507
 ORDER BY IMG_ORDER ;
 
 INSERT INTO BOARD_IMG 
-VALUES(SEQ_IMG_NO.NEXTVAL,'/resources/images/board/',
+VALUES(SEQ_IMG_NO.NEXTVAL,'/resources/images/board/', -- SEQ_IMG_NO.NEXTVAL IMG_NO 숫자 1씩 증가
 		'20230508115013_00002.jpg',
 		'cat2.jpg',
 		1,1507);
@@ -683,6 +683,19 @@ AND MEMBER_NO = 4; -- 로그인 회원 번호
 
 
 
+-- 좋아요 테이블 삽입
+INSERT INTO	"BOARD_LIKE"
+VALUES(1507, 4);
+
+
+
+-- 좋아요 테이블 삭제
+DELETE FROM "BOARD_LIKE" 
+WHERE BOARD_NO = 1507
+AND MEMBER_NO = 4;
+
+
+COMMIT;
 
 
 

@@ -1,5 +1,9 @@
 package edu.kh.project.myPage.model.service;
 
+import java.io.IOException;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import edu.kh.project.member.model.dto.Member;
 
 public interface MyPageService {
@@ -29,7 +33,19 @@ public interface MyPageService {
  * @param memberNo
  * @return result
  */
-int secession(String memberPw, int memberNo); 
+int secession(String memberPw, int memberNo);
+
+
+
+
+/** 프로필 이미지 수정
+ * @param profileImage
+ * @param webPath
+ * @param filePath
+ * @param loginMember
+ * @return result
+ */
+int updateProfile(MultipartFile profileImage, String webPath, String filePath, Member loginMember) throws IllegalStateException, IOException; 
 	 
 	
 }

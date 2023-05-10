@@ -119,7 +119,7 @@ public class MemberController {
 		
 		// DTO(또는 VO)와 같이 사용하는 어노테이션
 		// - 전달 받은 파라미터의 name 속성 값이
-		//   같이 사용되는 DTO의 필드명과 같다면
+		//   같이 사용되는 DTO의 필드명(memberEmail, memberPw)과 같다면
 		//   자동으로 setter를 호출해서 필드에 값을 세팅
 		
 		
