@@ -727,6 +727,76 @@ FROM(SELECT '웹접근경로' IMG_PATH, '변경명' IMG_RENAME, '원본명' IMG_
 ROLLBACK;
 
 
+-- 게시글 수정
+UPDATE "BOARD" SET
+BOARD_TITLE = #{boardTitle},
+BOARD_CONTENT  = #{boardContent},
+B_UPDATE_DATE  = SYSDATE 
+WHERE BOARD_CODE  = #{boardCode}
+AND BOARD_NO = #{boardNo}
+;
+
+
+-- 이미지 삭제
+DELETE FROM "BOARD_IMG"
+WHERE BOARD_NO  = #{boardNo}
+AND IMG_ORDER IN (${deleteList})  -- IN (1,2,3)
+;
+
+
+-- 이미지 수정
+UPDATE "BOARD_IMG" SET
+IMG_PATH  = #{imagePath}, -- 이미지 경로
+IMG_ORIGINAL = #{imageOriginal},-- 이미지 원본
+IMG_RENAME  = #{imageReName} -- 이미지 이름
+WHERE BOARD_NO = #{boardNo}	
+AND IMG_ORDER  = #{imageOrder}
+;
+
+SELECT * FROM "BOARD_IMG" ORDER BY 1;
+
+-- 이미지 삽입
+INSERT INTO "BOARD_IMG"
+VALUES(SEQ_IMG_NO.NEXTVAL, #{imagePath} , #{imageReName}, #{imageOriginal}, #{imageOrder}, #{boardNo})
+;
+
+
+
+UPDATE "BOARD" SET
+BOARD_DEL_FL = 'N';
+
+COMMIT ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

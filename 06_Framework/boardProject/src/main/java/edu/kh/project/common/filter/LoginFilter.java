@@ -22,7 +22,7 @@ import edu.kh.project.member.model.dto.Member;
 //				지정된 주소 요청이 올 때 마다 동작
 
 @WebFilter(filterName = "LoginFilter" , 
-			urlPatterns = {"/myPage/*"})
+			urlPatterns = {"/myPage/*","/board2/*"})
 public class LoginFilter implements Filter {
 
 	// 기본 생성자가 자동으로 생김 똑같은게 없으면
