@@ -191,7 +191,7 @@
 
             // JSP 해석 우선 순위 : Java/EL/JSTL > HTML, CSS ,JS
 
-            // 게시글 번호 전역 변수로 선언
+            // 게시글 번호 전역 변수로 선언 
             const boardNo = ${board.boardNo}; // 서버에서 1507로 나옴
 
             // 로그인한 회원 번호를 전역 변수로 선언
@@ -209,6 +209,8 @@
         </script>
 
     <script src="/resources/js/board/boardDetail.js"></script>
+
+    <script src="/resources/js/board/comment.js"></script>
 
 
 </body>
