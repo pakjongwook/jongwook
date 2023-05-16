@@ -113,8 +113,8 @@ public class MemberController {
 	
 //	@PostMapping("/login")
 	public String login(/*@ModelAttribute*/ Member inputMember) {
-		
-		
+									// 매개변수 memberEmail,memberPw 을 Member로  -> inputMember로 저장 -> ModelAttribute 생략 
+											
 		// 파라미터 전달 방법 3 : @ModelAttribute를 이용 방법
 		
 		// DTO(또는 VO)와 같이 사용하는 어노테이션
@@ -157,7 +157,7 @@ public class MemberController {
 		
 		// @RequestHeader(value="referer") String referer
 		// -> 요청 HTTP header에서  "referer"(이전주소) 값을 얻어와
-		// 매개 변수 String referer에 저장
+		// 매개 변수 String referer에 저장 (referer 은 브라우저의 관리자도구 -> 네트워크 -> 머리글)
 		
 		// Model : 데이터 전달용 객체
 		// -> 데이터를 K : v 형식으로 담아서 전달하려는 객체
