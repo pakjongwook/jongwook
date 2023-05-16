@@ -32,5 +32,25 @@ public class CommentServiceImpl implements CommentService{
 		return dao.insert(comment);
 	}
 	
+	// 댓글 삭제
+		@Transactional(rollbackFor = Exception.class)
+		@Override
+		public int delete(int commentNo) {
+			return dao.delete(commentNo);
+		}
+
+
+		// 댓글 수정
+		@Transactional(rollbackFor = Exception.class)
+		@Override
+		public int update(Comment comment) {
+			// XSS 방지 처리
+			comment.setCommentContent(Util.XSSHandling(comment.getCommentContent()));
+			return dao.update(comment);
+		}
+
+
+
+	
 	
 }

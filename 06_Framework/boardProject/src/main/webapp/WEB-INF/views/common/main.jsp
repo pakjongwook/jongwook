@@ -173,6 +173,9 @@
     <%-- footer --%>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+    <%-- 웹소캣 --%>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
     <!-- main.js 추가 -->
     <script src="/resources/js/main.js"></script>
 </body>
