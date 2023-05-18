@@ -22,7 +22,7 @@ public class BoardDAO2 {
 	 */
 	public int boardInsert(Board board) {
 		int result = sqlsession.insert("boardMapper.boardInsert",board);
-																// 주소(얕은 복사)
+																// 주소(얕은 복사)  : 주소만 담겨져 있는 복사
 		// -> sql 수행 후 매개변수 board 객체에는 boardNo 존재 O/X
 		
 		// 삽입 성공 시

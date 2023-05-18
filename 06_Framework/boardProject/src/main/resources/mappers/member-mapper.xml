@@ -79,7 +79,7 @@
 	<!-- 
 		insert,update, delete와 같은 DML 구문은
 		수행 결과가 항상 성공한 행의 개수(int 자료형)으로 고정
-		-> resultType을 작성하지 않는다!! (항상 int)  즉, select 구문은 int 형
+		-> resultType을 작성하지 않는다!! (항상 int)  
 	 -->
 	
 	<!-- 회원 가입 -->              <!-- "edu.kh.project.member.model.dto.member" -->
