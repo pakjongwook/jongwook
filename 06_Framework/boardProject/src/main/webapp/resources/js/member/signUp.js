@@ -427,7 +427,7 @@ checkAuthKeyBtn.addEventListener("click", function(){
 
 
 // 회원 가입 form 태그가 제출 되었을 때
-document.getElementById("signUpFrm").addEventListener("submit", e => {
+document.getElementBsignUpFrmyId("signUpFrm").addEventListener("submit", e => {
 
     // checkobj에 모든 value가 true인지 검사
 
