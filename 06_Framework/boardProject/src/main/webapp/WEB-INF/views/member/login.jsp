@@ -38,6 +38,9 @@
             <%-- 쿠키에 saveId가 있는 경우--%>
             <c:if test="${ !empty cookie.saveId.value}">
                 <%-- chk 변수 생성(page scope)--%>
+
+
+                
                 <c:set var="chk" value="checked"/>
             </c:if>
 
