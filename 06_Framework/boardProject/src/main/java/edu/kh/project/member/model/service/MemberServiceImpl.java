@@ -17,9 +17,6 @@ import edu.kh.project.member.model.dto.Member;
 		 // + Bean(스프링이 관리하는 객체) 등록하는 어노테이션
 public class MemberServiceImpl implements MemberService {
 	
-	// org.slf4j.Logger == factory                 (현재 클래스 이름.class)
-	private Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
-	
 	
 	// org.slf4j.Logger == factory                 (현재 클래스 이름.class)
 	private Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
