@@ -282,6 +282,10 @@ memberTel.addEventListener("input", () => {
     // 정규표현식으로 유형성 검사
     const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
 
+
+
+
+    
     // if(regEx.test(문자열))
     if (regEx.test(memberTel.value)) { // 유효
         telMessage.innerText = "유효한 전화번호 형식입니다.";
