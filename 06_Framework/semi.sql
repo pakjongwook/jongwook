@@ -95,13 +95,42 @@ SELECT TO_DATE('2023-05-25','YYYY-MM-DD') FROM DUAL;
 
 
 
-DELETE FROM "MEMBER" WHERE MEMBER_NO  = 314;
+DELETE FROM "MEMBER" WHERE MEMBER_NO  = 97;
 COMMIT ;
 
-SELECT * FROM BOARD ;
+SELECT * FROM "MEMBER"  ;
+
+INSERT INTO "MEMBER" 
+VALUES(
+	SEQ_MEMBER_NO.NEXTVAL, 	-- 회원번호
+	'@nate.com', 					-- 이메일
+	'$2a$10$DOTDled.2j4/7uWiWgsxGOBFSaLXaHGFpQdbJqFKIl3XWl84sMevG', 			-- 비밀번호
+	'안한수',	 					-- 이름
+	'01054112359',						-- 전화번호
+	DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
+	DEFAULT, 				-- 가입일(기본:SYSDATE)
+	NULL, 					-- 비활성화일
+	NULL, 					-- 탈퇴일
+	DEFAULT, 				-- 친구요청(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 개인피드설정(A:모두(기본), F:친구만, M:나만)
+	DEFAULT, 				-- 친구요청알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 친구신청수락알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 태그알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 게시글댓글알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 게시글좋아요알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 게시글공유알림(N:OFF, Y:ON(기본))
+	DEFAULT					-- 개인피드갱신알림(N:OFF, Y:ON(기본))
+);
 
 
+INSERT INTO "MEMBER_INFO" (MEMBER_NO)
+VALUES (SEQ_MEMBER_NO.CURRVAL);
 
+COMMIT;
+
+
+SELECT * FROM "MEMBER"
+WHERE MEMBER_NAME ='정대만';
 
 
 
