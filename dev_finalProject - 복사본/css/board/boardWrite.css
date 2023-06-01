@@ -1,0 +1,24 @@
+.title{
+    margin:30px 200px;
+}
+
+
+
+/* 댓글 제목  */
+.board--headerSearch{
+    margin : 0;
+    padding: 20px 0;
+
+}
+.board--headerSearch > input:hover {
+    background-color: #D9D9D9;
+    border-color: #0E00AA;
+}
+
+/* 댓글 제목 input */
+.boardTitle{
+    height: 41px;
+    width: 586px;
+    border-radius: 80px;
+    margin-left: 20px;
+}
