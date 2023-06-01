@@ -1,0 +1,83 @@
+/* 로그인 nav ----------------------------------------------- */
+
+/* 로그인 nav */
+.common--headerLoginNav {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 100px;
+    height: 30px;
+}
+
+/* 로그인, 회원가입 버튼 / 상호작용 */
+.common--headerLoginNav button {
+    border-radius: 20px;
+    border: none;
+    padding: 5px 10px 5px;
+    margin-right: 20px;
+}
+.common--headerLoginNav button:hover {
+    background-color: #8B89FF;
+    font-weight: bold;
+}
+
+/* header ----------------------------------------------- */
+
+/* header 위치 조정 */
+.common--header {
+    height: 120px;
+    padding: 0 300px 0;
+    display: grid;
+    grid-template-columns: 326px 652px 326px;
+    place-items: center;
+    margin-bottom: 30px;
+}
+
+/* 로고 크기 조정 */
+.common--headerLogo {
+    height: 100px;
+}
+
+/* header 검색창 조정 / 상호작용 */
+.common--headerSearch > input {
+    height: 30px;
+    width: 500px;
+    border-radius: 20px;
+    padding-left: 30px;
+}
+.common--headerSearch > input:hover {
+    background-color: #D9D9D9;
+    border-color: #0E00AA;
+}
+
+/* 검색 아이콘 조정 / 상호작용 */
+.common--headerSearch > i {
+    font-size: 25px;
+}
+.common--headerSearch > i:hover {
+    color: #0E00AA;
+}
+
+/* 계정정보 조정 */
+.common--headerAccount {
+    height: 70px;
+    width: 250px;
+    border-radius: 100px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    place-items: center;
+}
+.common--headerAccount > img {
+    height: 70px;
+    width: 70px;
+    border-radius: 40px;
+}
+
+/* nav ----------------------------------------------- */
+
+.common--headerNav {
+    height: 50px;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+}
