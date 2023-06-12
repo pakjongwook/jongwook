@@ -31,7 +31,7 @@
 		<property name="password" value="project1234 " /> -->
 		
 		<!-- 학원 계정 -->
-		<property name="url" value="jdbc:oracle:thin:@115.90.212.22:10000:ORCL" />
+		<property name="url" value="jdbc:oracle:thin:@115.90.212.18:10000:ORCL" />
 
 		<property name="username" value='"jongwook123"' />
 
