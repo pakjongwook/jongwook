@@ -34,7 +34,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping("/board")
 @Controller // controller 등록하고 bean 등록
 public class BoardController {
-	
+
 	// ctrl + shift + r => jakarta 로 전부 import
 	@Autowired
 	private BoardService service;
@@ -85,30 +85,29 @@ public class BoardController {
 	@GetMapping("/{boardCode:[0-9]+}") // 주소를 값으로 쓸 수 있게 하는 코드 [ boardCode는 1자리 이상 숫자 / + 1개이상->오로지 숫자만]
 	public String selectBoardList(@PathVariable("boardCode") int boardCode,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp // 요청 파라미터
-			, Model model
-			, @RequestParam Map<String, Object> paramMap // 파라미터 전부 다 담겨있음  
-			) {
+			, Model model, @RequestParam Map<String, Object> paramMap // 파라미터 전부 다 담겨있음
+	) {
 
 		// boardCode 확인
 		// System.out.println("boardCode : " + boardCode);
-		
-		if(paramMap.get("key") == null) { // 검색어가 없을 때(검색 X)
 
-		// 게시글 목록 조회 서비스 호출
-		Map<String, Object> map = service.selectBoardList(boardCode, cp);
+		if (paramMap.get("key") == null) { // 검색어가 없을 때(검색 X)
 
-		// 조회 결과를 request scope에 세팅 후 forward
-		model.addAttribute("map", map);
-		
-		}else {// 검색어가 있을 때(검색 O)
-			
+			// 게시글 목록 조회 서비스 호출
+			Map<String, Object> map = service.selectBoardList(boardCode, cp);
+
+			// 조회 결과를 request scope에 세팅 후 forward
+			model.addAttribute("map", map);
+
+		} else {// 검색어가 있을 때(검색 O)
+
 			paramMap.put("boardCode", boardCode);
-			
+
 			Map<String, Object> map = service.selectBoardList(paramMap, cp); // 오버로딩
-			
-			model.addAttribute("map",map);
+
+			model.addAttribute("map", map);
 		}
-		
+
 		return "board/boardList";
 	}
 
@@ -125,8 +124,8 @@ public class BoardController {
 			// 쿠키를 이용한 조회 수 증가에서 사용
 			, HttpServletRequest req // 쿠키에서 요청
 			, HttpServletResponse resp
-			
-			) throws ParseException {
+
+	) throws ParseException {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardCode", boardCode);
@@ -185,7 +184,7 @@ public class BoardController {
 				// 존재는 하나 현재 게시글 번호가
 				// 쿠키에 저장되지 않은 경우 (오늘 해당 게시글 본적 없음)
 				int result = 0; // ***** 위에 부분에 int 선언 해주어야지 result 오류 X
-				
+
 				if (c == null) {
 					// 쿠키가 존재 X -> 하나 새로 생성
 					c = new Cookie("readBoardNo", "|" + boardNo + "|");
@@ -257,26 +256,25 @@ public class BoardController {
 			path = "board/boardDetail"; // forward할 jsp 경로
 
 			model.addAttribute("board", board);
-			
+
 			// 게시글에 이미지가 있을 경우
-			if(board.getImageList().size() > 0) {
-				
+			if (board.getImageList().size() > 0) {
+
 				BoardImage thumbnail = null;
-				
+
 //				이미지리스트에 제일 앞 / 이미지의 순서가 0 인 경우 == 썸네일
-				if(board.getImageList().get(0).getImageOrder() == 0) {
+				if (board.getImageList().get(0).getImageOrder() == 0) {
 					thumbnail = board.getImageList().get(0);
-							
+
 				}
-				model.addAttribute("thumbnail" ,thumbnail); // 썸네일 없으면 null
-				
+				model.addAttribute("thumbnail", thumbnail); // 썸네일 없으면 null
+
 				// 썸네일이 있으면 start = 1
 				// 썸네일이 없으면 start = 0
-				model.addAttribute("start",thumbnail != null ? 1 : 0);
+				model.addAttribute("start", thumbnail != null ? 1 : 0);
 			}
-				
+
 //			if(!board.getImageList().isEmpty())
-			
 
 		} else { // 조회 결과가 없을 경우
 			path = "redirect:/board/" + boardCode;
@@ -292,18 +290,16 @@ public class BoardController {
 	@PostMapping("/like")
 	@ResponseBody // 반환되는 값이 비동기 요청한 곳으로 돌아가게 함
 	public int like(@RequestBody Map<String, Integer> paramMap) { // Javascript의 JSON을 DTO,Map으로 받는데 -> 여기서는 Map 으로 /
-																	// JS의 Value 들이 다 int으로 받기 때문에 
+																	// JS의 Value 들이 다 int으로 받기 때문에
 		System.out.println(paramMap);
 		return service.like(paramMap);
 	}
-	
-	 // 헤더 검색
-    @GetMapping(value="/headerSearch", produces = "application/json; charset=UTF-8")
-    @ResponseBody
-    public List<Map<String, Object>> headerSearch(String query){
-    	return service.headerSearch(query);
-    }
-    
-    
+
+	// 헤더 검색
+	@GetMapping(value = "/headerSearch", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public List<Map<String, Object>> headerSearch(String query) {
+		return service.headerSearch(query);
+	}
 
 }
