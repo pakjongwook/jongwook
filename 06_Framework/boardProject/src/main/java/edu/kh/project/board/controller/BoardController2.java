@@ -130,7 +130,7 @@ public class BoardController2 {
 		// if(로그인회원번호 != 작성자 번호)리다이렉트
 		
 		model.addAttribute("board", board);  
-		// forward(요청위임) -> request scope 유지    
+		// forward(요청위임) -> request scope 유지         
 		
 		return "board/boardUpdate"; // 전달 
 	}
@@ -150,7 +150,7 @@ public class BoardController2 {
 		
 		// 1) boardCode, boardNo를 커멘드 객체(board)에 세팅
 		board.setBoardCode(boardCode);
-		board.setBoardNo(boardNo);
+		board.setBoardNo(boardNo);           
 		
 		// board(boardCode, boardNo, boardTitle, boardContent)
 		

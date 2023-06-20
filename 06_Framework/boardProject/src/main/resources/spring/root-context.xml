@@ -21,6 +21,8 @@
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 
+		<!-- 자기 컴퓨터 (18C) -->
+		<!-- <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" /> -->
 
 		<!-- 자기 컴퓨터 (19C) -->
 		
@@ -31,7 +33,7 @@
 		<property name="password" value="project1234 " /> -->
 		
 		<!-- 학원 계정 -->
-		<property name="url" value="jdbc:oracle:thin:@115.90.212.18:10000:ORCL" />
+		<property name="url" value="jdbc:oracle:thin:@115.90.212.20:10000:ORCL" />
 
 		<property name="username" value='"jongwook123"' />
 
