@@ -1,10 +1,10 @@
 package com.kh.test.user.model.service;
 
+import com.kh.test.user.model.vo.User;
 
 public interface UserService {
 
-	static int selectMemberId(int result) {
-		return result;
-	}
+
+	User searchId(String userId);
 
 }

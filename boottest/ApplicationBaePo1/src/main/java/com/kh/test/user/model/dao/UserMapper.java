@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Mapper
 public interface UserMapper {
 	
-	@Autowired
-	private SqlSessionTemplate mapper;
 	
 	
 	

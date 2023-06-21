@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.test.user.model.service.UserService;
+import com.kh.test.user.model.vo.User;
 
 import ch.qos.logback.core.model.Model;
 
@@ -15,18 +16,13 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	@GetMapping("/")
-	public int selectMemberId(@RequestParam("memberId") String memberId 
+	@GetMapping("/searchId")
+	public String searchId(@RequestParam("userId") String userId 
 			, Model model) {
 			
-		int result = 0;
+		User user = service.searchId(userId);
 		
-		
-		
-		result = UserService.selectMemberId(result);
-		
-		
-		return result;
+		return null;
 	}
 	
 }
