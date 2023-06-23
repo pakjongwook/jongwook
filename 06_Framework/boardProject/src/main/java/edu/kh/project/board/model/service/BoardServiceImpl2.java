@@ -71,7 +71,7 @@ public class BoardServiceImpl2 implements BoardService2{
 					img.setImageOriginal(fileName); // 원본명
 					
 					img.setImageReName(Util.fileRename(fileName));
-					
+				
 					uploadList.add(img);
 					
 				}
