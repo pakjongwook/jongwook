@@ -27,7 +27,7 @@ class Exam1 extends Component{
                 <button onClick={this.handleClick}>increment</button>
             </>
 
-        );
+        ); /* App.js 의 반환해서 => */
     }
 
     /* 

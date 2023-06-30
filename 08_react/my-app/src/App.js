@@ -2,9 +2,11 @@ import './App.css';
 
 // compontents 폴더의 Exam1.js를 가져와서 사용
 // 사용할 때 이름을 Ex1으로 지정
-import Exam1 from './components/Exam1';
+import Exam1 from './components/Exam1'; /* 확장자.js 생략 */
 
 import Ex2 from './components/Exam2';
+
+import PropsEx from './components/R01_props1';
 
 function App() {
   // react의 컴포넌트는 딱 하나의 요소만을 반환할 수 있다
@@ -17,9 +19,13 @@ function App() {
       <h1>hello world!!</h1>
       <div>와 리엑트</div>
 
-      <Exam1 />
+      {/*<Exam1 />*/} {/* App은 부모 / exam1은 components (자식) /  위의 import 구문 ==> 여기로 render코드가 반환됨 */}
       
-      <Ex2 />
+       {/*<Ex2 />*/}
+
+       <PropsEx name={'홍범도 장군'}/>
+       <PropsEx name={'안중근 장군'}/>
+       <PropsEx name={'김좌진 장군'}/>
     </>
   );
 }
