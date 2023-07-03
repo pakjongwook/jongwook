@@ -8,7 +8,11 @@ import Ex2 from './components/Exam2';
 
 import PropsEx from './components/R01_props1';
 
-function App() {
+import State1 from './components/R02_state1'; // export 한것을 가져와서 여기서 import 하겠다. , 요소이름은 대문자
+import State2 from './components/R03_state2';
+import State3 from './components/R04_state3';
+
+function App() { // 부모
   // react의 컴포넌트는 딱 하나의 요소만을 반환할 수 있다
   // -> 여러 요소를 반환하고싶을 떄는 부모 요소로 묶어준다!
   return (
@@ -23,9 +27,20 @@ function App() {
       
        {/*<Ex2 />*/}
 
-       <PropsEx name={'홍범도 장군'}/>
+ {/*       <PropsEx name={'홍범도 장군'}/>
        <PropsEx name={'안중근 장군'}/>
-       <PropsEx name={'김좌진 장군'}/>
+       <PropsEx name={'김좌진 장군'}/> */}
+
+       {/* R02_state1 */}
+       <State1/>  {/* 요소이름은 무조건 대문자 */}
+
+       {/* R03_state2 */} {/* 자식 */}
+       <State2 init={100}/> {/* 전체가 리렌더링 하는것이 아닌 상태가 변한 부분만 리렌더링함(<h3>count</h3>) */}
+
+       {/* R04_state3 */}
+       <hr/>
+       <State3/>
+
     </>
   );
 }
