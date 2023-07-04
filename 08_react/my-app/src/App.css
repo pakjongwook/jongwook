@@ -2,3 +2,7 @@ h1 {
   color: goldenrod;
 
 }
+
+.completed {
+  text-decoration: line-through; /* 가운데선   */
+}
