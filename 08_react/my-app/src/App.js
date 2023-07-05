@@ -12,6 +12,7 @@ import State1 from './components/R02_state1'; // export 한것을 가져와서 �
 import State2 from './components/R03_state2';
 import State3 from './components/R04_state3';
 import TodoList1 from './components/R05_todolist';
+import ContextApi from './components/R06_context_api'; // ContextApi 이름
 
 function App() { // 부모
   // react의 컴포넌트는 딱 하나의 요소만을 반환할 수 있다
@@ -43,7 +44,10 @@ function App() { // 부모
        {/* <State3/> */}
 
        {/* R05_todolist1 */}
-       <TodoList1/>
+       {/* <TodoList1/> */}
+
+       {/* R06_context_api */}
+       <ContextApi/>
     </>
   );
 }
