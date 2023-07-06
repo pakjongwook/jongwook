@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!--resultMap 따로 안써도 되는데 표기를 똑같이 써야함 memberNo = MEMBER_NO-->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+		
+		<!-- underscore 표기법을 camel 표기법으로 변경-->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	
+</configuration>
