@@ -115,7 +115,7 @@ const SignupContainer = () => {
 
     }
 
-    return(
+    return( // 화면에 보이게 하는것
         <div className="signup-container">
 
             <label>   
