@@ -1,0 +1,42 @@
+#root{ text-align: center;} /* 가장 바깥쪽에 root */
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+
+.count{
+  padding: 12px;
+}
+
+.minus{
+  background-color: lightskyblue;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  margin-top: 30px;
+  /* margin : 요소 주위의 외부 여백을 지정 */
+}
+
+.plus{
+  background-color: darkorchid;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.wrapper2{
+  height: 200px; /* 원하는 높이 값으로 설정 */
+  width: 100%; /* 원하는 너비 값으로 설정 */
+  background-color: #f2f2f2; /* 원하는 배경색으로 설정 */
+  border: 1px solid #ccc; /* 원하는 테두리 스타일로 설정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.style{
+  margin: 11px 5px;
+}

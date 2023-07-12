@@ -72,7 +72,7 @@ const Profile = () => {
 
 
 
-              
+            
 
             </div>
         </UserContext.Provider>
