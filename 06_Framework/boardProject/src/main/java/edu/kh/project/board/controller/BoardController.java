@@ -40,7 +40,7 @@ public class BoardController {
 
 	// ex ) 100개 1페이지당 10개 1page -> 100 ~ 91 2page -> 90 ~ 81 3page -> 80 ~ 71
 
-	/*
+	/* **
 	 * 목록 조회 : /board/1?cp=1 (cp : current page(현재 페이지) 상세 조회 : /board/1/1500?cp=1
 	 * 
 	 * ** 컨트롤러 따로 생성 예정 ** 삽입 : /board2/insert?code=1 (code == BOARD_CODE, 게시판 종류)
