@@ -24,3 +24,4 @@ function lightMode(){
     body.style.backgroundColor = 'white';
     body.style.color = 'black';
 }
+
