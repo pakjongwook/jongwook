@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+    <h1 id="hp">HP : 3</h1>
     <div class="background">
         <img id="drone" src="" alt="drone">
         <img id="spit" src="" alt="spit">
@@ -23,10 +23,24 @@
     </script>
 
     <script>
-        $('#drone').click(function(){
-            console.log('침발사');
+        var hp =3;
+        $('#drone').click(function(){ 
+            $('#spit').fadeIn(); // 침이 나타나고
+            $('#spit').animate({left:'+=250'}); // 침 버커로 이동 // 왼쪽 간격 250만큼
+            $('#spit').fadeOut(function(){
+                hp = hp - 1; // hp 을 깍아주는것.
+                $('#hp').text('HP :' + hp) // 화면에 업데이트 해주는 구문
+                if(hp == 0){
+                    $('#bunker').fadeOut();
+                }
+            }); // fadeOut 끝나고 나서 실행
+            $('#spit').css({left: '150px'}); // 사라진 침(애니메이션)을 원위치로 돌리기 위해서 
+           
+      
         });
     </script>
+
+    
    
 
 </body>
