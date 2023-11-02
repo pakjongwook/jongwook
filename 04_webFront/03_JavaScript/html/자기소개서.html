@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기소개서</title>
+    <link rel="stylesheet" href="../css/자기소개서.css">
+    <script src="../js/자기소개서.js"></script>
+</head>
+
+<body class="container">
+    <h1>자소서</h1>
+    <textarea onkeydown="counter();" class="form-control" rows="5" cols="60" id="jasoseol">저는 인성에 문제가 없습니다.</textarea>
+    <span id="count">(0/200)</span>
+    <script>
+        function counter() {
+
+        var content = document.getElementById('jasoseol').value;
+        if(content.length >200){
+            content = content.substring(0, 200);
+            document.getElementById('jasoseol').value = content;
+        }
+        document.getElementById('count').innerHTML = '(' + content.length + '/200)'; // span 글자수 입력
+        };
+        counter();
+    </script>
+</body>
+
+</html>
